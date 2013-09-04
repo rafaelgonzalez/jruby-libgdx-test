@@ -11,8 +11,10 @@ java_import com.badlogic.gdx.Input
 java_import com.badlogic.gdx.graphics.GL10
 java_import com.badlogic.gdx.graphics.Texture
 java_import com.badlogic.gdx.graphics.OrthographicCamera
-java_import com.badlogic.gdx.graphics.g2d.SpriteBatch
+java_import com.badlogic.gdx.graphics.g2d.Animation
 java_import com.badlogic.gdx.graphics.g2d.BitmapFont
+java_import com.badlogic.gdx.graphics.g2d.SpriteBatch
+java_import com.badlogic.gdx.graphics.g2d.TextureRegion
 
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplication
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
