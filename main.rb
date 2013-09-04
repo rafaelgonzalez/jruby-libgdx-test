@@ -5,6 +5,7 @@ require 'lib/gdx-natives.jar'
 require 'lib/gdx.jar'
 
 java_import com.badlogic.gdx.ApplicationListener
+java_import com.badlogic.gdx.Game
 java_import com.badlogic.gdx.Gdx
 java_import com.badlogic.gdx.Input
 java_import com.badlogic.gdx.graphics.GL10

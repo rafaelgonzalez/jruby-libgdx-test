@@ -1,15 +1,14 @@
-java_import com.badlogic.gdx.Game
-
-class FooGame
-  include ApplicationListener
+class FooGame < Game
+  include Input
 
   def create
   end
 
   def render
+    Gdx.app.exit if is_key_pressed?(Keys::ESCAPE)
   end
 
-  def resize (width, height)
+  def resize(width, height)
   end
 
   def pause
@@ -19,5 +18,12 @@ class FooGame
   end
 
   def dispose
+  end
+
+
+  private
+
+  def is_key_pressed?(key)
+    Gdx.input.isKeyPressed(key)
   end
 end
