@@ -1,0 +1,25 @@
+GEM
+  remote: https://rubygems.org/
+  remote: http://gems.neurogami.com/
+  specs:
+    builder (3.2.2)
+    hoe (3.7.1)
+      rake (>= 0.8, < 11.0)
+    rake (10.1.0)
+    rawr (1.6.6)
+      rubyzip
+      user-choices
+    rubyzip (1.0.0)
+    s4t-utils (1.0.4)
+      hoe (>= 1.3.0)
+    user-choices (1.1.6.1)
+      builder (>= 2.1.2)
+      s4t-utils (>= 1.0.3)
+      xml-simple (>= 1.0.11)
+    xml-simple (1.1.2)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  rawr
