@@ -1,8 +1,8 @@
 require 'java'
-require 'lib/gdx-backend-lwjgl-natives.jar'
-require 'lib/gdx-backend-lwjgl.jar'
-require 'lib/gdx-natives.jar'
-require 'lib/gdx.jar'
+require 'lib/java/gdx-backend-lwjgl-natives.jar'
+require 'lib/java/gdx-backend-lwjgl.jar'
+require 'lib/java/gdx-natives.jar'
+require 'lib/java/gdx.jar'
 
 java_import com.badlogic.gdx.ApplicationListener
 java_import com.badlogic.gdx.Game
@@ -19,9 +19,13 @@ java_import com.badlogic.gdx.graphics.g2d.TextureRegion
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplication
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 
+$CLASSPATH << "app"
+$CLASSPATH << "app/extensions"
+$CLASSPATH << "app/renderers"
+
 require 'foo_game'
-require 'app/extensions/sprite-sheet-loader.rb'
-require 'app/renderers/character_renderer.rb'
+require 'sprite-sheet-loader.rb'
+require 'character_renderer.rb'
 
 cfg = LwjglApplicationConfiguration.new
 cfg.title = "FooGame"

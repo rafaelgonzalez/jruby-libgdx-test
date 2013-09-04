@@ -3,7 +3,7 @@ class CharacterRenderer
   SPRITE_HEIGHT = 64
 
   def initialize
-    @sprite_sheet_loader = SpriteSheetLoader.new("data/light.png", 64, 64)
+    @sprite_sheet_loader = SpriteSheetLoader.new("assets/light.png", 64, 64)
 
     @walk_animation = @sprite_sheet_loader.animation(11, (0..8))
 
