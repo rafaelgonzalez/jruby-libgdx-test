@@ -20,6 +20,8 @@ java_import com.badlogic.gdx.backends.lwjgl.LwjglApplication
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 
 require 'foo_game'
+require 'app/extensions/sprite-sheet-loader.rb'
+require 'app/renderers/character_renderer.rb'
 
 cfg = LwjglApplicationConfiguration.new
 cfg.title = "FooGame"
