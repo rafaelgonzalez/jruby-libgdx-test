@@ -28,3 +28,7 @@ Then run:
 `rake rawr:bundle:exe`
 
 Builds can be found in the `build` directory.
+
+## License ##
+
+Released under the MIT License. See [LICENSE file](LICENSE) for details.
