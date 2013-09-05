@@ -17,7 +17,7 @@ configuration do |c|
   # The main ruby file to invoke, minus the .rb extension
   # default value: "main"
   #
-  c.main_ruby_file = "main"
+  # c.main_ruby_file = "main"
 
   # The fully-qualified name of the main Java file used to initiate the application.
   # default value: "org.monkeybars.rawr.Main"
@@ -28,10 +28,9 @@ configuration do |c|
   # default value: ["src"]
   #
   c.source_dirs = [
-    "app",
-    "app/extensions",
-    "app/renderers",
-    "lib/ruby"
+    "src",
+    "src/extensions",
+    "src/renderers"
   ]
   
 
