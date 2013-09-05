@@ -22,7 +22,7 @@ You need the following (please refer to their specific installation guidelines)
 
 Then run:
 
-`bundle install`
+    bundle install
 
 ## Running ##
 
