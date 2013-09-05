@@ -5,4 +5,5 @@ gem 'rawr'
 
 group :test do
   gem 'rake' # Needed for travis
+  gem 'rspec'
 end
