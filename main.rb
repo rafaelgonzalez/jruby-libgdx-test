@@ -19,9 +19,9 @@ java_import com.badlogic.gdx.graphics.g2d.TextureRegion
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplication
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 
-$CLASSPATH << "app"
-$CLASSPATH << "app/extensions"
-$CLASSPATH << "app/renderers"
+$CLASSPATH << 'src'
+$CLASSPATH << 'src/extensions'
+$CLASSPATH << 'src/renderers'
 
 require 'foo_game'
 require 'sprite-sheet-loader.rb'
