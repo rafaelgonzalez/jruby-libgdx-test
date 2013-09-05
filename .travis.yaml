@@ -4,3 +4,4 @@ rvm:
   - jruby-head
 jdk:
   - openjdk6
+script: bundle exec rspec spec
