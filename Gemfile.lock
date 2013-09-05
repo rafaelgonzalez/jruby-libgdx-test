@@ -22,4 +22,5 @@ PLATFORMS
   java
 
 DEPENDENCIES
+  rake
   rawr
