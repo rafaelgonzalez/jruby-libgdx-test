@@ -31,15 +31,19 @@ Then run:
 
 ## Building ##
 
-**Build an executable JAR**
+You will JRuby as a JAR. You can get it with:
+
+    rawr install
+
+Build an executable JAR
 
     rake rawr:jar
 
-**Build a Mac OSX app**
+Build a Mac OSX app
 
     rake rawr:bundle:app
 
-**Build a Windows executable**
+Build a Windows executable
 
     rake rawr:bundle:exe
 
