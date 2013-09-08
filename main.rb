@@ -21,11 +21,20 @@ java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 
 $CLASSPATH << 'src'
 $CLASSPATH << 'src/extensions'
+$CLASSPATH << 'src/input'
+$CLASSPATH << 'src/models'
 $CLASSPATH << 'src/renderers'
 
 require 'foo_game'
-require 'sprite-sheet-loader.rb'
-require 'character_renderer.rb'
+
+require 'sprite-sheet-loader'
+require 'direction'
+
+require 'character_input'
+require 'character_renderer'
+
+require 'character'
+
 
 cfg = LwjglApplicationConfiguration.new
 cfg.title = "FooGame"
