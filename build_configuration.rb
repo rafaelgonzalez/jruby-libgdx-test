@@ -30,6 +30,8 @@ configuration do |c|
   c.source_dirs = [
     "src",
     "src/extensions",
+    "src/input",
+    "src/models",
     "src/renderers"
   ]
   
@@ -62,7 +64,7 @@ configuration do |c|
   # A list of files that will be copied into the `<output_dir>/jar` folder.  Note that the files maintain their directory path when copied. 
   # default value: []
   #
-  c.files_to_copy = ['main.rb']
+  c.files_to_copy = ['main.rb', 'initializer.rb']
 
   # Undocumented option 'source_jvm_version'
   # default value: 1.7
