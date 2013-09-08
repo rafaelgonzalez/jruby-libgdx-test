@@ -29,7 +29,7 @@ require 'foo_game'
 
 require 'character_action'
 require 'direction'
-require 'sprite-sheet-loader'
+require 'sprite_sheet_loader'
 require 'lpc_sprite_sheet_loader'
 
 require 'character_input'
