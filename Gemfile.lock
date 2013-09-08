@@ -3,9 +3,13 @@ GEM
   remote: http://gems.neurogami.com/
   specs:
     builder (3.2.2)
+    cane (2.6.0)
+      parallel
     diff-lcs (1.2.4)
     hoe (3.7.1)
       rake (>= 0.8, < 11.0)
+    multi_json (1.8.0)
+    parallel (0.8.0)
     rake (10.1.0)
     rawr (1.6.6)
       rubyzip
@@ -21,6 +25,10 @@ GEM
     rubyzip (1.0.0)
     s4t-utils (1.0.4)
       hoe (>= 1.3.0)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     user-choices (1.1.6.1)
       builder (>= 2.1.2)
       s4t-utils (>= 1.0.3)
@@ -31,6 +39,8 @@ PLATFORMS
   java
 
 DEPENDENCIES
+  cane
   rake
   rawr
   rspec
+  simplecov
