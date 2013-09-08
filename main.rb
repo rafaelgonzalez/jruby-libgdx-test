@@ -27,8 +27,10 @@ $CLASSPATH << 'src/renderers'
 
 require 'foo_game'
 
-require 'sprite-sheet-loader'
+require 'character_action'
 require 'direction'
+require 'sprite-sheet-loader'
+require 'lpc_sprite_sheet_loader'
 
 require 'character_input'
 require 'character_renderer'

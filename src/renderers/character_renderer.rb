@@ -1,19 +1,9 @@
 module CharacterRenderer
-  SPRITE_WIDTH = 64
-  SPRITE_HEIGHT = 64
-
   # Public: Loads the character animations.
   #
   # Returns nothing.
   def load_animations
-    @sprite_sheet_loader = SpriteSheetLoader.new("assets/light.png", 64, 64)
-
-    @walk_animations = {}
-    @walk_animations[Direction::UP] = @sprite_sheet_loader.animation(8, (0..8))
-    @walk_animations[Direction::LEFT] = @sprite_sheet_loader.animation(9, (0..8))
-    @walk_animations[Direction::DOWN] = @sprite_sheet_loader.animation(10, (0..8))
-    @walk_animations[Direction::RIGHT] = @sprite_sheet_loader.animation(11, (0..8))
-
+    @animations = LpcSpriteSheetLoader.animations_from_sprite_sheet_file("assets/light.png")
     @sprite_batch = SpriteBatch.new
   end
 
@@ -26,6 +16,13 @@ module CharacterRenderer
     @sprite_batch.end
   end
 
+  def sprite_width
+    LpcSpriteSheetLoader::SPRITE_WIDTH
+  end
+
+  def sprite_height
+    LpcSpriteSheetLoader::SPRITE_HEIGHT
+  end
 
   private
 
@@ -33,7 +30,7 @@ module CharacterRenderer
   #
   # Returns an Animation.
   def current_animation
-    @walk_animations[@current_direction]
+    @animations[@current_action][@current_direction]
   end
 
   # Internal: Get the current frame of the Character's current animation.

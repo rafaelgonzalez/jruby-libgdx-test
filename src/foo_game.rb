@@ -12,8 +12,8 @@ class FooGame < Game
     Gdx.gl.glClear(GL10::GL_COLOR_BUFFER_BIT | GL10::GL_DEPTH_BUFFER_BIT)
     @state_time = @state_time + Gdx.graphics.get_delta_time
 
-    sprite_x_pos = (Gdx.graphics.get_width / 2) - (CharacterRenderer::SPRITE_WIDTH / 2)
-    sprite_y_pos = (Gdx.graphics.get_height / 2) - (CharacterRenderer::SPRITE_HEIGHT / 2)
+    sprite_x_pos = (Gdx.graphics.get_width / 2) - (@character.sprite_width / 2)
+    sprite_y_pos = (Gdx.graphics.get_height / 2) - (@character.sprite_height / 2)
 
     @character.transform_with_input!(Gdx.input)
     @character.draw(@state_time, sprite_x_pos, sprite_y_pos)
