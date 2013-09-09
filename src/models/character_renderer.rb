@@ -1,5 +1,7 @@
 module CharacterRenderer
 
+  CHARACTER_MOVEMENT_SPEED = 100
+
   # Public: Initializes the necessary variables in the Character instance for rendering.
   #
   # Returns nothing.
@@ -12,9 +14,10 @@ module CharacterRenderer
   # Public: Render the character sprite on screen.
   #
   # Returns nothing.
-  def draw(state_time, sprite_x_pos, sprite_y_pos)
+  def draw(state_time, camera)
+    @sprite_batch.set_projection_matrix(camera.combined)
     @sprite_batch.begin
-    @sprite_batch.draw(current_frame(state_time), sprite_x_pos, sprite_y_pos)
+    @sprite_batch.draw(current_frame(state_time), @screen_x_position, @screen_y_position)
     @sprite_batch.end
   end
 
