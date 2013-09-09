@@ -22,7 +22,7 @@ java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 dir = File.expand_path(File.join(File.dirname(__FILE__), 'src'))
 $LOAD_PATH << dir
 
-%w{ constants extensions input models renderers }.each do |dir|
+%w{ constants extensions models }.each do |dir|
   path = File.expand_path(File.join(File.dirname(__FILE__), 'src', dir))
   $LOAD_PATH << path
 end
