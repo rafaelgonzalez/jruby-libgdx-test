@@ -2,7 +2,7 @@ class FooGame < Game
   include Input
 
   def create
-    @camera = OrthographicCamera.new
+    @camera = OrthographicCameraExtended.new
     @camera.set_to_ortho(false)
     @character = Character.new
     @state_time = 0.0
@@ -15,6 +15,8 @@ class FooGame < Game
     @state_time = @state_time + Gdx.graphics.get_delta_time
 
     @character.transform_with_input!(Gdx.input)
+    @camera.transform_with_input!(Gdx.input)
+
     @character.draw(@state_time, @camera)
   end
 

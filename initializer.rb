@@ -38,3 +38,6 @@ require 'character_input'
 require 'character_renderer'
 
 require 'character'
+
+require 'camera_input'
+require 'orthographic_camera_extended'
