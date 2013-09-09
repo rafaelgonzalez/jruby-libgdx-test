@@ -1,10 +1,12 @@
 module CharacterRenderer
-  # Public: Loads the character animations.
+
+  # Public: Initializes the necessary variables in the Character instance for rendering.
   #
   # Returns nothing.
-  def load_animations
-    @animations = LpcSpriteSheetLoader.animations_from_sprite_sheet_file("assets/light.png")
-    @sprite_batch = SpriteBatch.new
+  def initialize_rendering
+    @screen_x_position = 0
+    @screen_y_position = 0
+    load_animations
   end
 
   # Public: Render the character sprite on screen.
@@ -38,5 +40,16 @@ module CharacterRenderer
   # Returns a TextureRegion.
   def current_frame(state_time)
     current_animation.get_key_frame(state_time, true)
+  end
+
+
+  private
+
+  # Internal: Loads the character animations.
+  #
+  # Returns nothing.
+  def load_animations
+    @animations = LpcSpriteSheetLoader.animations_from_sprite_sheet_file("assets/light.png")
+    @sprite_batch = SpriteBatch.new
   end
 end
