@@ -1,6 +1,6 @@
 jruby-libgdx-test
 =================
-[![Build Status](https://travis-ci.org/rafaelgonzalez/jruby-libgdx-test.png)](https://travis-ci.org/rafaelgonzalez/jruby-libgdx-test)
+[![Build Status](https://travis-ci.org/rafaelgonzalez/jruby-libgdx-test.png?branch=master)](https://travis-ci.org/rafaelgonzalez/jruby-libgdx-test)
 
 ## Description ##
 
