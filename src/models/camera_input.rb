@@ -16,8 +16,8 @@ module CameraInput
 
     screen_y_position = movement if is_key_pressed?(Keys::UP)
     screen_y_position = -movement if is_key_pressed?(Keys::DOWN)
-    screen_x_position = movement if is_key_pressed?(Keys::LEFT)
-    screen_x_position = -movement if is_key_pressed?(Keys::RIGHT)
+    screen_x_position = movement if is_key_pressed?(Keys::RIGHT)
+    screen_x_position = -movement if is_key_pressed?(Keys::LEFT)
 
     self.translate(screen_x_position, screen_y_position)
   end
