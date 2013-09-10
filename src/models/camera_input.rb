@@ -10,16 +10,16 @@ module CameraInput
   private
 
   def update_screen_positions!
-    screen_x_position = screen_y_position = 0
+    x_translation = y_translation = 0
 
     movement = OrthographicCameraExtended::MOVEMENT_SPEED * Gdx.graphics.get_delta_time
 
-    screen_y_position = movement if is_key_pressed?(Keys::UP)
-    screen_y_position = -movement if is_key_pressed?(Keys::DOWN)
-    screen_x_position = movement if is_key_pressed?(Keys::RIGHT)
-    screen_x_position = -movement if is_key_pressed?(Keys::LEFT)
+    y_translation = movement if is_key_pressed?(Keys::UP)
+    y_translation = -movement if is_key_pressed?(Keys::DOWN)
+    x_translation = movement if is_key_pressed?(Keys::RIGHT)
+    x_translation = -movement if is_key_pressed?(Keys::LEFT)
 
-    self.translate(screen_x_position, screen_y_position)
+    self.translate(x_translation, y_translation)
   end
 
   # Internal: Determines if the Camera is moving.
