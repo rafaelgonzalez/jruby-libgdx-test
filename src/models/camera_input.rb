@@ -1,5 +1,7 @@
 module CameraInput
-  include Input
+  def initialize_input
+    load_key_bindings
+  end
 
   def transform_with_input!(input)
     update_screen_positions! if is_moving?
@@ -14,10 +16,12 @@ module CameraInput
 
     movement = OrthographicCameraExtended::MOVEMENT_SPEED * Gdx.graphics.get_delta_time
 
-    y_translation += movement if is_key_pressed?(Keys::UP)
-    y_translation += -movement if is_key_pressed?(Keys::DOWN)
-    x_translation += movement if is_key_pressed?(Keys::RIGHT)
-    x_translation += -movement if is_key_pressed?(Keys::LEFT)
+    directions = @key_bindings.invoked(:directions)
+
+    y_translation += movement if directions.include?(Direction::DOWN)
+    y_translation += -movement if directions.include?(Direction::UP)
+    x_translation += movement if directions.include?(Direction::LEFT)
+    x_translation += -movement if directions.include?(Direction::RIGHT)
 
     self.translate(x_translation, y_translation)
   end
@@ -26,17 +30,10 @@ module CameraInput
   #
   # Returns a Boolean.
   def is_moving?
-    one_of_keys_is_pressed?([Keys::UP, Keys::DOWN, Keys::LEFT, Keys::RIGHT])
+    @key_bindings.invoked(:directions).any?
   end
 
-  def one_of_keys_is_pressed?(keys)
-    keys.each do |key|
-      return true if is_key_pressed?(key) == true
-    end
-    false
-  end
-
-  def is_key_pressed?(key)
-    Gdx.input.is_key_pressed(key)
+  def load_key_bindings
+    @key_bindings = KeyBinding::Camera.new
   end
 end
