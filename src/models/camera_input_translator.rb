@@ -1,4 +1,4 @@
-module CameraInput
+module CameraInputTranslator
   def initialize_input
     load_key_bindings
   end

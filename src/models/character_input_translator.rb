@@ -1,4 +1,4 @@
-module CharacterInput
+module CharacterInputTranslator
   def initialize_input
     load_key_bindings
   end

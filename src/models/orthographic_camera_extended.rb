@@ -1,7 +1,7 @@
 class OrthographicCameraExtended < OrthographicCamera
   MOVEMENT_SPEED = 200
 
-  include CameraInput
+  include CameraInputTranslator
 
   def initialize
     initialize_input

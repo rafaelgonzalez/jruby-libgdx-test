@@ -1,5 +1,5 @@
 class Character
-  include CharacterInput
+  include CharacterInputTranslator
   include CharacterRenderer
 
   def initialize
