@@ -3,7 +3,7 @@ module CameraInputTranslator
     load_key_bindings
   end
 
-  def transform_with_input!(input)
+  def transform_with_input!
     update_screen_positions! if is_moving?
     self.update
   end

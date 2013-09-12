@@ -5,12 +5,10 @@ module CharacterInputTranslator
 
   # Public: Transforms the Character according to the given user's input.
   #
-  # input - The LwjglInput to analyze.
-  #
   # Returns nothing.
-  def transform_with_input!(input)
-    @current_action = action_from_input(input)
-    @current_direction = direction_from_input(input)
+  def transform_with_input!
+    @current_action = action_from_input
+    @current_direction = direction_from_input
     update_screen_positions! if is_moving?
   end
 
@@ -19,20 +17,16 @@ module CharacterInputTranslator
 
   # Internal: Gets the Character's current action according to the given input.
   #
-  # input - The LwjglInput to analyze.
-  #
   # Returns a CharacterAction constant.
-  def action_from_input(input)
+  def action_from_input
     return CharacterAction::WALK if is_moving?
     return CharacterAction::STAND
   end
 
   # Internal: Gets the Character's facing direction according to the given input.
   #
-  # input - The LwjglInput to analyze.
-  #
   # Returns a Direction constant.
-  def direction_from_input(input)
+  def direction_from_input
     if @key_bindings.invoked(:directions).any?
       return @key_bindings.invoked(:directions).first
     else
