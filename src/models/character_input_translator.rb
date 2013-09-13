@@ -6,7 +6,7 @@ module CharacterInputTranslator
   # Public: Transforms the Character according to the given user's input.
   #
   # Returns nothing.
-  def transform_with_input!
+  def transform_from_input!
     @current_action = action_from_input
     @current_direction = direction_from_input
     update_screen_positions! if is_moving?
