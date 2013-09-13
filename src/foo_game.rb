@@ -14,8 +14,8 @@ class FooGame < Game
     Gdx.gl.glClear(GL10::GL_COLOR_BUFFER_BIT | GL10::GL_DEPTH_BUFFER_BIT)
     @state_time = @state_time + Gdx.graphics.get_delta_time
 
-    @character.transform_with_input!(Gdx.input)
-    @camera.transform_with_input!(Gdx.input)
+    @character.transform_with_input!
+    @camera.transform_with_input!
 
     @character.draw(@state_time, @camera)
   end

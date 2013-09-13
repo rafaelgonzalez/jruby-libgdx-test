@@ -29,10 +29,9 @@ configuration do |c|
   #
   c.source_dirs = [
     "src",
+    "src/constants",
     "src/extensions",
-    "src/input",
-    "src/models",
-    "src/renderers"
+    "src/models"
   ]
   
 

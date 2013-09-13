@@ -34,10 +34,14 @@ require 'direction'
 require 'sprite_sheet_loader'
 require 'lpc_sprite_sheet_loader'
 
-require 'character_input'
+require 'key_bindings/base'
+require 'key_bindings/character'
+require 'key_bindings/camera'
+
+require 'character_input_translator'
 require 'character_renderer'
 
 require 'character'
 
-require 'camera_input'
+require 'camera_input_translator'
 require 'orthographic_camera_extended'
