@@ -32,7 +32,8 @@ end
 
 require 'foo_game'
 
-require 'dungeon_level'
+require 'dungeon/level'
+require 'dungeon/level_character'
 
 require 'character_action'
 require 'direction'
