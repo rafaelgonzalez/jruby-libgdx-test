@@ -15,12 +15,20 @@ module CharacterInputTranslator
     @current_direction = direction_from_input
   end
 
+  # Public: Determines if the Character wants to move.
+  #
+  # Returns a Boolean.
+  def wants_to_move?
+    @key_bindings.invoked(:directions).any?
+  end
+
   # Public: Determines if the Character is moving.
   #
   # Returns a Boolean.
   def is_moving?
     @current_action == CharacterAction::WALK
   end
+
 
   private
 
@@ -41,13 +49,6 @@ module CharacterInputTranslator
     else
       return @current_direction
     end
-  end
-
-  # Internal: Determines if the Character wants to move.
-  #
-  # Returns a Boolean.
-  def wants_to_move?
-    @key_bindings.invoked(:directions).any?
   end
 
   def load_key_bindings

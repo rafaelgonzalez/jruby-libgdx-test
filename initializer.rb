@@ -34,6 +34,7 @@ require 'foo_game'
 
 require 'dungeon/level'
 require 'dungeon/level_character'
+require 'dungeon/level_tile'
 
 require 'character_action'
 require 'direction'
