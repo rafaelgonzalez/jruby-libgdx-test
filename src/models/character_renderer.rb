@@ -1,6 +1,7 @@
 module CharacterRenderer
 
   CHARACTER_MOVEMENT_SPEED = 100
+  CHARACTER_GROUND_OFFSET = 25
 
   attr_accessor :screen_x_position, :screen_y_position
 

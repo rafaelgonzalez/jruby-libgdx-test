@@ -6,7 +6,7 @@ class FooGame < Game
     @camera.set_to_ortho(false)
     @character = Character.new
     @dungeon_level = Dungeon::Level.new
-    @dungeon_level.spawn_character!(@character, 0, 0)
+    @dungeon_level.spawn_character!(@character, 1, 1)
     @state_time = 0.0
   end
 
