@@ -1,4 +1,8 @@
 module CharacterInputTranslator
+
+  attr_accessor :current_action
+  attr_reader :current_direction
+
   def initialize_input
     load_key_bindings
   end
@@ -9,9 +13,14 @@ module CharacterInputTranslator
   def transform_from_input!
     @current_action = action_from_input
     @current_direction = direction_from_input
-    update_screen_positions! if is_moving?
   end
 
+  # Public: Determines if the Character is moving.
+  #
+  # Returns a Boolean.
+  def is_moving?
+    @current_action == CharacterAction::WALK
+  end
 
   private
 
@@ -19,7 +28,7 @@ module CharacterInputTranslator
   #
   # Returns a CharacterAction constant.
   def action_from_input
-    return CharacterAction::WALK if is_moving?
+    return CharacterAction::WALK if is_moving? or wants_to_move?
     return CharacterAction::STAND
   end
 
@@ -34,31 +43,10 @@ module CharacterInputTranslator
     end
   end
 
-  # Internal: Update the Character's screen positions.
-  #
-  # Returns nothing.
-  def update_screen_positions!
-    if [Direction::UP, Direction::DOWN].include? @current_direction
-      @screen_y_position += (
-        Direction.screen_direction(@current_direction) *
-        CharacterRenderer::CHARACTER_MOVEMENT_SPEED *
-        Gdx.graphics.get_delta_time
-      )
-    end
-
-    if [Direction::LEFT, Direction::RIGHT].include? @current_direction
-      @screen_x_position += (
-        Direction.screen_direction(@current_direction) *
-        CharacterRenderer::CHARACTER_MOVEMENT_SPEED *
-        Gdx.graphics.get_delta_time
-      )
-    end
-  end
-
-  # Internal: Determines if the Character is moving.
+  # Internal: Determines if the Character wants to move.
   #
   # Returns a Boolean.
-  def is_moving?
+  def wants_to_move?
     @key_bindings.invoked(:directions).any?
   end
 
