@@ -11,8 +11,8 @@ module CharacterInputTranslator
   #
   # Returns nothing.
   def transform_from_input!
-    @current_action = action_from_input
     @current_direction = direction_from_input
+    @current_action = action_from_input
   end
 
   # Public: Determines if the Character wants to move.
@@ -44,7 +44,7 @@ module CharacterInputTranslator
   #
   # Returns a Direction constant.
   def direction_from_input
-    if @key_bindings.invoked(:directions).any?
+    if wants_to_move? and !is_moving?
       return @key_bindings.invoked(:directions).first
     else
       return @current_direction
