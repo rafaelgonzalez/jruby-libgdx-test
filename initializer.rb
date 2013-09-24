@@ -40,6 +40,7 @@ require 'character_action'
 require 'direction'
 require 'sprite_sheet_loader'
 require 'lpc_sprite_sheet_loader'
+require 'level_character_animator'
 
 require 'key_bindings/base'
 require 'key_bindings/character'
