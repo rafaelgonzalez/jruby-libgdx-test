@@ -30,6 +30,8 @@ $LOAD_PATH << dir
   $LOAD_PATH << path
 end
 
+require 'pry'
+
 require 'foo_game'
 
 require 'dungeon/level'
