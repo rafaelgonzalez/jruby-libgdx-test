@@ -2,9 +2,9 @@ module KeyBinding
   class Character < Base
     BINDINGS = {
       directions: {
-        Keys::Z => Direction::UP,
+        Keys::W => Direction::UP,
         Keys::S => Direction::DOWN,
-        Keys::Q => Direction::LEFT,
+        Keys::A => Direction::LEFT,
         Keys::D => Direction::RIGHT
       }
     }
