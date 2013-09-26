@@ -1,5 +1,5 @@
-module Dungeon
-  class LevelCharacter
+class Dungeon::Level
+  class Character
 
     attr_reader :character, :destination_tile, :x_position, :y_position
     attr_accessor :current_tile
@@ -10,8 +10,8 @@ module Dungeon
       @x_position = x_position
       @y_position = y_position
 
-      @current_tile = LevelTile.new(x_position, y_position)
-      @destination_tile = LevelTile.new(x_position, y_position)
+      @current_tile = Tile.new(x_position, y_position)
+      @destination_tile = Tile.new(x_position, y_position)
 
       @animator = LevelCharacterAnimator.new(self)
     end
@@ -52,7 +52,7 @@ module Dungeon
         destination_tile_x += Direction.screen_direction(@character.current_direction)
       end
 
-      @destination_tile = LevelTile.new(destination_tile_x, destination_tile_y)
+      @destination_tile = Tile.new(destination_tile_x, destination_tile_y)
     end
   end
 end

@@ -1,5 +1,5 @@
-module Dungeon
-  class LevelTile
+class Dungeon::Level
+  class Tile
 
     attr_reader :x_position, :y_position
 

@@ -1,4 +1,4 @@
-module Dungeon
+class Dungeon
   class Level
 
     TILE_WIDTH = 32
@@ -14,7 +14,7 @@ module Dungeon
     end
 
     def spawn_character!(character, x_position, y_position)
-      @level_characters.push LevelCharacter.new(self, character, x_position, y_position)
+      @level_characters.push Character.new(self, character, x_position, y_position)
     end
 
     def draw(state_time, camera)
