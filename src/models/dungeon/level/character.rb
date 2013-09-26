@@ -1,5 +1,6 @@
 class Dungeon::Level
   class Character
+    include InputTranslator
 
     attr_reader :character, :destination_tile, :x_position, :y_position
     attr_accessor :current_tile
@@ -14,6 +15,8 @@ class Dungeon::Level
       @destination_tile = Tile.new(x_position, y_position)
 
       @animator = LevelCharacterAnimator.new(self)
+
+      initialize_input
     end
 
     # Public: Updates and renders the LevelCharacter.

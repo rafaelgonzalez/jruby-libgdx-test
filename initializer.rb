@@ -33,6 +33,7 @@ end
 require 'foo_game'
 
 require 'dungeon/level'
+require 'dungeon/level/character/input_translator'
 require 'dungeon/level/character'
 require 'dungeon/level/tile'
 
@@ -46,7 +47,6 @@ require 'key_bindings/base'
 require 'key_bindings/character'
 require 'key_bindings/camera'
 
-require 'character_input_translator'
 require 'character_renderer'
 
 require 'character'
