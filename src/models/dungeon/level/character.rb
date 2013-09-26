@@ -4,8 +4,7 @@ class Dungeon::Level
     attr_reader :character, :destination_tile, :x_position, :y_position
     attr_accessor :current_tile
 
-    def initialize(level, character, x_position, y_position)
-      @level = level
+    def initialize(character, x_position, y_position)
       @character = character
       @x_position = x_position
       @y_position = y_position
