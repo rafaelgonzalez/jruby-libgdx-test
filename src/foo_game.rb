@@ -5,6 +5,7 @@ class FooGame < Game
     @camera = OrthographicCameraExtended.new
     @camera.set_to_ortho(false)
     @character = Character.new
+    @dungeon_level = DungeonLevel.new
     @state_time = 0.0
   end
 
@@ -17,6 +18,7 @@ class FooGame < Game
     @character.transform_from_input!
     @camera.transform_from_input!
 
+    @dungeon_level.draw(@camera)
     @character.draw(@state_time, @camera)
   end
 

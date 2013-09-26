@@ -1,8 +1,8 @@
 require 'java'
-require 'lib/java/gdx-backend-lwjgl-natives.jar'
-require 'lib/java/gdx-backend-lwjgl.jar'
-require 'lib/java/gdx-natives.jar'
-require 'lib/java/gdx.jar'
+require 'lib/java/libgdx-nightly-20130916/gdx-backend-lwjgl-natives.jar'
+require 'lib/java/libgdx-nightly-20130916/gdx-backend-lwjgl.jar'
+require 'lib/java/libgdx-nightly-20130916/gdx-natives.jar'
+require 'lib/java/libgdx-nightly-20130916/gdx.jar'
 
 java_import com.badlogic.gdx.ApplicationListener
 java_import com.badlogic.gdx.Game
@@ -16,6 +16,9 @@ java_import com.badlogic.gdx.graphics.g2d.BitmapFont
 java_import com.badlogic.gdx.graphics.g2d.SpriteBatch
 java_import com.badlogic.gdx.graphics.g2d.TextureRegion
 
+java_import com.badlogic.gdx.maps.tiled.TmxMapLoader
+java_import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer
+
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplication
 java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 
@@ -28,6 +31,8 @@ $LOAD_PATH << dir
 end
 
 require 'foo_game'
+
+require 'dungeon_level'
 
 require 'character_action'
 require 'direction'
