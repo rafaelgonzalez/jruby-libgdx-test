@@ -15,7 +15,7 @@ class Dungeon::Level
       initialize_rendering
       initialize_input
 
-      @animator = LevelCharacterAnimator.new(self)
+      @animator = Animator.new(self)
     end
 
     # Public: Updates and renders the LevelCharacter.

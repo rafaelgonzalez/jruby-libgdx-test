@@ -1,5 +1,5 @@
 class Dungeon::Level::Character
-  class LevelCharacterAnimator
+  class Animator
 
     def initialize(level_character)
       @level_character = level_character
