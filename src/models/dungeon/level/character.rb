@@ -1,24 +1,25 @@
 class Dungeon::Level
   class Character
-    include InputTranslator
     include Renderer
+    include InputTranslator
 
     attr_reader :character, :destination_tile, :x_position, :y_position
     attr_accessor :current_tile
 
     def initialize(level, character, x_position, y_position)
+      initialize_from_character!(character)
+
       @level = level
-      @character = character
       @x_position = x_position
       @y_position = y_position
 
       @current_tile = Tile.new(x_position, y_position)
       @destination_tile = Tile.new(x_position, y_position)
 
-      @animator = LevelCharacterAnimator.new(self)
-
-      initialize_input
       initialize_rendering
+      initialize_input
+
+      @animator = LevelCharacterAnimator.new(self)
     end
 
     # Public: Updates and renders the LevelCharacter.
@@ -27,11 +28,16 @@ class Dungeon::Level
     def render(state_time, camera)
       update!
       @animator.update!
-      @character.draw(state_time, camera)
+      draw(state_time, camera)
     end
 
 
     private
+
+    def initialize_from_character!(character)
+      @current_direction = character.current_direction
+      @current_action = character.current_action
+    end
 
     # Internal: Updates the LevelCharacter.
     #
