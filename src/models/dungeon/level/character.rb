@@ -6,12 +6,8 @@ class Dungeon::Level
     attr_reader :character, :destination_tile, :x_position, :y_position
     attr_accessor :current_tile
 
-    def initialize(level, character, x_position, y_position)
+    def initialize(character, x_position, y_position)
       initialize_from_character!(character)
-
-      @level = level
-      @x_position = x_position
-      @y_position = y_position
 
       @current_tile = Tile.new(x_position, y_position)
       @destination_tile = Tile.new(x_position, y_position)
@@ -31,6 +27,13 @@ class Dungeon::Level
       draw(state_time, camera)
     end
 
+    def x_position
+      @current_tile.x_position
+    end
+
+    def y_position
+      @current_tile.y_position
+    end
 
     private
 

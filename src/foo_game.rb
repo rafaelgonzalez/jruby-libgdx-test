@@ -2,12 +2,15 @@ class FooGame < Game
   include Input
 
   def create
+    @characters = [Character.new]
+    @dungeon_level = Dungeon::Level.new
+    @dungeon_level.spawn_character!(@characters.first, 1, 1)
+
+    load_game_state!
+
+    @state_time = 0.0
     @camera = OrthographicCameraExtended.new
     @camera.set_to_ortho(false)
-    @character = Character.new
-    @dungeon_level = Dungeon::Level.new
-    @dungeon_level.spawn_character!(@character, 1, 1)
-    @state_time = 0.0
 
     @font = BitmapFont.new
     @screen_text = SpriteBatch.new
@@ -39,6 +42,7 @@ class FooGame < Game
   end
 
   def dispose
+    save_game_state!
   end
 
 
@@ -52,5 +56,13 @@ class FooGame < Game
     @screen_text.begin
     @font.draw(@screen_text, "#{Gdx.graphics.get_frames_per_second} FPS", 10, Gdx.graphics.get_height - 10)
     @screen_text.end
+  end
+
+  def load_game_state!
+    FooGameSaveLoader.new(self).load!
+  end
+
+  def save_game_state!
+    FooGameSaveCreator.new(self).save!
   end
 end

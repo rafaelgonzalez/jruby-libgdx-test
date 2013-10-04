@@ -7,3 +7,6 @@ lib/java/jruby-complete.jar
 # Tests
 
 coverage/
+
+# Save file
+save.json

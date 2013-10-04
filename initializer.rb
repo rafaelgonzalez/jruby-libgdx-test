@@ -30,9 +30,14 @@ $LOAD_PATH << dir
   $LOAD_PATH << path
 end
 
-require 'pry'
+begin
+  require 'pry'
+rescue LoadError
+end
 
 require 'foo_game'
+require 'foo_game_save_creator'
+require 'foo_game_save_loader'
 
 require 'dungeon/level'
 require 'dungeon/level/character/input_translator'
