@@ -6,8 +6,6 @@ class Dungeon::Level
 
     def initialize(character, x_position, y_position)
       @character = character
-      @x_position = x_position
-      @y_position = y_position
 
       @current_tile = Tile.new(x_position, y_position)
       @destination_tile = Tile.new(x_position, y_position)
@@ -24,6 +22,13 @@ class Dungeon::Level
       @character.draw(state_time, camera)
     end
 
+    def x_position
+      @current_tile.x_position
+    end
+
+    def y_position
+      @current_tile.y_position
+    end
 
     private
 
