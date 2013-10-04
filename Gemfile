@@ -3,6 +3,8 @@ source 'http://gems.neurogami.com'
 
 gem 'rawr'
 
+gem 'active_support'
+
 group :test do
   gem 'rake' # Needed for travis
   gem 'rspec'
