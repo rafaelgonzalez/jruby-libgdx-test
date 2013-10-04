@@ -3,6 +3,8 @@ source 'http://gems.neurogami.com'
 
 gem 'rawr'
 
+gem 'active_support'
+
 group :development do
   gem 'pry'
 end

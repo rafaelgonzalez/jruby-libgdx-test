@@ -33,6 +33,8 @@ end
 require 'pry'
 
 require 'foo_game'
+require 'foo_game_save_creator'
+require 'foo_game_save_loader'
 
 require 'dungeon/level'
 require 'dungeon/level/character'

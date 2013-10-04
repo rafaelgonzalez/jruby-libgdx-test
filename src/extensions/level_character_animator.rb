@@ -18,8 +18,8 @@ class LevelCharacterAnimator
         unless @level_character.character.wants_to_move?
           @level_character.character.current_action = CharacterAction::STAND
 
-          @level_character.character.screen_x_position = @level_character.destination_tile.center_x_position.round
-          @level_character.character.screen_y_position = (@level_character.destination_tile.center_y_position + CharacterRenderer::CHARACTER_GROUND_OFFSET).round
+          @level_character.character.screen_x_position = screen_x_position
+          @level_character.character.screen_y_position = screen_y_position
         end
       end
 
@@ -34,18 +34,15 @@ class LevelCharacterAnimator
   #
   # Returns a Boolean.
   def reached_destination_tile?
-    character_position_y = @level_character.character.screen_y_position -
-                           CharacterRenderer::CHARACTER_GROUND_OFFSET
-
     case @level_character.character.current_direction
     when Direction::UP
-      return character_position_y >= @level_character.destination_tile.center_y_position
+      return @level_character.character.screen_y_position >= screen_y_position
     when Direction::DOWN
-      return character_position_y <= @level_character.destination_tile.center_y_position
+      return @level_character.character.screen_y_position <= screen_y_position
     when Direction::LEFT
-      return @level_character.character.screen_x_position <= @level_character.destination_tile.center_x_position
+      return @level_character.character.screen_x_position <= screen_x_position
     when Direction::RIGHT
-      return @level_character.character.screen_x_position >= @level_character.destination_tile.center_x_position
+      return @level_character.character.screen_x_position >= screen_x_position
     end
   end
 
@@ -71,12 +68,10 @@ class LevelCharacterAnimator
   end
 
   def screen_x_position
-    (@level_character.x_position * (Dungeon::Level::TILE_WIDTH / 2)) + @level_character.character.screen_x_position
+    @level_character.destination_tile.center_x_position.round
   end
 
   def screen_y_position
-    (@level_character.y_position * (Dungeon::Level::TILE_HEIGHT / 2)) +
-    CharacterRenderer::CHARACTER_GROUND_OFFSET +
-    @level_character.character.screen_y_position
+    (@level_character.destination_tile.center_y_position + CharacterRenderer::CHARACTER_GROUND_OFFSET).round
   end
 end
