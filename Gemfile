@@ -1,11 +1,10 @@
 source 'https://rubygems.org'
 source 'http://gems.neurogami.com'
 
-gem 'rawr'
-
 gem 'active_support'
 
 group :development do
+  gem 'rawr'
   gem 'pry'
 end
 
