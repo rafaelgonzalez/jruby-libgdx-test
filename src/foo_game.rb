@@ -2,11 +2,10 @@ class FooGame < Game
   include Input
 
   def create
-    @characters = [Character.new]
-    @dungeon_level = Dungeon::Level.new
-    @dungeon_level.spawn_character!(@characters.first, 1, 1)
-
-    load_game_state!
+    unless load_game_state!
+      @dungeon_level = Dungeon::Level.new
+      @dungeon_level.spawn_character!(Character.new, 1, 1)
+    end
 
     @state_time = 0.0
     @camera = OrthographicCameraExtended.new
@@ -25,7 +24,8 @@ class FooGame < Game
 
     @state_time = @state_time + Gdx.graphics.get_delta_time
 
-    @characters.each {|character| character.transform_from_input! }
+    @dungeon_level.level_characters.each {|character| character.transform_from_input! }
+
     @camera.transform_from_input!
 
     @dungeon_level.draw(@state_time, @camera)

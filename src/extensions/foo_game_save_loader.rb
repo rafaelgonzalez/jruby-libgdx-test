@@ -8,17 +8,19 @@ class FooGameSaveLoader
     load_save_file
   end
 
+  # Public: Initializes the FooGame from the game save data.
+  #
+  # Returns a Boolean.
   def load!
     return false unless @save_hash
 
     dungeon_level = Dungeon::Level.new
-    characters = []
 
     @save_hash[:dungeon_level_characters].each do |level_character|
       character = Character.new
-      character.instance_variable_set('@current_direction', level_character[:character][:current_direction])
+
       character.instance_variable_set('@current_action', level_character[:character][:current_action])
-      characters << character
+      character.instance_variable_set('@current_direction', level_character[:character][:current_direction])
 
       dungeon_level.spawn_character!(
         character,
@@ -27,8 +29,9 @@ class FooGameSaveLoader
       )
     end
 
-    @game.instance_variable_set('@characters', characters)
     @game.instance_variable_set('@dungeon_level', dungeon_level)
+
+    return true
   end
 
   private

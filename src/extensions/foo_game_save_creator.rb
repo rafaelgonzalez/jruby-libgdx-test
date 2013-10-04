@@ -25,8 +25,8 @@ class FooGameSaveCreator
     @dungeon_level_characters.collect do |level_character|
       {
         character: {
-          current_action: level_character.instance_variable_get('@character').current_action,
-          current_direction: level_character.instance_variable_get('@character').current_direction
+          current_action: level_character.current_action,
+          current_direction: level_character.current_direction
         },
         current_tile: {
           x_position: level_character.current_tile.x_position,

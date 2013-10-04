@@ -40,6 +40,9 @@ require 'foo_game_save_creator'
 require 'foo_game_save_loader'
 
 require 'dungeon/level'
+require 'dungeon/level/character/input_translator'
+require 'dungeon/level/character/renderer'
+require 'dungeon/level/character/animator'
 require 'dungeon/level/character'
 require 'dungeon/level/tile'
 
@@ -47,14 +50,10 @@ require 'character_action'
 require 'direction'
 require 'sprite_sheet_loader'
 require 'lpc_sprite_sheet_loader'
-require 'level_character_animator'
 
 require 'key_bindings/base'
 require 'key_bindings/character'
 require 'key_bindings/camera'
-
-require 'character_input_translator'
-require 'character_renderer'
 
 require 'character'
 
