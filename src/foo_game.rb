@@ -22,7 +22,8 @@ class FooGame < Game
 
     @state_time = @state_time + Gdx.graphics.get_delta_time
 
-    @character.transform_from_input!
+    @dungeon_level.level_characters.each {|character| character.transform_from_input! }
+
     @camera.transform_from_input!
 
     @dungeon_level.draw(@state_time, @camera)

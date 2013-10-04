@@ -11,12 +11,12 @@ class LevelCharacterAnimator
   #
   # Returns nothing.
   def update!
-    if @level_character.character.is_moving?
+    if @level_character.is_moving?
       if reached_destination_tile?
         @level_character.current_tile = @level_character.destination_tile
 
-        unless @level_character.character.wants_to_move?
-          @level_character.character.current_action = CharacterAction::STAND
+        unless @level_character.wants_to_move?
+          @level_character.current_action = CharacterAction::STAND
 
           @level_character.character.screen_x_position = @level_character.destination_tile.center_x_position.round
           @level_character.character.screen_y_position = (@level_character.destination_tile.center_y_position + CharacterRenderer::CHARACTER_GROUND_OFFSET).round
@@ -37,7 +37,7 @@ class LevelCharacterAnimator
     character_position_y = @level_character.character.screen_y_position -
                            CharacterRenderer::CHARACTER_GROUND_OFFSET
 
-    case @level_character.character.current_direction
+    case @level_character.current_direction
     when Direction::UP
       return character_position_y >= @level_character.destination_tile.center_y_position
     when Direction::DOWN
@@ -53,17 +53,17 @@ class LevelCharacterAnimator
   #
   # Returns nothing.
   def update_screen_positions!
-    if [Direction::UP, Direction::DOWN].include? @level_character.character.current_direction
+    if [Direction::UP, Direction::DOWN].include? @level_character.current_direction
       @level_character.character.screen_y_position += (
-        Direction.screen_direction(@level_character.character.current_direction) *
+        Direction.screen_direction(@level_character.current_direction) *
         CharacterRenderer::CHARACTER_MOVEMENT_SPEED *
         Gdx.graphics.get_delta_time
       )
     end
 
-    if [Direction::LEFT, Direction::RIGHT].include? @level_character.character.current_direction
+    if [Direction::LEFT, Direction::RIGHT].include? @level_character.current_direction
       @level_character.character.screen_x_position += (
-        Direction.screen_direction(@level_character.character.current_direction) *
+        Direction.screen_direction(@level_character.current_direction) *
         CharacterRenderer::CHARACTER_MOVEMENT_SPEED *
         Gdx.graphics.get_delta_time
       )

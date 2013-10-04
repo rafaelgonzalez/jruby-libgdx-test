@@ -35,7 +35,7 @@ class Dungeon::Level
     #
     # Returns nothing.
     def update!
-      if @character.is_moving?
+      if is_moving?
         set_destination_tile! if @current_tile.has_same_positions_as?(@destination_tile)
       end
     end
@@ -47,12 +47,12 @@ class Dungeon::Level
       destination_tile_x = @destination_tile.x_position
       destination_tile_y = @destination_tile.y_position
 
-      if [Direction::UP, Direction::DOWN].include? @character.current_direction
-        destination_tile_y += Direction.screen_direction(@character.current_direction)
+      if [Direction::UP, Direction::DOWN].include? current_direction
+        destination_tile_y += Direction.screen_direction(current_direction)
       end
 
-      if [Direction::LEFT, Direction::RIGHT].include? @character.current_direction
-        destination_tile_x += Direction.screen_direction(@character.current_direction)
+      if [Direction::LEFT, Direction::RIGHT].include? current_direction
+        destination_tile_x += Direction.screen_direction(current_direction)
       end
 
       @destination_tile = Tile.new(destination_tile_x, destination_tile_y)

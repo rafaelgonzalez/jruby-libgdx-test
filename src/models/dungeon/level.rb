@@ -4,7 +4,7 @@ class Dungeon
     TILE_WIDTH = 32
     TILE_HEIGHT = 32
 
-    attr_reader :tile_width, :tile_height
+    attr_reader :tile_width, :tile_height, :level_characters
 
     def initialize
       @tiled_map = TmxMapLoader.new.load("assets/maps/level_1.tmx")
