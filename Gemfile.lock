@@ -8,6 +8,7 @@ GEM
     builder (3.2.2)
     cane (2.6.0)
       parallel
+    coderay (1.0.9)
     colorize (0.5.8)
     coveralls (0.6.7)
       colorize
@@ -16,11 +17,18 @@ GEM
       simplecov (>= 0.7)
       thor
     diff-lcs (1.2.4)
+    ffi (1.9.0-java)
     hoe (3.7.1)
       rake (>= 0.8, < 11.0)
+    method_source (0.8.2)
     mime-types (1.25)
     multi_json (1.8.0)
     parallel (0.8.0)
+    pry (0.9.12.2-java)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.4)
+      spoon (~> 0.0)
     rake (10.1.0)
     rawr (1.6.6)
       rubyzip
@@ -42,6 +50,9 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
+    slop (3.4.6)
+    spoon (0.0.4)
+      ffi
     thor (0.18.1)
     user-choices (1.1.6.1)
       builder (>= 2.1.2)
@@ -56,6 +67,7 @@ DEPENDENCIES
   active_support
   cane
   coveralls
+  pry
   rake
   rawr
   rspec

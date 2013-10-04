@@ -30,6 +30,11 @@ $LOAD_PATH << dir
   $LOAD_PATH << path
 end
 
+begin
+  require 'pry'
+rescue LoadError
+end
+
 require 'foo_game'
 require 'foo_game_save_creator'
 require 'foo_game_save_loader'
