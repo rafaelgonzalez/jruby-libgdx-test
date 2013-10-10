@@ -1,4 +1,16 @@
 module Weapon
+
+  ARROW = 1
+  BOW = 2
+  DAGGER = 3
+  SWORD = 4
+  GREATBOW = 5
+  RECURVEBOX = 6
+  SHIELD = 7
+  SPEAR = 8
+  STEEL_WAND = 9
+  WOOD_WAND = 10
+
   module Sprite
     ARROW_SKELETON = 1
     ARROW = 2
@@ -37,8 +49,15 @@ module Weapon
     # weapon_constant - A Weapon constant.
     #
     # Returns a String
-    def self.sprite_sheet_file(weapon_constant)
-      ASSETS_FILES_MAP[weapon_constant]
+    def self.sprite_sheet_file(weapon_constant, character)
+      constant = translate_weapon_constant_to_weapon_sprite_constant(weapon_constant, character)
+      ASSETS_FILES_MAP[constant]
+    end
+
+    private
+
+    def self.translate_weapon_constant_to_weapon_sprite_constant(weapon_constant, character)
+      weapon_constant
     end
   end
 end
