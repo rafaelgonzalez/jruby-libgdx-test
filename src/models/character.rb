@@ -1,5 +1,6 @@
 class Character
 
+  attr_accessor :weapon
   attr_reader :current_action, :current_direction
 
   def initialize
