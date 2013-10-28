@@ -16,6 +16,8 @@ java_import com.badlogic.gdx.graphics.g2d.BitmapFont
 java_import com.badlogic.gdx.graphics.g2d.SpriteBatch
 java_import com.badlogic.gdx.graphics.g2d.TextureRegion
 
+java_import com.badlogic.gdx.scenes.scene2d.Stage
+
 java_import com.badlogic.gdx.maps.tiled.TmxMapLoader
 java_import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer
 

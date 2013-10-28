@@ -2,14 +2,15 @@ class FooGame < Game
   include Input
 
   def create
-    unless load_game_state!
-      @dungeon_level = Dungeon::Level.new
-      @dungeon_level.spawn_character!(Character.new, 1, 1)
-    end
+    @dungeon_crawl_stage = Stage.new
+    Gdx.input.set_input_processor(@dungeon_crawl_stage)
 
-    @state_time = 0.0
-    @camera = OrthographicCameraExtended.new
-    @camera.set_to_ortho(false)
+    # @dungeon_level = Dungeon::Level.new
+    # @dungeon_level.spawn_character!(Character.new, 1, 1)
+    # 
+    # @state_time = 0.0
+    # @camera = OrthographicCameraExtended.new
+    # @camera.set_to_ortho(false)
 
     @font = BitmapFont.new
     @screen_text = SpriteBatch.new
@@ -20,18 +21,22 @@ class FooGame < Game
 
     Gdx.gl.glClear(GL10::GL_COLOR_BUFFER_BIT | GL10::GL_DEPTH_BUFFER_BIT)
 
+    @dungeon_crawl_stage.act(Gdx.graphics.getDeltaTime)
+    @dungeon_crawl_stage.draw
+
     render_fps
 
-    @state_time = @state_time + Gdx.graphics.get_delta_time
-
-    @dungeon_level.level_characters.each {|character| character.transform_from_input! }
-
-    @camera.transform_from_input!
-
-    @dungeon_level.draw(@state_time, @camera)
+    # @state_time = @state_time + Gdx.graphics.get_delta_time
+    # 
+    # @dungeon_level.level_characters.each {|character| character.transform_from_input! }
+    # 
+    # @camera.transform_from_input!
+    # 
+    # @dungeon_level.draw(@state_time, @camera)
   end
 
   def resize(width, height)
+    @dungeon_crawl_stage.set_viewport(width, height, true)
   end
 
   def pause
@@ -41,7 +46,8 @@ class FooGame < Game
   end
 
   def dispose
-    save_game_state!
+    @dungeon_crawl_stage.dispose
+    # save_game_state!
   end
 
 
@@ -57,11 +63,11 @@ class FooGame < Game
     @screen_text.end
   end
 
-  def load_game_state!
-    FooGameSaveLoader.new(self).load!
-  end
-
-  def save_game_state!
-    FooGameSaveCreator.new(self).save!
-  end
+  # def load_game_state!
+  #   FooGameSaveLoader.new(self).load!
+  # end
+  # 
+  # def save_game_state!
+  #   FooGameSaveCreator.new(self).save!
+  # end
 end
