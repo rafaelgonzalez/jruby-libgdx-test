@@ -12,6 +12,10 @@ class FooGame < Game
     # @camera = OrthographicCameraExtended.new
     # @camera.set_to_ortho(false)
 
+    dungeon_level_character = DungeonLevelCharacterActor.new(1, 1)
+    @dungeon_crawl_stage.add_actor(dungeon_level_character)
+    @dungeon_crawl_stage.set_keyboard_focus(dungeon_level_character)
+
     @font = BitmapFont.new
     @screen_text = SpriteBatch.new
   end
@@ -21,7 +25,7 @@ class FooGame < Game
 
     Gdx.gl.glClear(GL10::GL_COLOR_BUFFER_BIT | GL10::GL_DEPTH_BUFFER_BIT)
 
-    @dungeon_crawl_stage.act(Gdx.graphics.getDeltaTime)
+    @dungeon_crawl_stage.act(Gdx.graphics.get_delta_time)
     @dungeon_crawl_stage.draw
 
     render_fps

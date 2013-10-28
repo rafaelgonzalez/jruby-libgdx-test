@@ -16,7 +16,12 @@ java_import com.badlogic.gdx.graphics.g2d.BitmapFont
 java_import com.badlogic.gdx.graphics.g2d.SpriteBatch
 java_import com.badlogic.gdx.graphics.g2d.TextureRegion
 
+java_import com.badlogic.gdx.scenes.scene2d.Actor
+java_import com.badlogic.gdx.scenes.scene2d.InputListener
 java_import com.badlogic.gdx.scenes.scene2d.Stage
+java_import com.badlogic.gdx.scenes.scene2d.actions.Actions
+java_import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction
+java_import com.badlogic.gdx.scenes.scene2d.actions.RunnableAction
 
 java_import com.badlogic.gdx.maps.tiled.TmxMapLoader
 java_import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer
@@ -27,7 +32,7 @@ java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 dir = File.expand_path(File.join(File.dirname(__FILE__), 'src'))
 $LOAD_PATH << dir
 
-%w{ constants extensions models }.each do |dir|
+%w{ constants extensions models actions actors input_listeners renderers}.each do |dir|
   path = File.expand_path(File.join(File.dirname(__FILE__), 'src', dir))
   $LOAD_PATH << path
 end
@@ -42,10 +47,6 @@ require 'foo_game_save_creator'
 require 'foo_game_save_loader'
 
 require 'dungeon/level'
-require 'dungeon/level/character/input_translator'
-require 'dungeon/level/character/renderer'
-require 'dungeon/level/character/animator'
-require 'dungeon/level/character'
 require 'dungeon/level/tile'
 
 require 'character_action'
@@ -57,7 +58,7 @@ require 'key_bindings/base'
 require 'key_bindings/character'
 require 'key_bindings/camera'
 
-require 'character'
-
 require 'camera_input_translator'
 require 'orthographic_camera_extended'
+
+require 'dungeon_level_character_actor'
