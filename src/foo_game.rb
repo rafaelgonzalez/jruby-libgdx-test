@@ -41,7 +41,6 @@ class FooGame < Game
 
   def dispose
     @dungeon_crawl_stage.dispose
-    # save_game_state!
   end
 
 
@@ -56,12 +55,4 @@ class FooGame < Game
     @font.draw(@screen_text, "#{Gdx.graphics.get_frames_per_second} FPS", 10, Gdx.graphics.get_height - 10)
     @screen_text.end
   end
-
-  # def load_game_state!
-  #   FooGameSaveLoader.new(self).load!
-  # end
-  # 
-  # def save_game_state!
-  #   FooGameSaveCreator.new(self).save!
-  # end
 end
