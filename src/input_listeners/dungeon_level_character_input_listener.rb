@@ -8,10 +8,11 @@ class DungeonLevelCharacterInputListener < InputListener
   end
 
   def keyDown(input_event, keycode)
-    if @key_bindings.invoked(:directions).any?
-      @actor.walk_to_next_tile! @key_bindings.invoked(:directions).first
+    if action = @key_bindings.input_action_from_keycode(keycode)
+      @actor.public_send(action[0], *action[1])
+      return true
     end
 
-    true
+    super
   end
 end
