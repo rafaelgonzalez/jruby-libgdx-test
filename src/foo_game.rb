@@ -1,16 +1,13 @@
+require 'dungeon_crawl_stage'
+
 class FooGame < Game
   include Input
 
   def create
-    @dungeon_crawl_stage = Stage.new
-    Gdx.input.set_input_processor(@dungeon_crawl_stage)
+    @dungeon_crawl_stage = DungeonCrawlStage.new
 
     # @dungeon_level = Dungeon::Level.new
     # @dungeon_level.spawn_character!(Character.new, 1, 1)
-    # 
-    # @state_time = 0.0
-    # @camera = OrthographicCameraExtended.new
-    # @camera.set_to_ortho(false)
 
     dungeon_level_character = DungeonLevelCharacterActor.new(1, 1)
     @dungeon_crawl_stage.add_actor(dungeon_level_character)
@@ -30,11 +27,7 @@ class FooGame < Game
 
     render_fps
 
-    # @state_time = @state_time + Gdx.graphics.get_delta_time
-    # 
     # @dungeon_level.level_characters.each {|character| character.transform_from_input! }
-    # 
-    # @camera.transform_from_input!
     # 
     # @dungeon_level.draw(@state_time, @camera)
   end

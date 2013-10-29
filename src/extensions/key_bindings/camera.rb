@@ -1,12 +1,10 @@
 module KeyBinding
   class Camera < Base
     BINDINGS = {
-      directions: {
-        Keys::UP => Direction::DOWN,
-        Keys::DOWN => Direction::UP,
-        Keys::LEFT => Direction::RIGHT,
-        Keys::RIGHT => Direction::LEFT
-      }
+      Keys::UP => [:translate_from_direction!, [Direction::DOWN]],
+      Keys::DOWN => [:translate_from_direction!, [Direction::UP]],
+      Keys::LEFT => [:translate_from_direction!, [Direction::RIGHT]],
+      Keys::RIGHT => [:translate_from_direction!, [Direction::LEFT]]
     }
 
     def bindings

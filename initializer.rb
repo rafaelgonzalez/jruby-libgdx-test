@@ -32,7 +32,7 @@ java_import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 dir = File.expand_path(File.join(File.dirname(__FILE__), 'src'))
 $LOAD_PATH << dir
 
-%w{ constants extensions models actions actors input_listeners renderers}.each do |dir|
+%w{ constants extensions models actions actors cameras input_listeners renderers stages}.each do |dir|
   path = File.expand_path(File.join(File.dirname(__FILE__), 'src', dir))
   $LOAD_PATH << path
 end
@@ -57,8 +57,5 @@ require 'lpc_sprite_sheet_loader'
 require 'key_bindings/base'
 require 'key_bindings/character'
 require 'key_bindings/camera'
-
-require 'camera_input_translator'
-require 'orthographic_camera_extended'
 
 require 'dungeon_level_character_actor'
