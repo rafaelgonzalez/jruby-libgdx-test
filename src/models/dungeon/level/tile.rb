@@ -9,11 +9,13 @@ class Dungeon::Level
     end
 
     def character_x_position
-      x_position * Dungeon::Level::TILE_WIDTH
+      x_position * Dungeon::Level::TILE_WIDTH - (Dungeon::Level::TILE_WIDTH / 2)
     end
 
     def character_y_position
-      (y_position * Dungeon::Level::TILE_HEIGHT) + DungeonLevelCharacterActorRenderer::CHARACTER_GROUND_OFFSET
+      (y_position * Dungeon::Level::TILE_HEIGHT) -
+      (Dungeon::Level::TILE_HEIGHT / 2) +
+      DungeonLevelCharacterActorRenderer::CHARACTER_GROUND_OFFSET
     end
 
     def has_same_positions_as?(level_tile)

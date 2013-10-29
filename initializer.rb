@@ -50,12 +50,7 @@ require 'dungeon/level'
 require 'dungeon/level/tile'
 
 require 'character_action'
-require 'direction'
 require 'sprite_sheet_loader'
 require 'lpc_sprite_sheet_loader'
 
-require 'key_bindings/base'
-require 'key_bindings/character'
 require 'key_bindings/camera'
-
-require 'dungeon_level_character_actor'

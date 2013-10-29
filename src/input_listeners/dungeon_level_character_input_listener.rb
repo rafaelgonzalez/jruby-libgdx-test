@@ -1,3 +1,5 @@
+require 'direction'
+require 'key_bindings/base'
 require 'key_bindings/character'
 
 class DungeonLevelCharacterInputListener < InputListener

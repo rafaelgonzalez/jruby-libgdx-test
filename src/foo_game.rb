@@ -1,4 +1,6 @@
 require 'dungeon_crawl_stage'
+require 'dungeon_level_actor'
+require 'dungeon_level_character_actor'
 
 class FooGame < Game
   include Input
@@ -6,10 +8,9 @@ class FooGame < Game
   def create
     @dungeon_crawl_stage = DungeonCrawlStage.new
 
-    # @dungeon_level = Dungeon::Level.new
-    # @dungeon_level.spawn_character!(Character.new, 1, 1)
-
+    dungeon_level = DungeonLevelActor.new
     dungeon_level_character = DungeonLevelCharacterActor.new(1, 1)
+    @dungeon_crawl_stage.add_actor(dungeon_level)
     @dungeon_crawl_stage.add_actor(dungeon_level_character)
     @dungeon_crawl_stage.set_keyboard_focus(dungeon_level_character)
 
@@ -26,10 +27,6 @@ class FooGame < Game
     @dungeon_crawl_stage.draw
 
     render_fps
-
-    # @dungeon_level.level_characters.each {|character| character.transform_from_input! }
-    # 
-    # @dungeon_level.draw(@state_time, @camera)
   end
 
   def resize(width, height)
