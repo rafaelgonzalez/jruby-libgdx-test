@@ -7,6 +7,17 @@ class DungeonCrawlCamera < OrthographicCamera
     @key_bindings ||= KeyBinding::Camera.new
   end
 
+  # Public: Makes the camera move immediately to the given coordinates.
+  #
+  # screen_x - The horizontal coordinate to move the Camera to.
+  # screen_y - The vertical coordinate to move the Camera to.
+  #
+  # Returns nothing.
+  def snap_to!(screen_x, screen_y)
+    position.x = screen_x
+    position.y = screen_y
+  end
+
   def update
     @key_bindings.pressed_keys.each do |keycode|
       if action = @key_bindings.input_action_from_keycode(keycode)
