@@ -13,7 +13,7 @@ class FooGame < Game
     @dungeon_crawl_stage.add_actor(dungeon_level)
 
     # Instantiate dungeon level characters and spawn them in the level
-    dungeon_level_character = DungeonLevelCharacterActor.new(9, 1)
+    dungeon_level_character = DungeonLevelCharacterActor.new
     dungeon_level.spawn_character!(dungeon_level_character, 9, 1)
     @dungeon_crawl_stage.set_keyboard_focus(dungeon_level_character)
 

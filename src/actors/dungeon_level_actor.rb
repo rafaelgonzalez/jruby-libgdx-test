@@ -22,6 +22,7 @@ class DungeonLevelActor < Actor
     raise RuntimeError.new('Cannot spawn a character in a level without a stage') if get_stage.nil?
 
     if tile?(x, y)
+      character.current_tile = Dungeon::Level::Tile.new(x, y)
       @characters_group.add_actor(character)
       true
     else
