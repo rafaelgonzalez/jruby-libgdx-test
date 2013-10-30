@@ -9,6 +9,10 @@ class DungeonLevelActor < Actor
     @tiled_map_renderer = OrthogonalTiledMapRenderer.new(@tiled_map)
   end
 
+  # Public: Called by the framework when this actor or any parent is added to a group that is in the stage.
+  # Overrides Actor#setStage.
+  #
+  # Returns nothing.
   def setStage(stage)
     super
     unless stage.nil?
@@ -18,11 +22,22 @@ class DungeonLevelActor < Actor
     end
   end
 
-  def spawn_character!(character, x, y)
+  # Public: Spawns a DungeonLevelCharacterActor into the map.
+  # Checks a Tile exists at the given coordinates.
+  # Assigns the given tile to the DungeonLebelCharacter.
+  # Adds the DungeonLevelCharacterActor to the Stage.
+  #
+  # character - The DungeonLevelCharacterActor to spawn.
+  # tile_x    - The Tile's horizontal posititon.
+  # tile_y    - The Tile's vertical posititon.
+  #
+  # Raises a RuntimeError if the DungeonLevelActor was not previously assigned to a Stage.
+  # Returns true if the character was successfully spawned, false otherwise.
+  def spawn_character!(character, tile_x, tile_y)
     raise RuntimeError.new('Cannot spawn a character in a level without a stage') if get_stage.nil?
 
-    if tile?(x, y)
-      character.current_tile = Dungeon::Level::Tile.new(x, y, self)
+    if tile?(tile_x, tile_y)
+      character.current_tile = Dungeon::Level::Tile.new(tile_x, tile_y, self)
       @characters_group.add_actor(character)
       true
     else
@@ -63,6 +78,10 @@ class DungeonLevelActor < Actor
     end
   end
 
+  # Public: Draws the actor.
+  # Overrides Actor#draw.
+  #
+  # Returns noting.
   def draw(sprite_batch, alpha)
     sprite_batch.end
     @tiled_map_renderer.set_view(get_stage.camera)
