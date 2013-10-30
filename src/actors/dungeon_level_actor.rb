@@ -1,25 +1,19 @@
-class DungeonLevelActor < Actor
+require 'dungeon_level_input_listener'
+
+class DungeonLevelActor < Group
   TILE_WIDTH = 32
   TILE_HEIGHT = 32
 
   def initialize
     super
 
+    set_name 'Level characters'
+
     @tiled_map = TmxMapLoader.new.load("assets/maps/level_1.tmx")
     @tiled_map_renderer = OrthogonalTiledMapRenderer.new(@tiled_map)
-  end
+    @controlled_character_index = 0
 
-  # Public: Called by the framework when this actor or any parent is added to a group that is in the stage.
-  # Overrides Actor#setStage.
-  #
-  # Returns nothing.
-  def setStage(stage)
-    super
-    unless stage.nil?
-      @characters_group = Group.new
-      @characters_group.set_name 'Level characters'
-      stage.add_actor(@characters_group)
-    end
+    add_listener(DungeonLevelInputListener.new(self))
   end
 
   # Public: Spawns a DungeonLevelCharacterActor into the map.
@@ -38,11 +32,25 @@ class DungeonLevelActor < Actor
 
     if tile?(tile_x, tile_y)
       character.current_tile = Dungeon::Level::Tile.new(tile_x, tile_y, self)
-      @characters_group.add_actor(character)
+      add_actor(character)
       true
     else
       false
     end
+  end
+
+  # Public: Gives keyboard focus to the next Character in the list, and moves Camera to the Character.
+  #
+  # Returns nothing.
+  def switch_control_to_next_character!
+    @controlled_character_index += 1
+    @controlled_character_index = 0 if @controlled_character_index > (characters.size - 1)
+    get_stage.set_keyboard_focus(current_controlled_character)
+
+    get_stage.get_camera.snap_to!(
+      current_controlled_character.current_tile.character_x_position,
+      current_controlled_character.current_tile.character_y_position
+    )
   end
 
   # Public: Determines if a Tile exists at the given coordinates
@@ -59,7 +67,14 @@ class DungeonLevelActor < Actor
   #
   # Returns an Array of DungeonLevelCharacters.
   def characters
-    @characters_group.get_children
+    get_children.to_array
+  end
+
+  # Public: Get the current character that responds to input.
+  #
+  # Returns a DungeonLevelCharacter.
+  def current_controlled_character
+    characters[@controlled_character_index]
   end
 
   # Public: Get the Tile adjacent to the given Tile in the given direction.
@@ -94,5 +109,6 @@ class DungeonLevelActor < Actor
     @tiled_map_renderer.set_view(get_stage.camera)
     @tiled_map_renderer.render
     sprite_batch.begin
+    super
   end
 end

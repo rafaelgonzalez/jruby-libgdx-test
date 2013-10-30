@@ -15,6 +15,6 @@ class DungeonLevelCharacterInputListener < InputListener
       return true
     end
 
-    super
+    false
   end
 end
