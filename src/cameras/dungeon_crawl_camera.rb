@@ -1,5 +1,6 @@
 class DungeonCrawlCamera < OrthographicCamera
   MOVEMENT_SPEED = 200
+  DRAG_BUTTON = 1
 
   def initialize
     super
@@ -14,6 +15,27 @@ class DungeonCrawlCamera < OrthographicCamera
     end
 
     super
+  end
+
+  def touchDragged(screen_x, screen_y, pointer)
+    if @button == DRAG_BUTTON
+      drag_x_translation = @drag_previous_x.nil? ? 0 : (@drag_previous_x - screen_x)
+      drag_y_translation = @drag_previous_y.nil? ? 0 : -(@drag_previous_y - screen_y)
+
+      translate(drag_x_translation, drag_y_translation)
+
+      @drag_previous_x = screen_x
+      @drag_previous_y = screen_y
+
+      return true
+    end
+
+    false
+  end
+
+  def touchDown(screen_x, screen_y, pointer, button)
+    @button = button
+    @drag_previous_x = @drag_previous_y = nil
   end
 
   private
