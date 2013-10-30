@@ -57,4 +57,15 @@ class DungeonLevelCharacterActor < Actor
   def is_moving?
     current_action == CharacterAction::WALK
   end
+
+
+  private
+
+  # Internal: Returns the DungeonLevelActor the Character is actually in,
+  # accessed through the Character's current Tile.
+  #
+  # Returns a DungeonLevelActor.
+  def dungeon_level
+    current_tile.dungeon_level
+  end
 end
