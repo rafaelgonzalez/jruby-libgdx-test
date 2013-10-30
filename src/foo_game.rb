@@ -16,7 +16,6 @@ class FooGame < Game
     dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 9, 1)
     dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 1, 1)
     dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 2, 7)
-    @dungeon_crawl_stage.set_keyboard_focus(dungeon_level.characters.first)
 
     @font = BitmapFont.new
     @screen_text = SpriteBatch.new

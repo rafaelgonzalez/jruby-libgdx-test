@@ -33,6 +33,7 @@ class DungeonLevelActor < Group
     if tile?(tile_x, tile_y)
       character.current_tile = Dungeon::Level::Tile.new(tile_x, tile_y, self)
       add_actor(character)
+      get_stage.set_keyboard_focus(current_controlled_character)
       true
     else
       false
