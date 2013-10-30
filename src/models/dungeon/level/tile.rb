@@ -1,11 +1,12 @@
 class Dungeon::Level
   class Tile
 
-    attr_reader :x_position, :y_position
+    attr_reader :x_position, :y_position, :dungeon_level
 
-    def initialize(x_position, y_position)
+    def initialize(x_position, y_position, dungeon_level)
       @x_position = x_position
       @y_position = y_position
+      @dungeon_level = dungeon_level
     end
 
     def character_x_position

@@ -7,38 +7,30 @@ module DungeonLevelCharacterActionsManager
   # Returns nothing.
   def walk_to_next_tile!(direction)
     if !is_moving? and current_tile.has_same_positions_as?(destination_tile)
-      self.current_direction = direction
-      self.current_action = CharacterAction::WALK
+      tile = fetch_new_destination_tile(direction)
 
-      set_destination_tile!
+      unless tile.nil?
+        @destination_tile = tile
+        self.current_direction = direction
+        self.current_action = CharacterAction::WALK
 
-      add_action(
-        Actions.sequence(
-          MoveToTile.new(destination_tile),
-          FinishMoveToTile.new
+        add_action(
+          Actions.sequence(
+            MoveToTile.new(destination_tile),
+            FinishMoveToTile.new
+          )
         )
-      )
+      end
     end
   end
 
 
   private
 
-  # Internal: Sets the LevelTile the LevelCharacter will move to.
+  # Internal: Returns the Tile the DungeonLevelCharacterActor will move to.
   #
-  # Returns nothing.
-  def set_destination_tile!
-    destination_tile_x = destination_tile.x_position
-    destination_tile_y = destination_tile.y_position
-
-    if [Direction::UP, Direction::DOWN].include? current_direction
-      destination_tile_y += Direction.screen_direction(current_direction)
-    end
-
-    if [Direction::LEFT, Direction::RIGHT].include? current_direction
-      destination_tile_x += Direction.screen_direction(current_direction)
-    end
-
-    @destination_tile = Dungeon::Level::Tile.new(destination_tile_x, destination_tile_y)
+  # Returns a Tile or nil if no Tile is found.
+  def fetch_new_destination_tile(direction)
+    dungeon_level.adjacent_tile_from_direction(current_tile, direction)
   end
 end

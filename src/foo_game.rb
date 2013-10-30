@@ -8,10 +8,13 @@ class FooGame < Game
   def create
     @dungeon_crawl_stage = DungeonCrawlStage.new
 
+    # Instantiate dungeon level and add it to the stage
     dungeon_level = DungeonLevelActor.new
-    dungeon_level_character = DungeonLevelCharacterActor.new(1, 1)
     @dungeon_crawl_stage.add_actor(dungeon_level)
-    @dungeon_crawl_stage.add_actor(dungeon_level_character)
+
+    # Instantiate dungeon level characters and spawn them in the level
+    dungeon_level_character = DungeonLevelCharacterActor.new
+    dungeon_level.spawn_character!(dungeon_level_character, 9, 1)
     @dungeon_crawl_stage.set_keyboard_focus(dungeon_level_character)
 
     @font = BitmapFont.new

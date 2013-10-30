@@ -6,17 +6,17 @@ class DungeonLevelCharacterActor < Actor
   include DungeonLevelCharacterActorRenderer
   include DungeonLevelCharacterActionsManager
 
-  attr_accessor :current_action, :current_direction, :current_tile
-  attr_reader :destination_tile
+  attr_accessor :current_action, :current_direction
+  attr_reader :current_tile, :destination_tile
 
-  def initialize(x_position, y_position)
-    super()
+  def initialize
+    super
 
     @current_action = CharacterAction::STAND
     @current_direction = Direction::RIGHT
 
-    @current_tile = Dungeon::Level::Tile.new(x_position, y_position)
-    @destination_tile = Dungeon::Level::Tile.new(x_position, y_position)
+    @current_tile = nil
+    @destination_tile = nil
 
     @state_time = 0.0
 
@@ -24,8 +24,6 @@ class DungeonLevelCharacterActor < Actor
 
     set_height(LpcSpriteSheetLoader::SPRITE_HEIGHT)
     set_width(LpcSpriteSheetLoader::SPRITE_WIDTH)
-    set_x(current_tile.character_x_position)
-    set_y(current_tile.character_y_position)
 
     add_listener(DungeonLevelCharacterInputListener.new(self))
   end
@@ -47,10 +45,27 @@ class DungeonLevelCharacterActor < Actor
     current_tile.y_position
   end
 
+  def current_tile=(current_tile)
+    @current_tile = @destination_tile = current_tile
+    set_x(current_tile.character_x_position)
+    set_y(current_tile.character_y_position)
+  end
+
   # Public: Determines if the Character is moving.
   #
   # Returns a Boolean.
   def is_moving?
     current_action == CharacterAction::WALK
+  end
+
+
+  private
+
+  # Internal: Returns the DungeonLevelActor the Character is actually in,
+  # accessed through the Character's current Tile.
+  #
+  # Returns a DungeonLevelActor.
+  def dungeon_level
+    current_tile.dungeon_level
   end
 end
