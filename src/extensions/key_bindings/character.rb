@@ -1,12 +1,10 @@
 module KeyBinding
   class Character < Base
     BINDINGS = {
-      directions: {
-        Keys::W => Direction::UP,
-        Keys::S => Direction::DOWN,
-        Keys::A => Direction::LEFT,
-        Keys::D => Direction::RIGHT
-      }
+      Keys::W => [:walk_to_next_tile!, [Direction::UP]],
+      Keys::S => [:walk_to_next_tile!, [Direction::DOWN]],
+      Keys::A => [:walk_to_next_tile!, [Direction::LEFT]],
+      Keys::D => [:walk_to_next_tile!, [Direction::RIGHT]]
     }
 
     def bindings
