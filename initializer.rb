@@ -17,6 +17,7 @@ java_import com.badlogic.gdx.graphics.g2d.SpriteBatch
 java_import com.badlogic.gdx.graphics.g2d.TextureRegion
 
 java_import com.badlogic.gdx.scenes.scene2d.Actor
+java_import com.badlogic.gdx.scenes.scene2d.Group
 java_import com.badlogic.gdx.scenes.scene2d.InputListener
 java_import com.badlogic.gdx.scenes.scene2d.Stage
 java_import com.badlogic.gdx.scenes.scene2d.actions.Actions
