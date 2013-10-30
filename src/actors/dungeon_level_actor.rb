@@ -55,6 +55,13 @@ class DungeonLevelActor < Actor
     @tiled_map.get_layers.any? {|layer| layer.get_cell(x, y) }
   end
 
+  # Public: Get all the characters spawned in this level.
+  #
+  # Returns an Array of DungeonLevelCharacters.
+  def characters
+    @characters_group.get_children
+  end
+
   # Public: Get the Tile adjacent to the given Tile in the given direction.
   #
   # start_tile - The Tile from which the adjacent Tile search is made.
