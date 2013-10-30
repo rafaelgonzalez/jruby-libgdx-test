@@ -18,9 +18,25 @@ class DungeonLevelActor < Actor
     end
   end
 
-  def spawn_character!(character)
+  def spawn_character!(character, x, y)
     raise RuntimeError.new('Cannot spawn a character in a level without a stage') if get_stage.nil?
-    @characters_group.add_actor(character)
+
+    if tile?(x, y)
+      @characters_group.add_actor(character)
+      true
+    else
+      false
+    end
+  end
+
+  # Public: Determines if a Tile exists at the given coordinates
+  #
+  # x - The horizontal position of the presumed Tile.
+  # y - The vertical position of the presumed Tile.
+  #
+  # Returns a Boolean.
+  def tile?(x, y)
+    @tiled_map.get_layers.any? {|layer| layer.get_cell(x, y) }
   end
 
   def draw(sprite_batch, alpha)
