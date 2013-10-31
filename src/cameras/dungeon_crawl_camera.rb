@@ -1,10 +1,13 @@
+require 'dungeon_crawl_camera_input_processor'
+
 class DungeonCrawlCamera < OrthographicCamera
   MOVEMENT_SPEED = 200
-  DRAG_BUTTON = 1
+
+  attr_reader :input_processor
 
   def initialize
     super
-    @key_bindings ||= KeyBinding::Camera.new
+    @input_processor = DungeonCrawlCameraInputProcessor.new(self)
   end
 
   # Public: Makes the camera move immediately to the given coordinates.
@@ -18,36 +21,6 @@ class DungeonCrawlCamera < OrthographicCamera
     position.y = screen_y
   end
 
-  def update
-    @key_bindings.pressed_keys.each do |keycode|
-      if action = @key_bindings.input_action_from_keycode(keycode)
-        send(action[0], *action[1])
-      end
-    end
-
-    super
-  end
-
-  def touchDragged(screen_x, screen_y, pointer)
-    if @button == DRAG_BUTTON
-      drag_x_translation = @drag_previous_x.nil? ? 0 : (@drag_previous_x - screen_x)
-      drag_y_translation = @drag_previous_y.nil? ? 0 : -(@drag_previous_y - screen_y)
-
-      translate(drag_x_translation, drag_y_translation)
-
-      @drag_previous_x = screen_x
-      @drag_previous_y = screen_y
-
-      return true
-    end
-
-    false
-  end
-
-  def touchDown(screen_x, screen_y, pointer, button)
-    @button = button
-    @drag_previous_x = @drag_previous_y = nil
-  end
 
   private
 
@@ -61,6 +34,6 @@ class DungeonCrawlCamera < OrthographicCamera
     y_translation += movement if direction == Direction::DOWN
     y_translation += -movement if direction == Direction::UP
 
-    self.translate(x_translation, y_translation)
+    translate(x_translation, y_translation)
   end
 end

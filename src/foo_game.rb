@@ -17,6 +17,12 @@ class FooGame < Game
     dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 1, 1)
     dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 2, 7)
 
+    # Try input on camera first, then on Stage
+    input_multiplexer = InputMultiplexer.new
+    input_multiplexer.add_processor(@dungeon_crawl_stage.camera.input_processor)
+    input_multiplexer.add_processor(@dungeon_crawl_stage)
+    Gdx.input.set_input_processor(input_multiplexer)
+
     @font = BitmapFont.new
     @screen_text = SpriteBatch.new
   end

@@ -8,6 +8,8 @@ java_import com.badlogic.gdx.ApplicationListener
 java_import com.badlogic.gdx.Game
 java_import com.badlogic.gdx.Gdx
 java_import com.badlogic.gdx.Input
+java_import com.badlogic.gdx.InputAdapter
+java_import com.badlogic.gdx.InputMultiplexer
 java_import com.badlogic.gdx.graphics.GL10
 java_import com.badlogic.gdx.graphics.Texture
 java_import com.badlogic.gdx.graphics.OrthographicCamera
@@ -51,5 +53,3 @@ require 'dungeon/level/tile'
 require 'character_action'
 require 'sprite_sheet_loader'
 require 'lpc_sprite_sheet_loader'
-
-require 'key_bindings/camera'
