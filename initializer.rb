@@ -18,6 +18,8 @@ java_import com.badlogic.gdx.graphics.g2d.BitmapFont
 java_import com.badlogic.gdx.graphics.g2d.SpriteBatch
 java_import com.badlogic.gdx.graphics.g2d.TextureRegion
 
+java_import com.badlogic.gdx.math.Vector3
+
 java_import com.badlogic.gdx.scenes.scene2d.Actor
 java_import com.badlogic.gdx.scenes.scene2d.Group
 java_import com.badlogic.gdx.scenes.scene2d.InputListener
