@@ -21,6 +21,10 @@ class DungeonCrawlCamera < OrthographicCamera
     position.y = screen_y
   end
 
+  def update
+    super
+    @input_processor.update
+  end
 
   private
 

@@ -11,13 +11,30 @@ class DungeonCrawlCameraInputProcessor < InputAdapter
     super()
     @key_bindings ||= KeyBinding::Camera.new
     @camera = camera
+    @callbacks = []
+  end
+
+  def update
+    @callbacks.each do |method_name, arguments|
+      camera.send(method_name, *arguments)
+    end
   end
 
   def keyDown(keycode)
-    puts "CAMERA KEY DOWN"
-    @key_bindings.pressed_keys.each do |keycode|
-      if action = @key_bindings.input_action_from_keycode(keycode)
-        camera.send(action[0], *action[1])
+    if callback = @key_bindings.input_action_from_keycode(keycode)
+      unless @callbacks.include?(callback)
+        @callbacks.push(callback)
+        return true
+      end
+    end
+
+    false
+  end
+
+  def keyUp(keycode)
+    if callback = @key_bindings.input_action_from_keycode(keycode)
+      if @callbacks.include?(callback)
+        @callbacks.delete(callback).inspect
         return true
       end
     end
