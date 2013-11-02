@@ -11,17 +11,6 @@ class DungeonCrawlCamera < OrthographicCamera
     @input_processor = DungeonCrawlCameraInputProcessor.new(self)
   end
 
-  # Public: Makes the camera move immediately to the given coordinates.
-  #
-  # screen_x - The horizontal coordinate to move the Camera to.
-  # screen_y - The vertical coordinate to move the Camera to.
-  #
-  # Returns nothing.
-  def snap_to!(screen_x, screen_y)
-    position.x = screen_x
-    position.y = screen_y
-  end
-
   # Public: Makes the camera move smoothly to the given coordinates.
   #
   # screen_x - The horizontal coordinate to move the Camera to.
