@@ -96,6 +96,23 @@ class DungeonLevelActor < Group
     @level_map.renderer.set_view(get_stage.camera)
     @level_map.renderer.render
     sprite_batch.begin
-    super
+    draw_characters(sprite_batch, alpha)
+  end
+
+
+  private
+
+  # Internal: Renders the Characters of the Level.
+  #
+  # Returns nothing.
+  def draw_characters(sprite_batch, alpha)
+    characters_by_drawing_order.each {|character| character.draw(sprite_batch, alpha) }
+  end
+
+  # Internal: Get the Characters in this Level, ordered by descending y_position.
+  #
+  # Returns an Array of Characaters.
+  def characters_by_drawing_order
+    @characters.sort_by {|character| character.y_position}.reverse
   end
 end
