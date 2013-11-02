@@ -1,4 +1,5 @@
 require 'dungeon_level_input_listener'
+require 'dungeon_tiled_map_loader'
 
 class DungeonLevelActor < Group
   TILE_WIDTH = 32
@@ -9,8 +10,12 @@ class DungeonLevelActor < Group
 
     set_name 'Level characters'
 
-    @tiled_map = TmxMapLoader.new.load("assets/maps/level_1.tmx")
-    @tiled_map_renderer = OrthogonalTiledMapRenderer.new(@tiled_map)
+    tiled_map_loader = DungeonTiledMapLoader.new("assets/maps/level_1.tmx", self)
+
+    @tiled_map = tiled_map_loader.tiled_map
+    @tiled_map_renderer = tiled_map_loader.tiled_map_renderer
+    @tiles = tiled_map_loader.tiled_map_tiles
+
     @controlled_character_index = 0
 
     add_listener(DungeonLevelInputListener.new(self))
@@ -30,8 +35,8 @@ class DungeonLevelActor < Group
   def spawn_character!(character, tile_x, tile_y)
     raise RuntimeError.new('Cannot spawn a character in a level without a stage') if get_stage.nil?
 
-    if tile?(tile_x, tile_y)
-      character.current_tile = Dungeon::Level::Tile.new(tile_x, tile_y, self)
+    if tile = tile(tile_x, tile_y)
+      character.current_tile = tile
       add_actor(character)
       get_stage.set_keyboard_focus(current_controlled_character)
       true
@@ -54,14 +59,14 @@ class DungeonLevelActor < Group
     )
   end
 
-  # Public: Determines if a Tile exists at the given coordinates
+  # Public: Gte the Tile at the given coordinates
   #
   # x - The horizontal position of the presumed Tile.
   # y - The vertical position of the presumed Tile.
   #
-  # Returns a Boolean.
-  def tile?(x, y)
-    @tiled_map.get_layers.any? {|layer| layer.get_cell(x, y) }
+  # Returns a Tile if one is found, nil otherwise.
+  def tile(x, y)
+    @tiles[x, y]
   end
 
   # Public: Get all the characters spawned in this level.
@@ -96,9 +101,7 @@ class DungeonLevelActor < Group
       destination_tile_x += Direction.screen_direction(direction)
     end
 
-    if tile?(destination_tile_x, destination_tile_y)
-      Dungeon::Level::Tile.new(destination_tile_x, destination_tile_y, self)
-    end
+    tile(destination_tile_x, destination_tile_y)
   end
 
   # Public: Draws the actor.
