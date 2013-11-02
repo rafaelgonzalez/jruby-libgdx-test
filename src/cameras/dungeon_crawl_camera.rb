@@ -60,7 +60,7 @@ class DungeonCrawlCamera < OrthographicCamera
   #
   # Returns nothing.
   def update_camera_focus!
-    return unless @destination_vector
+    return unless @destination_vector and @destination_distance
     alpha = (@destination_distance - @destination_vector.dst2(position)) / @destination_distance
     alpha = LERP_ALPHA_SMOOTH if alpha == 0.0
     position.lerp(@destination_vector, alpha * LERP_ALPHA_SMOOTH)
