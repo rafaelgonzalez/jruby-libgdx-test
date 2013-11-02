@@ -53,4 +53,6 @@ Builds can be found in the `build` directory.
 
 ## License ##
 
-Released under the MIT License. See [LICENSE file](LICENSE) for details.
+This project uses the [libGDX](http://libgdx.badlogicgames.com/) Java library as well as [Liberated Pixel Cup](http://lpc.opengameart.org/) assets, both released under different licenses.
+
+This project will try to comply with both as best as possible, but in the meantime there will not be a specific license mentioned here.
