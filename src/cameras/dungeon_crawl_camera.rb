@@ -1,66 +1,69 @@
+require 'dungeon_crawl_camera_input_processor'
+
 class DungeonCrawlCamera < OrthographicCamera
-  MOVEMENT_SPEED = 200
-  DRAG_BUTTON = 1
+  LERP_ALPHA_SMOOTH = 0.3
+
+  attr_reader :input_processor
 
   def initialize
     super
-    @key_bindings ||= KeyBinding::Camera.new
+    @destination_vector = nil
+    @input_processor = DungeonCrawlCameraInputProcessor.new(self)
   end
 
-  # Public: Makes the camera move immediately to the given coordinates.
+  # Public: Makes the camera move smoothly to the given coordinates.
   #
   # screen_x - The horizontal coordinate to move the Camera to.
   # screen_y - The vertical coordinate to move the Camera to.
   #
   # Returns nothing.
-  def snap_to!(screen_x, screen_y)
-    position.x = screen_x
-    position.y = screen_y
+  def move_to!(screen_x, screen_y)
+    @destination_vector = Vector3.new(screen_x, screen_y, position.z)
+    @destination_distance = @destination_vector.dst2(position)
+  end
+
+  # Public: Sets all movement related variables to nil, in order to cancel all current camera movements.
+  #
+  # Returns nothing.
+  def terminate_current_movement!
+    @destination_vector = nil
+    @destination_distance = nil
   end
 
   def update
-    @key_bindings.pressed_keys.each do |keycode|
-      if action = @key_bindings.input_action_from_keycode(keycode)
-        send(action[0], *action[1])
-      end
-    end
-
     super
+    update_camera_position!
+    @input_processor.update
   end
 
-  def touchDragged(screen_x, screen_y, pointer)
-    if @button == DRAG_BUTTON
-      drag_x_translation = @drag_previous_x.nil? ? 0 : (@drag_previous_x - screen_x)
-      drag_y_translation = @drag_previous_y.nil? ? 0 : -(@drag_previous_y - screen_y)
-
-      translate(drag_x_translation, drag_y_translation)
-
-      @drag_previous_x = screen_x
-      @drag_previous_y = screen_y
-
-      return true
-    end
-
-    false
-  end
-
-  def touchDown(screen_x, screen_y, pointer, button)
-    @button = button
-    @drag_previous_x = @drag_previous_y = nil
-  end
 
   private
 
-  def translate_from_direction!(direction)
-    x_translation = y_translation = 0
+  # Internal: Porvides abrstraction for #move_to!, by simply passing a direction.
+  #
+  # direction - A Direction constant.
+  #
+  # Returns nothing.
+  def move_with_direction!(direction)
+    new_screen_x = position.x
+    new_screen_y = position.y
 
-    movement = MOVEMENT_SPEED * Gdx.graphics.get_delta_time
+    new_screen_x += 64 if direction == Direction::LEFT
+    new_screen_x += -64 if direction == Direction::RIGHT
+    new_screen_y += 64 if direction == Direction::DOWN
+    new_screen_y += -64 if direction == Direction::UP
 
-    x_translation += movement if direction == Direction::LEFT
-    x_translation += -movement if direction == Direction::RIGHT
-    y_translation += movement if direction == Direction::DOWN
-    y_translation += -movement if direction == Direction::UP
+    move_to!(new_screen_x, new_screen_y)
+  end
 
-    self.translate(x_translation, y_translation)
+  # Internal: Update the camera's position, if needed.
+  #
+  # Returns nothing.
+  def update_camera_position!
+    return unless @destination_vector and @destination_distance
+    alpha = (@destination_distance - @destination_vector.dst2(position)) / @destination_distance
+    alpha = LERP_ALPHA_SMOOTH if alpha == 0.0
+    position.lerp(@destination_vector, alpha * LERP_ALPHA_SMOOTH)
+    terminate_current_movement! if alpha.round(2) == 1.0
   end
 end
