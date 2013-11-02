@@ -1,7 +1,6 @@
 require 'dungeon_crawl_camera_input_processor'
 
 class DungeonCrawlCamera < OrthographicCamera
-  KEY_DOWN_MOVEMENT_SPEED = 500
   LERP_ALPHA_SMOOTH = 0.3
 
   attr_reader :input_processor
@@ -47,17 +46,16 @@ class DungeonCrawlCamera < OrthographicCamera
 
   private
 
-  def translate_from_direction!(direction)
-    x_translation = y_translation = 0
+  def move_with_direction!(direction)
+    new_screen_x = position.x
+    new_screen_y = position.y
 
-    movement = KEY_DOWN_MOVEMENT_SPEED * Gdx.graphics.get_delta_time
+    new_screen_x += 64 if direction == Direction::LEFT
+    new_screen_x += -64 if direction == Direction::RIGHT
+    new_screen_y += 64 if direction == Direction::DOWN
+    new_screen_y += -64 if direction == Direction::UP
 
-    x_translation += movement if direction == Direction::LEFT
-    x_translation += -movement if direction == Direction::RIGHT
-    y_translation += movement if direction == Direction::DOWN
-    y_translation += -movement if direction == Direction::UP
-
-    translate(x_translation, y_translation)
+    move_to!(new_screen_x, new_screen_y)
   end
 
   def update_camera_focus!
