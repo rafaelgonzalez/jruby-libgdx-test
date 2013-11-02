@@ -39,6 +39,11 @@ class DungeonCrawlCamera < OrthographicCamera
 
   private
 
+  # Internal: Porvides abrstraction for #move_to!, by simply passing a direction.
+  #
+  # direction - A Direction constant.
+  #
+  # Returns nothing.
   def move_with_direction!(direction)
     new_screen_x = position.x
     new_screen_y = position.y
@@ -51,6 +56,9 @@ class DungeonCrawlCamera < OrthographicCamera
     move_to!(new_screen_x, new_screen_y)
   end
 
+  # Internal: Update the camera's position, if needed.
+  #
+  # Returns nothing.
   def update_camera_focus!
     return unless @destination_vector
     alpha = (@destination_distance - @destination_vector.dst2(position)) / @destination_distance
