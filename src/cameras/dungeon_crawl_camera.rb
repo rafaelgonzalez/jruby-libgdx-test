@@ -22,8 +22,12 @@ class DungeonCrawlCamera < OrthographicCamera
     @destination_distance = @destination_vector.dst2(position)
   end
 
+  # Public: Sets all movement related variables to nil, in order to cancel all current camera movements.
+  #
+  # Returns nothing.
   def terminate_current_movement!
     @destination_vector = nil
+    @destination_distance = nil
   end
 
   def update
