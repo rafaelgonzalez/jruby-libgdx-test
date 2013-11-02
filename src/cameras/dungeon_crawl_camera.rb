@@ -32,7 +32,7 @@ class DungeonCrawlCamera < OrthographicCamera
 
   def update
     super
-    update_camera_focus!
+    update_camera_position!
     @input_processor.update
   end
 
@@ -59,7 +59,7 @@ class DungeonCrawlCamera < OrthographicCamera
   # Internal: Update the camera's position, if needed.
   #
   # Returns nothing.
-  def update_camera_focus!
+  def update_camera_position!
     return unless @destination_vector and @destination_distance
     alpha = (@destination_distance - @destination_vector.dst2(position)) / @destination_distance
     alpha = LERP_ALPHA_SMOOTH if alpha == 0.0
