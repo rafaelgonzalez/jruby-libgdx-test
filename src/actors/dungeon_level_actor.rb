@@ -66,6 +66,7 @@ class DungeonLevelActor < Group
   #
   # Returns a Tile if one is found, nil otherwise.
   def tile(x, y)
+    return nil if x < 0 or y < 0
     @tiles[x, y]
   end
 
