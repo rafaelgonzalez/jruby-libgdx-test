@@ -9,7 +9,7 @@ module DungeonLevelCharacterActionsManager
     if !is_moving? and current_tile.has_same_positions_as?(destination_tile)
       tile = fetch_new_destination_tile(direction)
 
-      unless tile.nil?
+      unless tile.nil? or !tile.walkable?
         @destination_tile = tile
         self.current_direction = direction
         self.current_action = CharacterAction::WALK

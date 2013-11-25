@@ -6,8 +6,7 @@ class DungeonLevelCharacterActor < Actor
   include DungeonLevelCharacterActorRenderer
   include DungeonLevelCharacterActionsManager
 
-  attr_accessor :current_action, :current_direction
-  attr_reader :current_tile, :destination_tile
+  attr_accessor :current_action, :current_direction, :current_tile, :destination_tile
 
   def initialize
     super
@@ -46,7 +45,11 @@ class DungeonLevelCharacterActor < Actor
   end
 
   def current_tile=(current_tile)
+    @current_tile.character = nil unless @current_tile.nil?
+    current_tile.character = self
+
     @current_tile = @destination_tile = current_tile
+
     set_x(current_tile.character_x_position)
     set_y(current_tile.character_y_position)
   end
