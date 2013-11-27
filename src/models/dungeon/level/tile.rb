@@ -2,11 +2,20 @@ class Dungeon::Level
   class Tile
 
     attr_reader :x_position, :y_position, :dungeon_level
+    attr_accessor :character
 
     def initialize(x_position, y_position, dungeon_level)
       @x_position = x_position
       @y_position = y_position
       @dungeon_level = dungeon_level
+      @character = nil
+    end
+
+    # Public: Determines if this Tile can be walked.
+    #
+    # Returns a Boolean.
+    def walkable?
+      !@character
     end
 
     def character_x_position
