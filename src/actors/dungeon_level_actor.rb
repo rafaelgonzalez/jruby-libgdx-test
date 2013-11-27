@@ -14,6 +14,7 @@ class DungeonLevelActor < Group
 
     @level_map = DungeonLevelMap.new(:default_map, self)
 
+    @characters = []
     @controlled_character_index = 0
 
     add_listener(DungeonLevelInputListener.new(self))
@@ -36,6 +37,7 @@ class DungeonLevelActor < Group
     if tile = level_map.tile(tile_x, tile_y)
       character.current_tile = tile
       add_actor(character)
+      @characters << character
       get_stage.set_keyboard_focus(current_controlled_character)
       true
     else
@@ -48,7 +50,7 @@ class DungeonLevelActor < Group
   # Returns nothing.
   def switch_control_to_next_character!
     @controlled_character_index += 1
-    @controlled_character_index = 0 if @controlled_character_index > (characters.size - 1)
+    @controlled_character_index = 0 if @controlled_character_index > (@characters.size - 1)
     get_stage.set_keyboard_focus(current_controlled_character)
 
     get_stage.get_camera.move_to!(
@@ -57,18 +59,11 @@ class DungeonLevelActor < Group
     )
   end
 
-  # Public: Get all the characters spawned in this level.
-  #
-  # Returns an Array of DungeonLevelCharacters.
-  def characters
-    get_children.to_array
-  end
-
   # Public: Get the current character that responds to input.
   #
   # Returns a DungeonLevelCharacter.
   def current_controlled_character
-    characters[@controlled_character_index]
+    @characters[@controlled_character_index]
   end
 
   # Public: Get the Tile adjacent to the given Tile in the given direction.
