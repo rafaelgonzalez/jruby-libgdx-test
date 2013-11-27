@@ -15,7 +15,7 @@ class Dungeon::Level
     #
     # Returns a Boolean.
     def walkable?
-      @character ? false : true
+      !@character
     end
 
     def character_x_position
