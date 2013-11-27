@@ -16,11 +16,8 @@ The goal is to create a functional game using the [LibGDX](http://libgdx.badlogi
 
 You need the following (please refer to their specific installation guidelines)
 
-- Java SE Runtime Environment 1.6
-
-  Java 7 will not work. libGDX relies on LWJGL, which does not entirely work with the latest Java.
-
-- jruby 1.7.4 (I recommend using [RVM](http://rvm.io/) to install it with)
+- Java SE Runtime Environment 1.6 or 1.7
+- jruby 1.7.8 (I recommend to install it with [rbenv](https://github.com/sstephenson/rbenv) or [RVM](http://rvm.io/))
 - [bundler gem](https://github.com/bundler/bundler)
 
 Then run:
