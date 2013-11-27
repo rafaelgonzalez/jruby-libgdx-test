@@ -99,7 +99,7 @@ class DungeonLevelActor < Group
   def draw(sprite_batch, alpha)
     sprite_batch.end
     @level_map.renderer.set_view(get_stage.camera)
-    @level_map.render
+    @level_map.renderer.render
     sprite_batch.begin
     super
   end

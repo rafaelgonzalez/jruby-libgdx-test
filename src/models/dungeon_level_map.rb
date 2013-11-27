@@ -36,10 +36,6 @@ class DungeonLevelMap
     end
   end
 
-  def render
-    @renderer.render
-  end
-
   private
 
   # Internal: Discard tiles that have no characters on them, in order to free up memory.
