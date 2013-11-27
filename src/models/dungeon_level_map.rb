@@ -23,6 +23,8 @@ class DungeonLevelMap
   #
   # Returns a Tile if one is found, nil otherwise.
   def tile(x, y)
+    discard_empty_tiles!
+
     if tile = @tiles.select{|tile| tile.x_position == x and tile.y_position == y}.first
       tile
     elsif @tiled_map.get_layers.any? {|layer| layer.get_cell(x, y) }
@@ -39,6 +41,13 @@ class DungeonLevelMap
   end
 
   private
+
+  # Internal: Discard tiles that have no characters on them, in order to free up memory.
+  #
+  # Returns nothing.
+  def discard_empty_tiles!
+    @tiles = @tiles.select {|tile| tile.character }
+  end
 
   # Internal: Verifies the given map exists.
   #
