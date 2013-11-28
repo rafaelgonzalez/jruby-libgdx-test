@@ -14,15 +14,8 @@ class DungeonLevelCharacterInputTranslator
   # Returns a Direction constant, or nil if Character does not want to move.
   def movement_direction
     if wants_to_move?
-      if Gdx.input.is_key_pressed(Keys::W)
-        Direction::UP
-      elsif Gdx.input.is_key_pressed(Keys::A)
-        Direction::LEFT
-      elsif Gdx.input.is_key_pressed(Keys::S)
-        Direction::DOWN
-      elsif Gdx.input.is_key_pressed(Keys::D)
-        Direction::RIGHT
-      end
+      callback = @key_bindings.pressed_category_callbacks(:movement).first
+      @actor.send(callback[0], *callback[1])
     else
       nil
     end
@@ -32,7 +25,7 @@ class DungeonLevelCharacterInputTranslator
 
   def wants_to_move?
     if has_keyboard_focus?
-      @key_bindings.bindings.keys.any? {|key| Gdx.input.is_key_pressed(key) }
+      @key_bindings.category_pressed?(:movement)
     else
       false
     end

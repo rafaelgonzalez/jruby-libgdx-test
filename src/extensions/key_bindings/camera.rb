@@ -10,5 +10,9 @@ module KeyBinding
     def bindings
       BINDINGS
     end
+
+    def categories
+      {}
+    end
   end
 end

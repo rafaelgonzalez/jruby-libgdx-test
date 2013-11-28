@@ -7,8 +7,16 @@ module KeyBinding
       Keys::D => [:walk_to_next_tile!, [Direction::RIGHT]]
     }
 
+    CATEGORIES = {
+      movement: [Keys::W, Keys::S, Keys::A, Keys::D]
+    }
+
     def bindings
       BINDINGS
+    end
+
+    def categories
+      CATEGORIES
     end
   end
 end
