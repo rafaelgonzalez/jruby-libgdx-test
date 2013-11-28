@@ -1,4 +1,5 @@
 require 'dungeon_level_character_input_listener'
+require 'dungeon_level_character_input_translator'
 require 'dungeon_level_character_actions_manager'
 require 'dungeon_level_character_actor_renderer'
 
@@ -7,6 +8,7 @@ class DungeonLevelCharacterActor < Actor
   include DungeonLevelCharacterActionsManager
 
   attr_accessor :current_action, :current_direction, :current_tile, :destination_tile
+  attr_reader :input_translator
 
   def initialize
     super
@@ -23,6 +25,8 @@ class DungeonLevelCharacterActor < Actor
 
     set_height(LpcSpriteSheetLoader::SPRITE_HEIGHT)
     set_width(LpcSpriteSheetLoader::SPRITE_WIDTH)
+
+    @input_translator = DungeonLevelCharacterInputTranslator.new(self)
 
     add_listener(DungeonLevelCharacterInputListener.new(self))
   end
@@ -60,7 +64,6 @@ class DungeonLevelCharacterActor < Actor
   def is_moving?
     current_action == CharacterAction::WALK
   end
-
 
   private
 
