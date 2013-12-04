@@ -50,7 +50,10 @@ class DungeonLevelActor < Group
   # Returns nothing.
   def switch_control_to_next_character!
     @controlled_character_index += 1
-    @controlled_character_index = 0 if @controlled_character_index > (@characters.size - 1)
+    if @controlled_character_index > (@characters.select(&:playable?).size - 1)
+      @controlled_character_index = 0
+    end
+
     get_stage.set_keyboard_focus(current_controlled_character)
 
     get_stage.get_camera.move_to!(
@@ -63,7 +66,7 @@ class DungeonLevelActor < Group
   #
   # Returns a DungeonLevelCharacter.
   def current_controlled_character
-    @characters[@controlled_character_index]
+    @characters.select(&:playable?)[@controlled_character_index]
   end
 
   # Public: Updates the DungeonLevelActor.

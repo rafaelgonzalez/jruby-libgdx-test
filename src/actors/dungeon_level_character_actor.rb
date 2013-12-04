@@ -46,6 +46,20 @@ class DungeonLevelCharacterActor < Actor
     super
   end
 
+  # Public: Determines if the Character is playable.
+  #
+  # Returns a Boolean.
+  def playable?
+    alive?
+  end
+
+  # Public: Determines if the Character is alive.
+  #
+  # Returns a Boolean.
+  def alive?
+    health > 0
+  end
+
   # Public: Use a Skill corresponding to the given name.
   #
   # skill_name - Name of the Skill
