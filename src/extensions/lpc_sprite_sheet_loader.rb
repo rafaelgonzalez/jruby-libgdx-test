@@ -32,7 +32,7 @@ class LpcSpriteSheetLoader
     }
   }
 
-  ANIMATIONS_SPEED = 0.15
+  ANIMATION_SPEED = 0.15
 
   def self.animations_from_sprite_sheet_file(file_name)
     sprite_sheet_loader = SpriteSheetLoader.new(file_name, SPRITE_WIDTH, SPRITE_HEIGHT)
@@ -49,7 +49,7 @@ class LpcSpriteSheetLoader
       animations[action] ||= {}
 
       directions.each do |direction, indexes|
-        animations[action][direction] = sprite_sheet_loader.animation(indexes[0], indexes[1], ANIMATIONS_SPEED, indexes[2])
+        animations[action][direction] = sprite_sheet_loader.animation(indexes[0], indexes[1], ANIMATION_SPEED, indexes[2])
       end
     end
 
