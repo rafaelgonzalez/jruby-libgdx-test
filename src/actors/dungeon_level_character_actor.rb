@@ -43,6 +43,7 @@ class DungeonLevelCharacterActor < Actor
   # Returns nothing.
   def act(delta_time)
     @state_time += delta_time
+    @current_action = CharacterAction::DEATH unless health > 0
     super
   end
 
