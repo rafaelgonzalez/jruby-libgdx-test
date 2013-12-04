@@ -13,6 +13,7 @@ class Dungeon::Level
     end
 
     def add_effect!(effect)
+      effect.tile = self
       @effects << effect
     end
 
@@ -54,3 +55,5 @@ class Dungeon::Level
     end
   end
 end
+
+require_relative 'tile/effect'
