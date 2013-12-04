@@ -34,7 +34,7 @@ class DungeonCrawlCameraInputProcessor < InputAdapter
   def keyUp(keycode)
     if callback = @key_bindings.input_action_from_keycode(keycode)
       if @callbacks.include?(callback)
-        @callbacks.delete(callback).inspect
+        @callbacks.delete(callback)
         return true
       end
     end
