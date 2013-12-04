@@ -4,7 +4,7 @@ class DungeonLevelMap
     default_map: 'assets/maps/level_1.tmx'
   }
 
-  attr_reader :dungeon, :renderer
+  attr_reader :dungeon, :renderer, :tiles
 
   def initialize(map_name, dungeon)
     verifiy_map_name(map_name)

@@ -87,6 +87,15 @@ class DungeonLevelActor < Group
     level_map.tile(destination_tile_x, destination_tile_y)
   end
 
+  # Public: Updates the DungeonLevelActor.
+  # Overrides Actor#act.
+  #
+  # Returns nothing.
+  def act(delta_time)
+    @level_map.tiles.each(&:apply_effects!)
+    super
+  end
+
   # Public: Draws the actor.
   # Overrides Actor#draw.
   #
