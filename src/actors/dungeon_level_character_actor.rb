@@ -3,6 +3,8 @@ require 'dungeon_level_character_input_translator'
 require 'dungeon_level_character_actions_manager'
 require 'dungeon_level_character_actor_renderer'
 
+require 'models/skills'
+
 class DungeonLevelCharacterActor < Actor
   include DungeonLevelCharacterActorRenderer
   include DungeonLevelCharacterActionsManager
@@ -44,6 +46,16 @@ class DungeonLevelCharacterActor < Actor
   def act(delta_time)
     @state_time += delta_time
     super
+  end
+
+  # Public: Use a Skill corresponding to the given name.
+  #
+  # skill_name - Name of the Skill
+  #
+  # Returns nothing.
+  def use_skill!(skill_name)
+    skill_class = "Skills::#{skill_name.to_s.camelize}".constantize
+    skill_class.new(self, current_tile, current_direction).execute!
   end
 
   def x_position
