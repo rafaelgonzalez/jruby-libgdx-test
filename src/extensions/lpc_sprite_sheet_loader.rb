@@ -4,31 +4,31 @@ class LpcSpriteSheetLoader
 
   LPC_SPRITE_SHEETS_INDEXES = {
     CharacterAction::STAND => {
-      Direction::UP => [8, (0..0)],
-      Direction::LEFT => [9, (0..0)],
-      Direction::DOWN => [10, (0..0)],
-      Direction::RIGHT => [11, (0..0)],
+      Direction::UP    => [8,  (0..0), Animation::NORMAL],
+      Direction::LEFT  => [9,  (0..0), Animation::NORMAL],
+      Direction::DOWN  => [10, (0..0), Animation::NORMAL],
+      Direction::RIGHT => [11, (0..0), Animation::NORMAL],
     },
 
     CharacterAction::WALK => {
-      Direction::UP => [8, (1..8)],
-      Direction::LEFT => [9, (1..8)],
-      Direction::DOWN => [10, (1..8)],
-      Direction::RIGHT => [11, (1..8)]
+      Direction::UP    => [8,  (1..8), Animation::LOOP],
+      Direction::LEFT  => [9,  (1..8), Animation::LOOP],
+      Direction::DOWN  => [10, (1..8), Animation::LOOP],
+      Direction::RIGHT => [11, (1..8), Animation::LOOP]
     },
 
     CharacterAction::SLASH => {
-      Direction::UP => [12, (0..5)],
-      Direction::LEFT => [13, (0..5)],
-      Direction::DOWN => [14, (0..5)],
-      Direction::RIGHT => [15, (0..5)]
+      Direction::UP    => [12, (0..5), Animation::LOOP],
+      Direction::LEFT  => [13, (0..5), Animation::LOOP],
+      Direction::DOWN  => [14, (0..5), Animation::LOOP],
+      Direction::RIGHT => [15, (0..5), Animation::LOOP]
     },
 
     CharacterAction::DEATH => {
-      Direction::UP => [20, (0..5)],
-      Direction::LEFT => [20, (0..5)],
-      Direction::DOWN => [20, (0..5)],
-      Direction::RIGHT => [20, (0..5)]
+      Direction::UP    => [20, (0..5), Animation::NORMAL],
+      Direction::LEFT  => [20, (0..5), Animation::NORMAL],
+      Direction::DOWN  => [20, (0..5), Animation::NORMAL],
+      Direction::RIGHT => [20, (0..5), Animation::NORMAL]
     }
   }
 
@@ -49,7 +49,7 @@ class LpcSpriteSheetLoader
       animations[action] ||= {}
 
       directions.each do |direction, indexes|
-        animations[action][direction] = sprite_sheet_loader.animation(indexes[0], indexes[1], ANIMATIONS_SPEED)
+        animations[action][direction] = sprite_sheet_loader.animation(indexes[0], indexes[1], ANIMATIONS_SPEED, indexes[2])
       end
     end
 
