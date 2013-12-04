@@ -7,11 +7,17 @@ class DungeonLevelCharacterActor < Actor
   include DungeonLevelCharacterActorRenderer
   include DungeonLevelCharacterActionsManager
 
-  attr_accessor :current_action, :current_direction, :current_tile, :destination_tile
-  attr_reader :input_translator
+  attr_accessor :current_action, :current_direction, :current_tile, :destination_tile, :health
+  attr_reader :input_translator, :armor
+
+  MAX_HEALTH = 20
+  BASE_ARMOR = 0
 
   def initialize
     super
+
+    @health = MAX_HEALTH
+    @armor = BASE_ARMOR
 
     @current_action = CharacterAction::STAND
     @current_direction = Direction::RIGHT
