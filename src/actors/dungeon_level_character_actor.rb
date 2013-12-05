@@ -7,8 +7,8 @@ require 'models/skills'
 class DungeonLevelCharacterActor < Actor
   include DungeonLevelCharacterActorRenderer
 
-  attr_accessor :current_action, :current_direction, :current_tile, :destination_tile, :health
-  attr_reader :input_translator, :armor
+  attr_accessor :current_direction, :current_tile, :destination_tile, :health
+  attr_reader :current_action, :input_translator, :armor
 
   MAX_HEALTH = 20
   BASE_ARMOR = 0
@@ -26,6 +26,7 @@ class DungeonLevelCharacterActor < Actor
     @destination_tile = nil
 
     @state_time = 0.0
+    @animation_state_time = 0.0
 
     initialize_rendering
 
@@ -43,7 +44,8 @@ class DungeonLevelCharacterActor < Actor
   # Returns nothing.
   def act(delta_time)
     @state_time += delta_time
-    @current_action = CharacterAction::DEATH unless health > 0
+    @animation_state_time += delta_time
+    kill! if alive? and health < 0
     super
   end
 
@@ -58,7 +60,7 @@ class DungeonLevelCharacterActor < Actor
   #
   # Returns a Boolean.
   def alive?
-    health > 0
+    current_action != CharacterAction::DEATH
   end
 
   # Public: Use a Skill corresponding to the given name.
@@ -77,6 +79,11 @@ class DungeonLevelCharacterActor < Actor
 
   def y_position
     current_tile.y_position
+  end
+
+  def current_action=(current_action)
+    @animation_state_time = 0.0
+    @current_action = current_action
   end
 
   def current_tile=(current_tile)
@@ -104,5 +111,9 @@ class DungeonLevelCharacterActor < Actor
   # Returns a DungeonLevelActor.
   def dungeon_level
     current_tile.dungeon_level
+  end
+
+  def kill!
+    self.current_action = CharacterAction::DEATH
   end
 end

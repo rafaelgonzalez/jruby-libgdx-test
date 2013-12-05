@@ -51,7 +51,7 @@ module DungeonLevelCharacterActorRenderer
   #
   # Returns a TextureRegion.
   def current_animation_frame
-    current_animation.get_key_frame(@state_time)
+    current_animation.get_key_frame(@animation_state_time)
   end
 
 
