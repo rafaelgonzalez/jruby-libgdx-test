@@ -9,7 +9,7 @@ module Skills
       @owner = owner
       @origin_tile = origin_tile
       @direction = owner.current_direction
-      @destination_tile = origin_tile.dungeon_level.adjacent_tile_from_direction(origin_tile, @direction)
+      @destination_tile = origin_tile.adjacent_tile(direction)
     end
 
     def execute!

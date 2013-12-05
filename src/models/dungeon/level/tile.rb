@@ -32,6 +32,26 @@ class Dungeon::Level
       !@character
     end
 
+    # Public: Get the Tile adjacent to this Tile in the given direction.
+    #
+    # direction  - A Direction constant.
+    #
+    # Returns a Tile or nil if no Tile is found.
+    def adjacent_tile(direction)
+      destination_tile_x = x_position
+      destination_tile_y = y_position
+
+      if [Direction::UP, Direction::DOWN].include? direction
+        destination_tile_y += Direction.screen_direction(direction)
+      end
+
+      if [Direction::LEFT, Direction::RIGHT].include? direction
+        destination_tile_x += Direction.screen_direction(direction)
+      end
+
+      dungeon_level.level_map.tile(destination_tile_x, destination_tile_y)
+    end
+
     def character_x_position
       (x_position * Dungeon::Level::TILE_WIDTH) - (Dungeon::Level::TILE_WIDTH / 2)
     end

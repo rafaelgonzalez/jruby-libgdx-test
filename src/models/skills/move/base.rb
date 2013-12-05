@@ -13,7 +13,7 @@ module Skills::Move
 
       @owner = owner
       @origin_tile = origin_tile
-      @destination_tile = origin_tile.dungeon_level.adjacent_tile_from_direction(origin_tile, @direction)
+      @destination_tile = origin_tile.adjacent_tile(direction)
     end
 
     # Public: Handles the owner's movement sequence to it's destination Tile.
