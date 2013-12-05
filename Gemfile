@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 source 'http://gems.neurogami.com'
 
+gem 'active_support'
+
 group :development do
   gem 'rawr'
   gem 'pry'

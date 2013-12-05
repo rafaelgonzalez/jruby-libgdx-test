@@ -15,6 +15,13 @@ class LpcSpriteSheetLoader
       Direction::LEFT => [9, (1..8)],
       Direction::DOWN => [10, (1..8)],
       Direction::RIGHT => [11, (1..8)]
+    },
+
+    CharacterAction::SLASH => {
+      Direction::UP => [12, (0..5)],
+      Direction::LEFT => [13, (0..5)],
+      Direction::DOWN => [14, (0..5)],
+      Direction::RIGHT => [15, (0..5)]
     }
   }
 

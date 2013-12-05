@@ -66,25 +66,13 @@ class DungeonLevelActor < Group
     @characters[@controlled_character_index]
   end
 
-  # Public: Get the Tile adjacent to the given Tile in the given direction.
+  # Public: Updates the DungeonLevelActor.
+  # Overrides Actor#act.
   #
-  # start_tile - The Tile from which the adjacent Tile search is made.
-  # direction  - A Direction constant.
-  #
-  # Returns a Tile or nil if no Tile is found.
-  def adjacent_tile_from_direction(start_tile, direction)
-    destination_tile_x = start_tile.x_position
-    destination_tile_y = start_tile.y_position
-
-    if [Direction::UP, Direction::DOWN].include? direction
-      destination_tile_y += Direction.screen_direction(direction)
-    end
-
-    if [Direction::LEFT, Direction::RIGHT].include? direction
-      destination_tile_x += Direction.screen_direction(direction)
-    end
-
-    level_map.tile(destination_tile_x, destination_tile_y)
+  # Returns nothing.
+  def act(delta_time)
+    @level_map.tiles.each(&:apply_effects!)
+    super
   end
 
   # Public: Draws the actor.

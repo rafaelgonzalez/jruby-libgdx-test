@@ -2,6 +2,9 @@ GEM
   remote: https://rubygems.org/
   remote: http://gems.neurogami.com/
   specs:
+    active_support (3.0.0)
+      activesupport (= 3.0.0)
+    activesupport (3.0.0)
     builder (3.2.2)
     cane (2.6.1)
       parallel
@@ -13,7 +16,6 @@ GEM
       term-ansicolor
       thor
     diff-lcs (1.2.4)
-    ffi (1.9.0)
     ffi (1.9.0-java)
     hoe (3.7.1)
       rake (>= 0.8, < 11.0)
@@ -69,6 +71,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_support
   cane
   coveralls
   pry

@@ -47,6 +47,8 @@ begin
 rescue LoadError
 end
 
+require 'active_support/inflector'
+
 require 'foo_game'
 
 require 'dungeon/level'
