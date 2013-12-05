@@ -1,10 +1,10 @@
 module KeyBinding
   class Character < Base
     BINDINGS = {
-      Keys::W => [:walk_to_next_tile!, [Direction::UP]],
-      Keys::S => [:walk_to_next_tile!, [Direction::DOWN]],
-      Keys::A => [:walk_to_next_tile!, [Direction::LEFT]],
-      Keys::D => [:walk_to_next_tile!, [Direction::RIGHT]],
+      Keys::W => [:use_skill!, ['Move::Up']],
+      Keys::S => [:use_skill!, ['Move::Down']],
+      Keys::A => [:use_skill!, ['Move::Left']],
+      Keys::D => [:use_skill!, ['Move::Right']],
       Keys::E => [:use_skill!, [:unarmed_attack]]
     }
 

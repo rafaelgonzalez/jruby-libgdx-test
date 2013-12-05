@@ -1,13 +1,11 @@
 require 'dungeon_level_character_input_listener'
 require 'dungeon_level_character_input_translator'
-require 'dungeon_level_character_actions_manager'
 require 'dungeon_level_character_actor_renderer'
 
 require 'models/skills'
 
 class DungeonLevelCharacterActor < Actor
   include DungeonLevelCharacterActorRenderer
-  include DungeonLevelCharacterActionsManager
 
   attr_accessor :current_action, :current_direction, :current_tile, :destination_tile, :health
   attr_reader :input_translator, :armor
@@ -55,7 +53,7 @@ class DungeonLevelCharacterActor < Actor
   # Returns nothing.
   def use_skill!(skill_name)
     skill_class = "Skills::#{skill_name.to_s.camelize}".constantize
-    skill_class.new(self, current_tile, current_direction).execute!
+    skill_class.new(self, current_tile).execute!
   end
 
   def x_position

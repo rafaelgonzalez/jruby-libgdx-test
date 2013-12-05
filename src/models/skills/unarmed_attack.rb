@@ -5,11 +5,11 @@ module Skills
 
     attr_reader :owner, :origin_tile, :direction, :destination_tile
 
-    def initialize(owner, origin_tile, direction)
+    def initialize(owner, origin_tile)
       @owner = owner
       @origin_tile = origin_tile
-      @direction = direction
-      @destination_tile = origin_tile.dungeon_level.adjacent_tile_from_direction(origin_tile, direction)
+      @direction = owner.current_direction
+      @destination_tile = origin_tile.dungeon_level.adjacent_tile_from_direction(origin_tile, @direction)
     end
 
     def execute!
