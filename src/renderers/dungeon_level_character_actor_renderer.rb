@@ -1,3 +1,5 @@
+require 'character_sprite_loader'
+
 module DungeonLevelCharacterActorRenderer
   CHARACTER_MOVEMENT_SPEED = 100
   CHARACTER_GROUND_OFFSET = 25
@@ -61,6 +63,6 @@ module DungeonLevelCharacterActorRenderer
   #
   # Returns nothing.
   def load_animations
-    @animations = LpcSpriteSheetLoader.animations_from_sprite_sheet_file("assets/light.png")
+    @animations = CharacterSpriteLoader.new("assets/light.png").load
   end
 end

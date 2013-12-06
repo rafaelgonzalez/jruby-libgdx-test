@@ -13,8 +13,8 @@ class FooGame < Game
     @dungeon_crawl_stage.add_actor(dungeon_level)
 
     # Instantiate dungeon level characters and spawn them in the level
-    dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 9, 1)
     dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 1, 1)
+    dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 2, 1)
     dungeon_level.spawn_character!(DungeonLevelCharacterActor.new, 2, 7)
 
     # Try input on camera first, then on Stage

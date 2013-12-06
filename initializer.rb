@@ -55,5 +55,3 @@ require 'dungeon/level'
 require 'dungeon/level/tile'
 
 require 'character_action'
-require 'sprite_sheet_loader'
-require 'lpc_sprite_sheet_loader'

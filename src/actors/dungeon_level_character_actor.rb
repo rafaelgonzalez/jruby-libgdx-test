@@ -30,8 +30,8 @@ class DungeonLevelCharacterActor < Actor
 
     initialize_rendering
 
-    set_height(LpcSpriteSheetLoader::SPRITE_HEIGHT)
-    set_width(LpcSpriteSheetLoader::SPRITE_WIDTH)
+    set_height(CharacterSpriteLoader::SPRITE_HEIGHT)
+    set_width(CharacterSpriteLoader::SPRITE_WIDTH)
 
     @input_translator = DungeonLevelCharacterInputTranslator.new(self)
 

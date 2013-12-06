@@ -1,0 +1,250 @@
+death:
+  speed: 0.15
+  play_mode: normal
+  directions:
+    up:
+      frames: &death_frames
+        -
+          - 20
+          - 0
+        -
+          - 20
+          - 1
+        -
+          - 20
+          - 2
+        -
+          - 20
+          - 3
+        -
+          - 20
+          - 4
+        -
+          - 20
+          - 5
+
+    left:
+      frames: *death_frames
+    down:
+      frames: *death_frames
+    right:
+      frames: *death_frames
+
+slash:
+  speed: 0.03
+  play_mode: normal
+  directions:
+    up:
+      frames:
+        -
+          - 12
+          - 0
+        -
+          - 12
+          - 1
+        -
+          - 12
+          - 2
+        -
+          - 12
+          - 3
+        -
+          - 12
+          - 4
+        -
+          - 12
+          - 5
+    left:
+      frames:
+        -
+          - 13
+          - 0
+        -
+          - 13
+          - 1
+        -
+          - 13
+          - 2
+        -
+          - 13
+          - 3
+        -
+          - 13
+          - 4
+        -
+          - 13
+          - 5
+    down:
+      frames:
+        -
+          - 14
+          - 0
+        -
+          - 14
+          - 1
+        -
+          - 14
+          - 2
+        -
+          - 14
+          - 3
+        -
+          - 14
+          - 4
+        -
+          - 14
+          - 5
+    right:
+      frames:
+        -
+          - 15
+          - 0
+        -
+          - 15
+          - 1
+        -
+          - 15
+          - 2
+        -
+          - 15
+          - 3
+        -
+          - 15
+          - 4
+        -
+          - 15
+          - 5
+
+stand:
+  speed: 0.15
+  play_mode: normal
+  directions:
+    up:
+      frames:
+        -
+          - 8
+          - 0
+    left:
+      frames:
+        -
+          - 9
+          - 0
+    down:
+      frames:
+        -
+          - 10
+          - 0
+    right:
+      frames:
+        -
+          - 11
+          - 0
+
+walk:
+  speed: 0.15
+  play_mode: loop
+  directions:
+    up:
+      frames:
+        -
+          - 8
+          - 1
+        -
+          - 8
+          - 2
+        -
+          - 8
+          - 3
+        -
+          - 8
+          - 4
+        -
+          - 8
+          - 5
+        -
+          - 8
+          - 6
+        -
+          - 8
+          - 7
+        -
+          - 8
+          - 8
+    left:
+      frames:
+        -
+          - 9
+          - 1
+        -
+          - 9
+          - 2
+        -
+          - 9
+          - 3
+        -
+          - 9
+          - 4
+        -
+          - 9
+          - 5
+        -
+          - 9
+          - 6
+        -
+          - 9
+          - 7
+        -
+          - 9
+          - 8
+    down:
+      frames:
+        -
+          - 10
+          - 1
+        -
+          - 10
+          - 2
+        -
+          - 10
+          - 3
+        -
+          - 10
+          - 4
+        -
+          - 10
+          - 5
+        -
+          - 10
+          - 6
+        -
+          - 10
+          - 7
+        -
+          - 10
+          - 8
+    right:
+      frames:
+        -
+          - 11
+          - 1
+        -
+          - 11
+          - 2
+        -
+          - 11
+          - 3
+        -
+          - 11
+          - 4
+        -
+          - 11
+          - 5
+        -
+          - 11
+          - 6
+        -
+          - 11
+          - 7
+        -
+          - 11
+          - 8
