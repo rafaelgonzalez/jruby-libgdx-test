@@ -18,10 +18,10 @@ class LpcSpriteSheetLoader
     },
 
     CharacterAction::SLASH => {
-      Direction::UP    => [12, (0..5), Animation::LOOP],
-      Direction::LEFT  => [13, (0..5), Animation::LOOP],
-      Direction::DOWN  => [14, (0..5), Animation::LOOP],
-      Direction::RIGHT => [15, (0..5), Animation::LOOP]
+      Direction::UP    => [12, (0..5), Animation::NORMAL],
+      Direction::LEFT  => [13, (0..5), Animation::NORMAL],
+      Direction::DOWN  => [14, (0..5), Animation::NORMAL],
+      Direction::RIGHT => [15, (0..5), Animation::NORMAL]
     },
 
     CharacterAction::DEATH => {
