@@ -8,14 +8,14 @@ class Character
 
   MAX_HEALTH = 20
   BASE_ARMOR = 0
+  DEFAULT_DIRECTION = Direction::RIGHT
 
   def initialize
     @actor = nil
 
     @health = MAX_HEALTH
     @armor = BASE_ARMOR
-
-    @current_direction = Direction::RIGHT
+    @current_direction = DEFAULT_DIRECTION
 
     @current_tile = nil
     @destination_tile = nil

@@ -15,3 +15,7 @@ group :test do
   gem 'cane'
   gem 'coveralls', require: false
 end
+
+group :development, :test do
+  gem 'factory_girl', '~> 4.0'
+end
