@@ -43,7 +43,24 @@ module Skills
 
     def attack_character_actor
 
-      attack_character
+      log_combat I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name)
+
+      if destination_tile.character
+        total_damage = (BASE_DAMAGE - destination_tile.character.armor)
+        destination_tile.character.health -= total_damage unless total_damage < 0
+
+        log_combat I18n.t('skills.unarmed_attack.hits_with_damage',
+                          attacker_name: character.name,
+                          attacked_name: destination_tile.character.name,
+                          damage: total_damage)
+
+        log_combat I18n.t('skills.unarmed_attack.has_hp_left',
+                          attacked_name: destination_tile.character.name,
+                          health: destination_tile.character.health)
+      else
+        log_combat I18n.t('skills.unarmed_attack.hits_nothing',
+                          attacker_name: character.name)
+      end
 
       # start slash animation
       # TODO
@@ -58,6 +75,12 @@ module Skills
 
       # finish slash animation
       # TODO
+    end
+
+    private
+
+    def log_combat(text)
+      character.actor.get_stage.combat_logger.add_message(text)
     end
   end
 end

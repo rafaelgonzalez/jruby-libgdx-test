@@ -1,6 +1,8 @@
 require 'dungeon_crawl_stage'
 require 'dungeon_level_actor'
 require 'dungeon_level_character_actor'
+require 'combat_logger'
+
 
 class FooGame < Game
   include Input
