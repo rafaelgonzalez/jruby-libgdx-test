@@ -52,6 +52,10 @@ class Character
     BASE_ARMOR
   end
 
+  def alive?
+    health > 0
+  end
+
   # Public: Use a Skill corresponding to the given name.
   #
   # skill_name - Name of the Skill

@@ -15,7 +15,7 @@ class DungeonLevelCharacterActor < Actor
   def_delegators :@character, :current_tile, :destination_tile,
                               :x_position, :y_position,
                               :current_direction,
-                              :armor, :use_skill!
+                              :armor, :health, :use_skill!
 
   def initialize(character)
     super()
@@ -44,6 +44,8 @@ class DungeonLevelCharacterActor < Actor
   def act(delta_time)
     @state_time += delta_time
     super
+
+    @current_action = CharacterAction::DEATH unless alive?
   end
 
   def current_tile=(new_tile)

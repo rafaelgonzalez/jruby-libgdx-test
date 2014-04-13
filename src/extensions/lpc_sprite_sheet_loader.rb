@@ -3,6 +3,13 @@ class LpcSpriteSheetLoader
   SPRITE_HEIGHT = 64
 
   LPC_SPRITE_SHEETS_INDEXES = {
+    CharacterAction::DEATH => {
+      Direction::UP => [20, 5],
+      Direction::LEFT => [20, 5],
+      Direction::DOWN => [20, 5],
+      Direction::RIGHT => [20, 5],
+    },
+
     CharacterAction::STAND => {
       Direction::UP => [8, (0..0)],
       Direction::LEFT => [9, (0..0)],
