@@ -1,20 +1,21 @@
 require 'dungeon_level_input_listener'
-require 'dungeon_level_map'
 
 class DungeonLevelActor < Group
   TILE_WIDTH = 32
   TILE_HEIGHT = 32
 
-  attr_reader :level_map
+  attr_reader :dungeon_level, :tiled_map_renderer
 
-  def initialize
-    super
+  def initialize(dungeon_level)
+    super()
 
     set_name 'Level characters'
 
-    @level_map = DungeonLevelMap.new(:default_map, self)
+    @dungeon_level = dungeon_level
 
-    @characters = []
+    @tiled_map_renderer = OrthogonalTiledMapRenderer.new(dungeon_level.tiled_map)
+
+    @character_actors = []
     @controlled_character_index = 0
 
     add_listener(DungeonLevelInputListener.new(self))
@@ -25,19 +26,19 @@ class DungeonLevelActor < Group
   # Assigns the given tile to the DungeonLebelCharacter.
   # Adds the DungeonLevelCharacterActor to the Stage.
   #
-  # character - The DungeonLevelCharacterActor to spawn.
+  # character_actor - The DungeonLevelCharacterActor to spawn.
   # tile_x    - The Tile's horizontal posititon.
   # tile_y    - The Tile's vertical posititon.
   #
   # Raises a RuntimeError if the DungeonLevelActor was not previously assigned to a Stage.
   # Returns true if the character was successfully spawned, false otherwise.
-  def spawn_character!(character, tile_x, tile_y)
-    raise RuntimeError.new('Cannot spawn a character in a level without a stage') if get_stage.nil?
+  def spawn_character!(character_actor, tile_x, tile_y)
+    raise RuntimeError.new('Cannot spawn a character actor in a level without a stage') if get_stage.nil?
 
-    if tile = level_map.tile(tile_x, tile_y)
-      character.current_tile = tile
-      add_actor(character)
-      @characters << character
+    if tile = dungeon_level.tile(tile_x, tile_y)
+      character_actor.current_tile = tile
+      add_actor(character_actor)
+      @character_actors << character_actor
       get_stage.set_keyboard_focus(current_controlled_character)
       true
     else
@@ -50,7 +51,7 @@ class DungeonLevelActor < Group
   # Returns nothing.
   def switch_control_to_next_character!
     @controlled_character_index += 1
-    @controlled_character_index = 0 if @controlled_character_index > (@characters.size - 1)
+    @controlled_character_index = 0 if @controlled_character_index > (@character_actors.size - 1)
     get_stage.set_keyboard_focus(current_controlled_character)
 
     get_stage.get_camera.move_to!(
@@ -63,7 +64,7 @@ class DungeonLevelActor < Group
   #
   # Returns a DungeonLevelCharacter.
   def current_controlled_character
-    @characters[@controlled_character_index]
+    @character_actors[@controlled_character_index]
   end
 
   # Public: Updates the DungeonLevelActor.
@@ -71,7 +72,7 @@ class DungeonLevelActor < Group
   #
   # Returns nothing.
   def act(delta_time)
-    @level_map.tiles.each(&:apply_effects!)
+    dungeon_level.tiles.each(&:apply_effects!)
     super
   end
 
@@ -81,10 +82,13 @@ class DungeonLevelActor < Group
   # Returns noting.
   def draw(sprite_batch, alpha)
     sprite_batch.end
-    @level_map.renderer.set_view(get_stage.camera)
-    @level_map.renderer.render
+
+    tiled_map_renderer.set_view(get_stage.camera)
+    tiled_map_renderer.render
+
     sprite_batch.begin
-    draw_characters(sprite_batch, alpha)
+
+    draw_character_actors(sprite_batch, alpha)
   end
 
 
@@ -93,14 +97,14 @@ class DungeonLevelActor < Group
   # Internal: Renders the Characters of the Level.
   #
   # Returns nothing.
-  def draw_characters(sprite_batch, alpha)
-    characters_by_drawing_order.each {|character| character.draw(sprite_batch, alpha) }
+  def draw_character_actors(sprite_batch, alpha)
+    characters_by_drawing_order.each {|character_actor| character_actor.draw(sprite_batch, alpha) }
   end
 
   # Internal: Get the Characters in this Level, ordered by descending y_position.
   #
   # Returns an Array of Characaters.
   def characters_by_drawing_order
-    @characters.sort_by {|character| character.y_position}.reverse
+    @character_actors.sort_by {|character_actor| character_actor.y_position}.reverse
   end
 end

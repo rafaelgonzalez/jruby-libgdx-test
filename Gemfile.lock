@@ -16,6 +16,8 @@ GEM
       term-ansicolor
       thor
     diff-lcs (1.2.4)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
     ffi (1.9.0-java)
     hoe (3.7.1)
       rake (>= 0.8, < 11.0)
@@ -74,6 +76,7 @@ DEPENDENCIES
   active_support
   cane
   coveralls
+  factory_girl (~> 4.0)
   pry
   rake
   rawr

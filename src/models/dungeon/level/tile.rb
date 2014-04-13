@@ -49,7 +49,7 @@ class Dungeon::Level
         destination_tile_x += Direction.screen_direction(direction)
       end
 
-      dungeon_level.level_map.tile(destination_tile_x, destination_tile_y)
+      dungeon_level.tile(destination_tile_x, destination_tile_y)
     end
 
     def character_x_position
