@@ -2,7 +2,7 @@ class Character
   extend Forwardable
 
   attr_accessor :actor, :current_direction, :current_tile, :destination_tile, :health
-  attr_reader :armor
+  attr_reader :armor, :name
 
   def_delegators :@current_tile, :dungeon_level, :x_position, :y_position
 
@@ -10,7 +10,9 @@ class Character
   BASE_ARMOR = 0
   DEFAULT_DIRECTION = Direction::RIGHT
 
-  def initialize
+  def initialize(name)
+    @name = name
+
     @actor = nil
 
     @health = MAX_HEALTH

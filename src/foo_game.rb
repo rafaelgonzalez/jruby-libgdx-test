@@ -13,9 +13,9 @@ class FooGame < Game
     @dungeon_crawl_stage.add_actor(dungeon_level_actor)
 
     # Instantiate dungeon level characters and spawn them in the level
-    dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(Character.new), 9, 1)
-    dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(Character.new), 1, 1)
-    dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(Character.new), 2, 7)
+    dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(Character.new('Geralt')), 9, 1)
+    dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(Character.new('Syrio')), 1, 1)
+    dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(Character.new('Snake')), 2, 7)
 
     # Try input on camera first, then on Stage
     input_multiplexer = InputMultiplexer.new
