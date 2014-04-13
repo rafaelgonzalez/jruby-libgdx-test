@@ -20,15 +20,24 @@ module Skills
     private
 
     def attack_character
-      puts("#{character.name} attacks with his bare fists!")
+      puts(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
 
       if destination_tile.character
         total_damage = (BASE_DAMAGE - destination_tile.character.armor)
         destination_tile.character.health -= total_damage unless total_damage < 0
-        puts "#{character.name} hits #{destination_tile.character.name} and deals #{total_damage} damage!"
-        puts "#{destination_tile.character.name} has #{destination_tile.character.health} HP left."
+
+        puts(I18n.t('skills.unarmed_attack.hits_with_damage',
+                    attacker_name: character.name,
+                    attacked_name: destination_tile.character.name,
+                    damage: total_damage))
+
+
+        puts(I18n.t('skills.unarmed_attack.has_hp_left',
+                    attacked_name: destination_tile.character.name,
+                    health: destination_tile.character.health))
       else
-        puts("#{character.name} hits nothing.")
+        puts(I18n.t('skills.unarmed_attack.hits_nothing',
+                    attacker_name: character.name))
       end
     end
 
