@@ -44,6 +44,8 @@ module Skills::Move
               Actions::FinishMoveToTile.new
             )
           )
+        else
+          character.current_direction = direction
         end
       end
     end
