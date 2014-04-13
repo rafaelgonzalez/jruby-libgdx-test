@@ -42,10 +42,16 @@ class DungeonLevelCharacterActor < Actor
   # Returns nothing.
   def act(delta_time)
     @state_time += delta_time
-    super
 
-    @current_action = CharacterAction::DEATH unless alive?
+    if !alive? and (@current_action != CharacterAction::DEATH )
+      DeathCharacterAnimation.new(self).execute
+      # @current_action = CharacterAction::DEATH
+      # do animation death
+    end
+
+    super
   end
+
 
   def current_tile=(new_tile)
     character.current_tile = new_tile

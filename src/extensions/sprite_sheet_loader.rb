@@ -4,8 +4,10 @@ class SpriteSheetLoader
     @texture_region = TextureRegion.split(@texture, sprite_width, sprite_height)
   end
 
-  def animation(y_position, x_range, animation_speed)
+  def animation(y_position, x_range, animation_speed, play_mode)
     animation_frames = @texture_region[y_position][x_range]
-    Animation.new(animation_speed, animation_frames)
+    animation = Animation.new(animation_speed, animation_frames)
+    animation.set_play_mode(play_mode)
+    animation
   end
 end
