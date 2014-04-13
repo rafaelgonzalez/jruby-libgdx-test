@@ -30,7 +30,7 @@ class FooGame < Game
   def render
     Gdx.app.exit if is_key_pressed?(Keys::ESCAPE)
 
-    Gdx.gl.glClear(GL10::GL_COLOR_BUFFER_BIT | GL10::GL_DEPTH_BUFFER_BIT)
+    Gdx.gl.glClear(GL20::GL_COLOR_BUFFER_BIT | GL20::GL_DEPTH_BUFFER_BIT)
 
     @dungeon_crawl_stage.act(Gdx.graphics.get_delta_time)
     @dungeon_crawl_stage.draw
@@ -39,7 +39,7 @@ class FooGame < Game
   end
 
   def resize(width, height)
-    @dungeon_crawl_stage.set_viewport(width, height, true)
+    @dungeon_crawl_stage.viewport.update(width, height, true)
   end
 
   def pause

@@ -1,8 +1,8 @@
 require 'java'
-require 'lib/java/libgdx-nightly-20131204/gdx-backend-lwjgl-natives.jar'
-require 'lib/java/libgdx-nightly-20131204/gdx-backend-lwjgl.jar'
-require 'lib/java/libgdx-nightly-20131204/gdx-natives.jar'
-require 'lib/java/libgdx-nightly-20131204/gdx.jar'
+require 'lib/java/libgdx-nightly-20140413/gdx-backend-lwjgl-natives.jar'
+require 'lib/java/libgdx-nightly-20140413/gdx-backend-lwjgl.jar'
+require 'lib/java/libgdx-nightly-20140413/gdx-natives.jar'
+require 'lib/java/libgdx-nightly-20140413/gdx.jar'
 
 java_import com.badlogic.gdx.ApplicationListener
 java_import com.badlogic.gdx.Game
@@ -10,7 +10,7 @@ java_import com.badlogic.gdx.Gdx
 java_import com.badlogic.gdx.Input
 java_import com.badlogic.gdx.InputAdapter
 java_import com.badlogic.gdx.InputMultiplexer
-java_import com.badlogic.gdx.graphics.GL10
+java_import com.badlogic.gdx.graphics.GL20
 java_import com.badlogic.gdx.graphics.Texture
 java_import com.badlogic.gdx.graphics.OrthographicCamera
 java_import com.badlogic.gdx.graphics.g2d.Animation
