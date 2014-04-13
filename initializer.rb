@@ -10,7 +10,7 @@ java_import com.badlogic.gdx.Gdx
 java_import com.badlogic.gdx.Input
 java_import com.badlogic.gdx.InputAdapter
 java_import com.badlogic.gdx.InputMultiplexer
-java_import com.badlogic.gdx.graphics.GL10
+java_import com.badlogic.gdx.graphics.GL20
 java_import com.badlogic.gdx.graphics.Texture
 java_import com.badlogic.gdx.graphics.OrthographicCamera
 java_import com.badlogic.gdx.graphics.g2d.Animation
