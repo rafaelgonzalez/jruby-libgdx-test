@@ -12,10 +12,9 @@ class DungeonLevelCharacterActor < Actor
   attr_accessor :current_action
   attr_reader :input_translator, :character
 
-  def_delegators :@character, :current_tile, :destination_tile,
-                              :x_position, :y_position,
-                              :current_direction,
-                              :armor, :health, :use_skill!
+  def_delegators :@character, :current_tile, :destination_tile, :x_position, :y_position,
+                              :current_direction, :armor, :health, :use_skill!, :alive?,
+                              :playable?
 
   def initialize(character)
     super()

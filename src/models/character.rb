@@ -56,6 +56,10 @@ class Character
     health > 0
   end
 
+  def playable?
+    alive?
+  end
+
   # Public: Use a Skill corresponding to the given name.
   #
   # skill_name - Name of the Skill
