@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 source 'http://gems.neurogami.com'
 
-gem 'active_support'
+gem 'activesupport', '~> 4.1.0'
 
 group :development do
   gem 'rawr'
