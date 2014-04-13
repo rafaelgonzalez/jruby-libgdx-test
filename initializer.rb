@@ -51,6 +51,7 @@ require 'active_support/inflector'
 
 require 'foo_game'
 
+require 'character'
 require 'dungeon/level'
 require 'dungeon/level/tile'
 

@@ -7,23 +7,23 @@ require 'models/skills'
 class DungeonLevelCharacterActor < Actor
   include DungeonLevelCharacterActorRenderer
 
-  attr_accessor :current_action, :current_direction, :current_tile, :destination_tile, :health
-  attr_reader :input_translator, :armor
+  extend Forwardable
 
-  MAX_HEALTH = 20
-  BASE_ARMOR = 0
+  attr_accessor :current_action
+  attr_reader :input_translator, :character
 
-  def initialize
-    super
+  def_delegators :@character, :current_tile, :destination_tile,
+                              :x_position, :y_position,
+                              :current_direction,
+                              :armor, :use_skill!
 
-    @health = MAX_HEALTH
-    @armor = BASE_ARMOR
+  def initialize(character)
+    super()
+
+    @character = character
+    character.actor = self
 
     @current_action = CharacterAction::STAND
-    @current_direction = Direction::RIGHT
-
-    @current_tile = nil
-    @destination_tile = nil
 
     @state_time = 0.0
 
@@ -46,29 +46,8 @@ class DungeonLevelCharacterActor < Actor
     super
   end
 
-  # Public: Use a Skill corresponding to the given name.
-  #
-  # skill_name - Name of the Skill
-  #
-  # Returns nothing.
-  def use_skill!(skill_name)
-    skill_class = "Skills::#{skill_name.to_s.camelize}".constantize
-    skill_class.new(self, current_tile).execute!
-  end
-
-  def x_position
-    current_tile.x_position
-  end
-
-  def y_position
-    current_tile.y_position
-  end
-
-  def current_tile=(current_tile)
-    @current_tile.character = nil unless @current_tile.nil?
-    current_tile.character = self
-
-    @current_tile = @destination_tile = current_tile
+  def current_tile=(new_tile)
+    character.current_tile = new_tile
 
     set_x(current_tile.character_x_position)
     set_y(current_tile.character_y_position)
@@ -78,16 +57,6 @@ class DungeonLevelCharacterActor < Actor
   #
   # Returns a Boolean.
   def is_moving?
-    current_action == CharacterAction::WALK
-  end
-
-  private
-
-  # Internal: Returns the DungeonLevelActor the Character is actually in,
-  # accessed through the Character's current Tile.
-  #
-  # Returns a DungeonLevelActor.
-  def dungeon_level
-    current_tile.dungeon_level
+    @current_action == CharacterAction::WALK
   end
 end
