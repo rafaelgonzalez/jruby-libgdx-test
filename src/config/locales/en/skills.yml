@@ -2,6 +2,5 @@ en:
   skills:
     unarmed_attack:
       attack_message: "%{attacker_name} attacks with his bare fists!"
-      hits_with_damage: "%{attacker_name} hits %{attacked_name} and deals %{damage} damage!"
-      has_hp_left: "%{attacked_name} has %{health} HP left."
       hits_nothing: "%{attacker_name} hits nothing."
+      hits: "%{attacker_name} hits %{attacked_name}!"

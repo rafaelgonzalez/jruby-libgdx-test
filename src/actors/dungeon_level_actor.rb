@@ -91,7 +91,6 @@ class DungeonLevelActor < Group
     draw_character_actors(sprite_batch, alpha)
   end
 
-
   private
 
   # Internal: Renders the Characters of the Level.

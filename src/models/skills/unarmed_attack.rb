@@ -23,43 +23,28 @@ module Skills
       puts(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
 
       if destination_tile.character
-        total_damage = (BASE_DAMAGE - destination_tile.character.armor)
-        destination_tile.character.health -= total_damage unless total_damage < 0
-
-        puts(I18n.t('skills.unarmed_attack.hits_with_damage',
+        puts(I18n.t('skills.unarmed_attack.hits',
                     attacker_name: character.name,
-                    attacked_name: destination_tile.character.name,
-                    damage: total_damage))
+                    attacked_name: destination_tile.character.name))
 
-
-        puts(I18n.t('skills.unarmed_attack.has_hp_left',
-                    attacked_name: destination_tile.character.name,
-                    health: destination_tile.character.health))
+        destination_tile.character.take_damage!(BASE_DAMAGE)
       else
-        puts(I18n.t('skills.unarmed_attack.hits_nothing',
-                    attacker_name: character.name))
+        puts(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
       end
     end
 
     def attack_character_actor
-
-      log_combat I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name)
+      log_combat(I18n.t('skills.unarmed_attack.attack_message',
+                        attacker_name: character.name))
 
       if destination_tile.character
-        total_damage = (BASE_DAMAGE - destination_tile.character.armor)
-        destination_tile.character.health -= total_damage unless total_damage < 0
-
-        log_combat I18n.t('skills.unarmed_attack.hits_with_damage',
+        log_combat(I18n.t('skills.unarmed_attack.hits',
                           attacker_name: character.name,
-                          attacked_name: destination_tile.character.name,
-                          damage: total_damage)
+                          attacked_name: destination_tile.character.name))
 
-        log_combat I18n.t('skills.unarmed_attack.has_hp_left',
-                          attacked_name: destination_tile.character.name,
-                          health: destination_tile.character.health)
+        destination_tile.character.take_damage!(BASE_DAMAGE)
       else
-        log_combat I18n.t('skills.unarmed_attack.hits_nothing',
-                          attacker_name: character.name)
+        log_combat(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
       end
 
       # start slash animation
