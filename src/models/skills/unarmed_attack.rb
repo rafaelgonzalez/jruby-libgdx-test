@@ -34,6 +34,8 @@ module Skills
     end
 
     def attack_character_actor
+      return false if character.actor.is_moving?
+
       log_combat(I18n.t('skills.unarmed_attack.attack_message',
                         attacker_name: character.name))
 
