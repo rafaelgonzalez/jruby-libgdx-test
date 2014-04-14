@@ -1,7 +1,10 @@
 module Skills
-  class UnarmedAttack
+  class UnarmedAttack < Base
     NAME = 'Unarmed attack'
     BASE_DAMAGE = 2
+
+    RESOURCE = :stamina
+    COST = 1
 
     attr_reader :character, :origin_tile, :direction, :destination_tile
 
@@ -13,14 +16,28 @@ module Skills
     end
 
     def execute!
-      return false unless destination_tile
+      return false unless usable?
       character.actor.nil? ? attack_character : attack_character_actor
+    end
+
+    def resource
+      RESOURCE
+    end
+
+    def cost
+      COST
+    end
+
+    def usable?
+      destination_tile and resource_available?
     end
 
     private
 
     def attack_character
       puts(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
+
+      spend!
 
       if destination_tile.character
         puts(I18n.t('skills.unarmed_attack.hits',
@@ -38,6 +55,8 @@ module Skills
 
       log_combat(I18n.t('skills.unarmed_attack.attack_message',
                         attacker_name: character.name))
+
+      spend!
 
       if destination_tile.character
         log_combat(I18n.t('skills.unarmed_attack.hits',
