@@ -98,7 +98,7 @@ class Character
   # Returns nothing.
   def use_skill!(skill_name)
     skill_class = "Skills::#{skill_name.to_s.camelize}".constantize
-    skill_class.new(self, @current_tile).execute!
+    skill_class.new(self).execute!
   end
 
   private

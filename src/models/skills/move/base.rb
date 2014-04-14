@@ -9,13 +9,13 @@ module Skills::Move
     RESOURCE = :stamina
     COST = 1
 
-    def initialize(character, origin_tile)
-      unless @direction
+    def initialize(character)
+      unless direction
         raise RuntimeError.new('Child class must set @direction instance variable.')
       end
 
       @character = character
-      @destination_tile = origin_tile.adjacent_tile(direction)
+      @destination_tile = character.current_tile.adjacent_tile(direction)
     end
 
     # Public: Handles the character's movement sequence to it's destination Tile.

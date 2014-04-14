@@ -6,13 +6,12 @@ module Skills
     RESOURCE = :stamina
     COST = 1
 
-    attr_reader :character, :origin_tile, :direction, :destination_tile
+    attr_reader :character, :direction, :destination_tile
 
-    def initialize(character, origin_tile)
+    def initialize(character)
       @character = character
-      @origin_tile = origin_tile
       @direction = character.current_direction
-      @destination_tile = origin_tile.adjacent_tile(direction)
+      @destination_tile = character.current_tile.adjacent_tile(direction)
     end
 
     def execute!
