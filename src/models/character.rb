@@ -85,8 +85,10 @@ class Character
   end
 
   def reset_for_new_turn!
-    @stamina = @maximum_stamina
-    @mana = @maximum_mana
+    if alive?
+      @stamina = @maximum_stamina
+      @mana = @maximum_mana
+    end
   end
 
   # Public: Use a Skill corresponding to the given name.

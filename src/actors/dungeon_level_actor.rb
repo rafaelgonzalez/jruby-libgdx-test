@@ -60,6 +60,11 @@ class DungeonLevelActor < Group
     )
   end
 
+  def new_turn!
+    @character_actors.map(&:reset_for_new_turn!)
+    log_message("NEW TURN !")
+  end
+
   # Public: Get the current character that responds to input.
   #
   # Returns a DungeonLevelCharacter.
@@ -109,5 +114,9 @@ class DungeonLevelActor < Group
   # Returns an Array of Characaters.
   def characters_by_drawing_order
     @character_actors.sort_by {|character_actor| character_actor.y_position}.reverse
+  end
+
+  def log_message(message)
+    get_stage.combat_logger.add_message(message)
   end
 end

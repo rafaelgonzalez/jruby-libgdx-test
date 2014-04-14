@@ -14,7 +14,7 @@ class DungeonLevelCharacterActor < Actor
 
   def_delegators :@character, :current_tile, :destination_tile, :x_position, :y_position,
                               :current_direction, :armor, :health, :use_skill!, :alive?,
-                              :playable?
+                              :playable?, :reset_for_new_turn!
 
   def initialize(character)
     super()
