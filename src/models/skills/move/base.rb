@@ -34,24 +34,30 @@ module Skills
         COST
       end
 
-      def usable?
-        resource_available? and
-        !destination_tile.nil? and
-        destination_tile.walkable?
+      def can_move_to_destination?
+        !destination_tile.nil? and destination_tile.walkable?
       end
 
       private
 
       def move_character
-        if usable?
+        if resource_available? and can_move_to_destination?
           spend!
+
           character.current_tile = destination_tile
+          character.current_direction = direction
+
+        elsif resource_available? and !can_move_to_destination?
+          spend!
+
           character.current_direction = direction
         end
       end
 
       def move_character_actor
-        if !character.actor.is_moving? and usable?
+        return false if character.actor.is_moving?
+
+        if resource_available? and can_move_to_destination?
           spend!
 
           character.destination_tile = destination_tile
@@ -64,7 +70,10 @@ module Skills
               Actions::FinishMoveToTile.new
             )
           )
-        else
+
+        elsif resource_available? and !can_move_to_destination?
+          spend!
+
           character.current_direction = direction
         end
       end
