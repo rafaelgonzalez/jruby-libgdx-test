@@ -3,6 +3,9 @@ require 'dungeon_crawl_camera_input_processor'
 class DungeonCrawlCamera < OrthographicCamera
   LERP_ALPHA_SMOOTH = 0.3
 
+  MINIMUM_ZOOM_LIMIT = 0
+  MAXIMUM_ZOOM_LIMIT = 2
+
   attr_reader :input_processor
 
   def initialize
@@ -28,6 +31,15 @@ class DungeonCrawlCamera < OrthographicCamera
   def terminate_current_movement!
     @destination_vector = nil
     @destination_distance = nil
+  end
+
+  def change_zoom(amount)
+    unless exceeds_zoom_limits?(amount)
+      self.zoom += amount
+      return true
+    end
+
+    false
   end
 
   def update
@@ -65,5 +77,12 @@ class DungeonCrawlCamera < OrthographicCamera
     alpha = LERP_ALPHA_SMOOTH if alpha == 0.0
     position.lerp(@destination_vector, alpha * LERP_ALPHA_SMOOTH)
     terminate_current_movement! if alpha.round(2) == 1.0
+  end
+
+  def exceeds_zoom_limits?(amount)
+    total_amount = self.zoom + amount
+
+    return true if (total_amount <= MINIMUM_ZOOM_LIMIT) or (total_amount >= MAXIMUM_ZOOM_LIMIT)
+    false
   end
 end
