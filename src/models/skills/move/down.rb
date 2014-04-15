@@ -1,10 +1,12 @@
-module Skills::Move
-  class Down < Base
-    DIRECTION = Direction::DOWN
+module Skills
+  module Move
+    class Down < Base
+      DIRECTION = Direction::DOWN
 
-    def initialize(owner, origin_tile)
-      @direction = DIRECTION
-      super(owner, origin_tile)
+      def initialize(character)
+        @direction = DIRECTION
+        super(character)
+      end
     end
   end
 end

@@ -1,53 +1,58 @@
 module Skills
-  class UnarmedAttack
+  class UnarmedAttack < Base
     NAME = 'Unarmed attack'
     BASE_DAMAGE = 2
 
-    attr_reader :character, :origin_tile, :direction, :destination_tile
+    RESOURCE = :stamina
+    COST = 1
 
-    def initialize(character, origin_tile)
+    attr_reader :character, :direction, :destination_tile
+
+    def initialize(character)
       @character = character
-      @origin_tile = origin_tile
       @direction = character.current_direction
-      @destination_tile = origin_tile.adjacent_tile(direction)
+      @destination_tile = character.current_tile.adjacent_tile(direction)
     end
 
     def execute!
-      return false unless destination_tile
+      return false unless usable?
       character.actor.nil? ? attack_character : attack_character_actor
+    end
+
+    def resource
+      RESOURCE
+    end
+
+    def cost
+      COST
+    end
+
+    def usable?
+      destination_tile and resource_available?
     end
 
     private
 
     def attack_character
-      puts(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
+      log_message(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
+
+      spend!
 
       if destination_tile.character
-        puts(I18n.t('skills.unarmed_attack.hits',
+        log_message(I18n.t('skills.unarmed_attack.hits',
                     attacker_name: character.name,
                     attacked_name: destination_tile.character.name))
 
         destination_tile.character.take_damage!(BASE_DAMAGE)
       else
-        puts(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
+        log_message(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
       end
     end
 
     def attack_character_actor
       return false if character.actor.is_moving?
 
-      log_combat(I18n.t('skills.unarmed_attack.attack_message',
-                        attacker_name: character.name))
-
-      if destination_tile.character
-        log_combat(I18n.t('skills.unarmed_attack.hits',
-                          attacker_name: character.name,
-                          attacked_name: destination_tile.character.name))
-
-        destination_tile.character.take_damage!(BASE_DAMAGE)
-      else
-        log_combat(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
-      end
+      attack_character
 
       # start slash animation
       # TODO
@@ -62,12 +67,6 @@ module Skills
 
       # finish slash animation
       # TODO
-    end
-
-    private
-
-    def log_combat(text)
-      character.actor.get_stage.combat_logger.add_message(text)
     end
   end
 end
