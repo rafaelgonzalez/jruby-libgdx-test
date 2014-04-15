@@ -34,38 +34,25 @@ module Skills
     private
 
     def attack_character
-      puts(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
+      log_message(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
 
       spend!
 
       if destination_tile.character
-        puts(I18n.t('skills.unarmed_attack.hits',
+        log_message(I18n.t('skills.unarmed_attack.hits',
                     attacker_name: character.name,
                     attacked_name: destination_tile.character.name))
 
         destination_tile.character.take_damage!(BASE_DAMAGE)
       else
-        puts(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
+        log_message(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
       end
     end
 
     def attack_character_actor
       return false if character.actor.is_moving?
 
-      log_combat(I18n.t('skills.unarmed_attack.attack_message',
-                        attacker_name: character.name))
-
-      spend!
-
-      if destination_tile.character
-        log_combat(I18n.t('skills.unarmed_attack.hits',
-                          attacker_name: character.name,
-                          attacked_name: destination_tile.character.name))
-
-        destination_tile.character.take_damage!(BASE_DAMAGE)
-      else
-        log_combat(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
-      end
+      attack_character
 
       # start slash animation
       # TODO
@@ -80,12 +67,6 @@ module Skills
 
       # finish slash animation
       # TODO
-    end
-
-    private
-
-    def log_combat(text)
-      character.actor.get_stage.combat_logger.add_message(text)
     end
   end
 end

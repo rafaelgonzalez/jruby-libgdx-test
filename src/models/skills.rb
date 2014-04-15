@@ -19,6 +19,16 @@ module Skills
     def usable?
       raise NotImplementedError.new("Skills::Base#usable? must be implemented.")
     end
+
+    private
+
+    def log_message(message)
+      if character.actor
+        character.actor.get_stage.combat_logger.add_message(message)
+      else
+        puts message
+      end
+    end
   end
 end
 
