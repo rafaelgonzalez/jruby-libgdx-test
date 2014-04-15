@@ -49,9 +49,9 @@ class DungeonLevelActor < Group
   # Public: Gives keyboard focus to the next Character in the list, and moves Camera to the Character.
   #
   # Returns nothing.
-  def switch_control_to_next_character!
+  def switch_control_to_next_playable_character!
     @controlled_character_index += 1
-    @controlled_character_index = 0 if @controlled_character_index > (@character_actors.size - 1)
+    @controlled_character_index = 0 if @controlled_character_index > (playable_characters.size - 1)
     get_stage.set_keyboard_focus(current_controlled_character)
 
     get_stage.get_camera.move_to!(
@@ -64,7 +64,7 @@ class DungeonLevelActor < Group
   #
   # Returns a DungeonLevelCharacter.
   def current_controlled_character
-    @character_actors[@controlled_character_index]
+    playable_characters[@controlled_character_index]
   end
 
   # Public: Updates the DungeonLevelActor.
@@ -91,8 +91,11 @@ class DungeonLevelActor < Group
     draw_character_actors(sprite_batch, alpha)
   end
 
-
   private
+
+  def playable_characters
+    @character_actors.select(&:playable?)
+  end
 
   # Internal: Renders the Characters of the Level.
   #

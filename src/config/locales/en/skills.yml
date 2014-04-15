@@ -1,0 +1,6 @@
+en:
+  skills:
+    unarmed_attack:
+      attack_message: "%{attacker_name} attacks with his bare fists!"
+      hits_nothing: "%{attacker_name} hits nothing."
+      hits: "%{attacker_name} hits %{attacked_name}!"

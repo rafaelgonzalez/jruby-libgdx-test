@@ -12,10 +12,9 @@ class DungeonLevelCharacterActor < Actor
   attr_accessor :current_action
   attr_reader :input_translator, :character
 
-  def_delegators :@character, :current_tile, :destination_tile,
-                              :x_position, :y_position,
-                              :current_direction,
-                              :armor, :use_skill!
+  def_delegators :@character, :current_tile, :destination_tile, :x_position, :y_position,
+                              :current_direction, :armor, :health, :use_skill!, :alive?,
+                              :playable?
 
   def initialize(character)
     super()
@@ -44,6 +43,8 @@ class DungeonLevelCharacterActor < Actor
   def act(delta_time)
     @state_time += delta_time
     super
+
+    @current_action = CharacterAction::DEATH unless alive?
   end
 
   def current_tile=(new_tile)
@@ -58,5 +59,9 @@ class DungeonLevelCharacterActor < Actor
   # Returns a Boolean.
   def is_moving?
     @current_action == CharacterAction::WALK
+  end
+
+  def log_message(message)
+    get_stage.combat_logger.add_message(message)
   end
 end
