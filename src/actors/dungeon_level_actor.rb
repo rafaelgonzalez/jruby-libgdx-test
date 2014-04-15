@@ -62,7 +62,7 @@ class DungeonLevelActor < Group
 
   def new_turn!
     @character_actors.map(&:reset_for_new_turn!)
-    log_message("NEW TURN !")
+    log_message(I18n.t('actors.dungeon_level_actor.new_turn'))
   end
 
   # Public: Get the current character that responds to input.
