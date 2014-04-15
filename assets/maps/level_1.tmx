@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="10" height="10" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="grass" tilewidth="32" tileheight="32">
   <image source="../tiles/grass.png" width="96" height="192"/>
  </tileset>
- <layer name="grass_layer" width="10" height="10">
+ <tileset firstgid="19" name="dirt" tilewidth="32" tileheight="32">
+  <image source="../tiles/dirt.png" width="96" height="192"/>
+ </tileset>
+ <layer name="dirt_layer" width="30" height="30">
   <data encoding="base64" compression="zlib">
-   eJyNkDEOACAIA9lZWv//WB00uTQMDhclpRTtqvJBl3Xo4fS9k8nzwzTL2MPoUWQlLzvrzKCngSJ/6k8PdxV8qfMN/B8HgrYBBNMGUQ==
+   eJztkEEKgDAMBPsJERSxmPz/jVbIYYnRSNGL7MBACUmzbSmEEEIIId8yveDcsVeaS1PtLHZWq6Ny0T92ZJVAhT2486hvLoOfw9zq6mLz0ZtQnL3rk3LOiVmje2rikOyMcvo/iXoz1gfZeiTkT+zaBBNb
+  </data>
+ </layer>
+ <layer name="grass_layer" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzllttqAzEMRA2l0LI0WP7/j20CMQwnR0kI6VMXxG4cWxqNdTvGGHWWeZV1lkPe8/rea7Y3dXT6Kt4Lcg/DjDP7fMV62j9Eb4XuR5J76fchehdsky/i2TYSf8V67qNf+/eC/rQ58Z34KLzfEv2JhdgYD7SV92V3XdCxz9S45Y9vO0veU19iKKztvYylJXryzjpeEwPvmvyRp4zhErvEWdBH38yvtJHrzDH6bjFdkIn/LDcZm8RsPmccJXfMwWf2T7HbxRPjn/uZO+Td4pN1zGKCsZlrxGu8W4zSLjk27lmvWOfZD7o8ZUxarjL36KPV5C6XrJYb/6zLvMvcR/xW85g3HUb6wzrEPGGNWOOWJ8t91p3CWYvNgl6r14Vz5IQ97PJ9eoN8BAbGURff73h+XsD6356vB/L9R3az93H2uXx/PoHtFeFsYTnSzSPc281TVpO73tzVPpsV17jNo65P3Jvj0k7isHrDeajTZTWU/Zm9kTMJ67RxTU5t5srexHPWn2mTfpNT9hDzl2eMB/M58bKPmU+/yOgvwQ==
   </data>
  </layer>
 </map>
