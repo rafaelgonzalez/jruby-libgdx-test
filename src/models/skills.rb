@@ -9,15 +9,15 @@ module Skills
     end
 
     def resource
-      raise NotImplementedError.new("Skills::Base#resource must be implemented.")
+      raise "Skills::Base#resource must be implemented."
     end
 
     def cost
-      raise NotImplementedError.new("Skills::Base#cost must be implemented.")
+      raise "Skills::Base#cost must be implemented."
     end
 
     def usable?
-      raise NotImplementedError.new("Skills::Base#usable? must be implemented.")
+      raise "Skills::Base#usable? must be implemented."
     end
 
     private
