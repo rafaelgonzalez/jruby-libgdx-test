@@ -16,10 +16,6 @@ module Skills
       raise "Skills::Base#cost must be implemented."
     end
 
-    def usable?
-      raise "Skills::Base#usable? must be implemented."
-    end
-
     private
 
     def log_message(message)
