@@ -1,12 +1,12 @@
-require 'dungeon_crawl_stage'
+require 'dungeon_crawl_map_stage'
 
 class YetAnotherDungeonCrawler < Game
   include Input
 
-  attr_reader :stage
+  attr_reader :map_stage
 
   def create
-    @stage = DungeonCrawlStage.new
+    @map_stage = DungeonCrawlMapStage.new
 
     @font = BitmapFont.new
     @screen_text = SpriteBatch.new
@@ -17,14 +17,14 @@ class YetAnotherDungeonCrawler < Game
 
     Gdx.gl.glClear(GL20::GL_COLOR_BUFFER_BIT | GL20::GL_DEPTH_BUFFER_BIT)
 
-    stage.act(Gdx.graphics.get_delta_time)
-    stage.draw
+    map_stage.act(Gdx.graphics.get_delta_time)
+    map_stage.draw
 
     render_fps
   end
 
   def resize(width, height)
-    stage.viewport.update(width, height, true)
+    map_stage.viewport.update(width, height, true)
   end
 
   def pause
@@ -34,7 +34,7 @@ class YetAnotherDungeonCrawler < Game
   end
 
   def dispose
-    stage.dispose
+    map_stage.dispose
   end
 
 

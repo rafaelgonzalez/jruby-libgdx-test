@@ -3,7 +3,7 @@ require 'dungeon_level_character_actor'
 require 'dungeon_crawl_camera'
 require 'combat_logger'
 
-class DungeonCrawlStage < Stage
+class DungeonCrawlMapStage < Stage
 
   attr_reader :combat_logger
 
