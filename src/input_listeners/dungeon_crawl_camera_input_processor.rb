@@ -42,12 +42,16 @@ class DungeonCrawlCameraInputProcessor < InputAdapter
     false
   end
 
+  def scrolled(amount)
+    camera.change_zoom(amount / 10.0)
+  end
+
   def touchDragged(screen_x, screen_y, pointer)
     if @button == DRAG_BUTTON
       camera.terminate_current_movement!
 
-      drag_x_translation = @drag_previous_x.nil? ? 0 : (@drag_previous_x - screen_x)
-      drag_y_translation = @drag_previous_y.nil? ? 0 : -(@drag_previous_y - screen_y)
+      drag_x_translation = @drag_previous_x.nil? ? 0 : ((@drag_previous_x - screen_x) * camera.zoom)
+      drag_y_translation = @drag_previous_y.nil? ? 0 : (-(@drag_previous_y - screen_y) * camera.zoom)
 
       camera.translate(drag_x_translation, drag_y_translation)
 
