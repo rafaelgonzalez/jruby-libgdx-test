@@ -7,10 +7,7 @@ module Skills
           actor.current_tile = actor.destination_tile
           actor.current_action = CharacterAction::STAND
 
-          # If movement input is detected, keep the actor moving.
-          if direction = actor.input_translator.movement_direction
-            actor.walk_to_next_tile!(direction)
-          end
+          direction = actor.input_translator.movement_direction
         end
       end
     end
