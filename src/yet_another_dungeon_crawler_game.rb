@@ -3,8 +3,7 @@ require 'dungeon_level_actor'
 require 'dungeon_level_character_actor'
 require 'combat_logger'
 
-
-class FooGame < Game
+class YetAnotherDungeonCrawler < Game
   include Input
 
   attr_reader :stage

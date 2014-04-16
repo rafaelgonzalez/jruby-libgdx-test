@@ -9,7 +9,7 @@ end
 
 require 'forwardable'
 
-require 'foo_game'
+require 'yet_another_dungeon_crawler_game'
 
 require 'character'
 require 'dungeon/level'
