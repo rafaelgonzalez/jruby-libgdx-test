@@ -1,0 +1,2 @@
+class DungeonCrawlHudStage < Stage
+end
