@@ -1,4 +1,7 @@
+require 'dungeon_level_actor'
+require 'dungeon_level_character_actor'
 require 'dungeon_crawl_camera'
+require 'combat_logger'
 
 class DungeonCrawlStage < Stage
 
