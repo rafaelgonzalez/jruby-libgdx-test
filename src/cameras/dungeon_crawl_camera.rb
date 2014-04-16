@@ -3,8 +3,8 @@ require 'dungeon_crawl_camera_input_processor'
 class DungeonCrawlCamera < OrthographicCamera
   LERP_ALPHA_SMOOTH = 0.3
 
-  MINIMUM_ZOOM_LIMIT = 0
-  MAXIMUM_ZOOM_LIMIT = 2
+  MINIMUM_ZOOM_LIMIT = 0.5
+  MAXIMUM_ZOOM_LIMIT = 1.5
 
   attr_reader :input_processor
 
@@ -34,12 +34,15 @@ class DungeonCrawlCamera < OrthographicCamera
   end
 
   def change_zoom(amount)
-    unless exceeds_zoom_limits?(amount)
+    if (self.zoom + amount) > MAXIMUM_ZOOM_LIMIT
+      self.zoom = MAXIMUM_ZOOM_LIMIT
+    elsif (self.zoom + amount) < MINIMUM_ZOOM_LIMIT
+      self.zoom = MINIMUM_ZOOM_LIMIT
+    else
       self.zoom += amount
-      return true
     end
 
-    false
+    true
   end
 
   def update
