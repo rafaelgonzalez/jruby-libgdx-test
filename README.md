@@ -48,8 +48,26 @@ Or a Windows executable
 
 Builds can be found in the `build` directory.
 
-## License ##
+## COPYING ##
 
-This project uses the [libGDX](http://libgdx.badlogicgames.com/) Java library as well as [Liberated Pixel Cup](http://lpc.opengameart.org/) assets, both released under different licenses.
+In order to comply with the external materials used (see credits section below), this project is licensed under [GNU GPL 3.0](COPYING.txt).
 
-This project will try to comply with both as best as possible, but in the meantime there will not be a specific license mentioned here.
+## Credits ##
+
+Kudos to the following, without which this project would not exist.
+
+- [JRuby](http://jruby.org/) ([EPL/GPL/LGPL](https://github.com/jruby/jruby/blob/master/COPYING))
+
+  For providing the power of Java through the elegancy of Ruby.
+
+- [libGDX](http://libgdx.badlogicgames.com/) ([Apache 2 License](http://www.apache.org/licenses/LICENSE-2.0.html))
+
+  An awesome open-source Java gaming library.
+
+- [Liberated Pixel Cup](http://lpc.opengameart.org/) ([CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) / [GNU GPL 3.0](http://www.gnu.org/licenses/gpl-3.0.html))
+
+  Cool assets made available to everyone.
+
+  Also this great repository that compiles up assets neatly: [Universal LPC spritesheet](https://github.com/makrohn/Universal-LPC-spritesheet).
+
+- Peter Cooper and his ["Let’s Build a Simple Video Game with JRuby: A Tutorial" article](http://www.rubyinside.com/video-game-ruby-tutorial-5726.html) that sparked the initial flame.
