@@ -17,6 +17,6 @@ class DungeonCrawlHudStage < Stage
   def draw
     super
 
-    hud_interface.set_character_details(map_stage.get_keyboard_focus)
+    hud_interface.character_details.set_with_character(map_stage.get_keyboard_focus)
   end
 end
