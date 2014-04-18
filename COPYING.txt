@@ -632,7 +632,8 @@ state the exclusion of warranty; and each file should have at least
 the "copyright" line and a pointer to where the full notice is found.
 
     jruby-libgdx-test, a proof of concept game with the main objective of
-    having a fully functionnal and playable video game.
+    having a fully functionnal and playable video game, build in the ruby
+    language on top of JRuby and libGDX.
     Copyright (C) 2013-2014  Rafaël Gonzalez
 
     This program is free software: you can redistribute it and/or modify
