@@ -8,7 +8,7 @@ class YetAnotherDungeonCrawler < Game
 
   def create
     @map_stage = DungeonCrawlMapStage.new
-    @hud_stage = DungeonCrawlHudStage.new
+    @hud_stage = DungeonCrawlHudStage.new(map_stage)
 
     @font = BitmapFont.new
     @screen_text = SpriteBatch.new
