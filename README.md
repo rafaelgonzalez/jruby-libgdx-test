@@ -48,6 +48,10 @@ Or a Windows executable
 
 Builds can be found in the `build` directory.
 
+## COPYING ##
+
+In order to comply with the external materials used (see credits section below), this project is licensed under [GNU GPL 3.0](COPYING.txt).
+
 ## Credits ##
 
 Kudos to the following, without which this project would not exist.
