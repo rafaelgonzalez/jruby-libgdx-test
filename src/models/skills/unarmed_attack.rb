@@ -19,18 +19,10 @@ module Skills
     def execute!
       return false if !usable? or character.actor.is_moving?
 
-      log_message(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
-
       spend_resources!
 
       if destination_tile.character
-        log_message(I18n.t('skills.unarmed_attack.hits',
-                    attacker_name: character.name,
-                    attacked_name: destination_tile.character.name))
-
         destination_tile.character.take_damage!(BASE_DAMAGE)
-      else
-        log_message(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
       end
 
       # start slash animation

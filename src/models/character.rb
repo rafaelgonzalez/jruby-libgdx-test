@@ -51,19 +51,9 @@ class Character
   def take_damage!(damage)
     total_damage = damage - armor
 
-    if total_damage <= 0
-      log_message(I18n.t('models.character.take_damage.no_damage', character_name: name))
-    else
+    unless total_damage <= 0
       @health -= total_damage
       @health = 0 if @health < 0
-
-      log_message(I18n.t('models.character.take_damage.damage',
-                         character_name: name,
-                         damage: total_damage))
-
-      log_message(I18n.t('models.character.take_damage.hp_left',
-                         character_name: destination_tile.character.name,
-                         health: destination_tile.character.health))
     end
   end
 
@@ -82,7 +72,6 @@ class Character
   def spend_stamina!(amount)
     @stamina -= amount
     @stamina = 0 if @stamina < 0
-    log_message("#{name} has #{@stamina} stamina left.")
   end
 
   def spend_mana!(amount)
@@ -111,11 +100,5 @@ class Character
   def use_skill!(skill_name)
     skill_class = "Skills::#{skill_name.to_s.camelize}".constantize
     skill_class.new(self).execute!
-  end
-
-  private
-
-  def log_message(message)
-    actor.nil? ? puts(message) : actor.log_message(message)
   end
 end
