@@ -1,38 +1,42 @@
 require 'dungeon_crawl_interface'
 
-class DungeonCrawlHudStage < Stage
+class YetAnotherDungeonCrawler < Game
+  class DungeonCrawlScreen < ScreenAdapter
+    class HudStage < Stage
 
-  attr_accessor :focus_character
-  attr_reader :screen, :hud_interface
+      attr_accessor :focus_character
+      attr_reader :screen, :hud_interface
 
-  def initialize(screen)
-    super()
+      def initialize(screen)
+        super()
 
-    @screen = screen
-    @hud_interface = DungeonCrawlInterface.new
-    @focus_character = nil
+        @screen = screen
+        @hud_interface = DungeonCrawlInterface.new
+        @focus_character = nil
 
-    self.add_actor(hud_interface)
-  end
-
-  def draw
-    super
-
-    update_character_details
-  end
-
-  private
-
-  def update_character_details
-    if focus_character.nil? and hud_interface.character_details.table.is_visible
-      hud_interface.character_details.table.set_visible(false)
-
-    elsif !focus_character.nil?
-      unless hud_interface.character_details.table.is_visible
-        hud_interface.character_details.table.set_visible(true)
+        self.add_actor(hud_interface)
       end
 
-      hud_interface.character_details.set_with_character(focus_character)
+      def draw
+        super
+
+        update_character_details
+      end
+
+      private
+
+      def update_character_details
+        if focus_character.nil? and hud_interface.character_details.table.is_visible
+          hud_interface.character_details.table.set_visible(false)
+
+        elsif !focus_character.nil?
+          unless hud_interface.character_details.table.is_visible
+            hud_interface.character_details.table.set_visible(true)
+          end
+
+          hud_interface.character_details.set_with_character(focus_character)
+        end
+      end
     end
   end
 end
