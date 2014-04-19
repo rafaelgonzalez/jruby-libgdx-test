@@ -47,7 +47,8 @@ module Skills
           character.current_tile = destination_tile
           character.current_direction = direction
 
-        elsif resource_available? and !can_move_to_destination?
+        elsif resource_available? and !can_move_to_destination? and character.current_direction != direction
+          puts "MOVED"
           spend!
 
           character.current_direction = direction
@@ -71,7 +72,7 @@ module Skills
             )
           )
 
-        elsif resource_available? and !can_move_to_destination?
+        elsif resource_available? and !can_move_to_destination?  and character.current_direction != direction
           spend!
 
           character.current_direction = direction
