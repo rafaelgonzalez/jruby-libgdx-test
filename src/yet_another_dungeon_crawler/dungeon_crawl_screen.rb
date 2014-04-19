@@ -1,6 +1,3 @@
-require 'dungeon_crawl_map_stage'
-require 'dungeon_crawl_hud_stage'
-
 class DungeonCrawlScreen < ScreenAdapter
 
   attr_reader :hud_stage, :map_stage
@@ -34,3 +31,6 @@ class DungeonCrawlScreen < ScreenAdapter
     hud_stage.dispose
   end
 end
+
+require_relative 'dungeon_crawl_screen/map_stage'
+require_relative 'dungeon_crawl_screen/hud_stage'
