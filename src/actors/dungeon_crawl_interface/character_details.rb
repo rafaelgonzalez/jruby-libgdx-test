@@ -3,7 +3,7 @@ require_relative 'character_details/progress_bar_with_label'
 class DungeonCrawlInterface
   class CharacterDetails
 
-    attr_reader :name, :health_bar, :mana_bar, :stamina_bar, :table
+    attr_reader :name, :health_bar, :mana_bar, :stamina_bar, :action_points_bar, :table
 
     def initialize(skin)
 
@@ -14,6 +14,7 @@ class DungeonCrawlInterface
       @health_bar = ProgressBarWithLabel.new(0, 0, 1, false, skin)
       @stamina_bar = ProgressBarWithLabel.new(0, 0, 1, false, skin)
       @mana_bar = ProgressBarWithLabel.new(0, 0, 1, false, skin)
+      @action_points_bar = ProgressBarWithLabel.new(0, 0, 1, false, skin)
 
       table.add(name).colspan(2)
 
@@ -31,6 +32,11 @@ class DungeonCrawlInterface
 
       table.add(mana_bar)
       table.add(mana_bar.label)
+
+      table.row
+
+      table.add(action_points_bar)
+      table.add(action_points_bar.label)
     end
 
     def set_with_character(character)
@@ -44,6 +50,9 @@ class DungeonCrawlInterface
 
       mana_bar.set_range(0, character.maximum_mana)
       mana_bar.set_value(character.mana)
+
+      action_points_bar.set_range(0, character.maximum_action_points)
+      action_points_bar.set_value(character.action_points)
     end
   end
 end
