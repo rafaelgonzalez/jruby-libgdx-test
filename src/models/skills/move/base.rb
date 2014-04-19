@@ -7,8 +7,9 @@ module Skills
 
       attr_reader :character, :direction, :destination_tile
 
-      RESOURCE = :stamina
-      COST = 1
+      COSTS = {
+        action_points: 1
+      }
 
       def initialize(character)
         unless direction
@@ -25,8 +26,8 @@ module Skills
       def execute!
         return false if character.actor.is_moving?
 
-        if resource_available? and can_move_to_destination?
-          spend!
+        if resources_available? and can_move_to_destination?
+          spend_resources!
 
           character.destination_tile = destination_tile
           character.current_direction = direction
@@ -39,19 +40,15 @@ module Skills
             )
           )
 
-        elsif resource_available? and !can_move_to_destination?  and character.current_direction != direction
-          spend!
+        elsif resources_available? and !can_move_to_destination?  and character.current_direction != direction
+          spend_resources!
 
           character.current_direction = direction
         end
       end
 
-      def resource
-        RESOURCE
-      end
-
-      def cost
-        COST
+      def costs
+        COSTS
       end
 
       def can_move_to_destination?

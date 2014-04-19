@@ -90,6 +90,11 @@ class Character
     @mana = 0 if @mana < 0
   end
 
+  def spend_action_points!(amount)
+    @action_points -= amount
+    @action_points = 0 if @action_points < 0
+  end
+
   def reset_for_new_turn!
     if alive?
       @stamina = @maximum_stamina
