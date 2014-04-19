@@ -2,7 +2,7 @@ class CombatLogger
 
   MESSAGES_LIMIT = 10
   LINE_HEIGHT = 20
-  ANCHOR_POSITION = 10
+  ANCHOR_POSITION = 50
   LEFT_OFFSET = 250
 
   attr_reader :messages
