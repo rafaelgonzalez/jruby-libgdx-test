@@ -40,12 +40,12 @@ class DungeonCrawlInterface < Table
 
     ### Layout setup
 
-    self.add(top_messages).colspan(3).top.expand
+    self.add(top_messages).colspan(2).top.expand
 
     self.row
 
     self.add(character_details.table).bottom.left.padLeft(10).padBottom(10).uniform
-    self.add(skill_bar).expandX.bottom.padBottom(10)
+    # self.add(skill_bar).expandX.bottom.padBottom(10)
     self.add(end_turn_button.button).bottom.right.padRight(10).padBottom(10).uniform
   end
 end
