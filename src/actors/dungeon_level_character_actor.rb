@@ -1,3 +1,4 @@
+require 'dungeon_level_character_actor_click_listener'
 require 'dungeon_level_character_input_listener'
 require 'dungeon_level_character_input_translator'
 require 'dungeon_level_character_actor_renderer'
@@ -16,7 +17,7 @@ class DungeonLevelCharacterActor < Actor
                               :current_direction, :armor, :health, :use_skill!, :alive?,
                               :playable?, :reset_for_new_turn!, :name, :maximum_stamina,
                               :maximum_mana, :stamina, :mana, :maximum_health,
-                              :maximum_action_points, :action_points
+                              :maximum_action_points, :action_points, :team
 
   def initialize(character)
     super()
@@ -36,6 +37,7 @@ class DungeonLevelCharacterActor < Actor
     @input_translator = DungeonLevelCharacterInputTranslator.new(self)
 
     add_listener(DungeonLevelCharacterInputListener.new(self))
+    add_listener(DungeonLevelCharacterActorClickListener.new(self))
   end
 
   # Public: Updates the DungeonLevelCharacterActor.

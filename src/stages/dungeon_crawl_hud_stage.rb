@@ -2,13 +2,15 @@ require 'dungeon_crawl_interface'
 
 class DungeonCrawlHudStage < Stage
 
-  attr_reader :map_stage, :hud_interface, :focus_character
+  attr_accessor :focus_character
+  attr_reader :screen, :hud_interface
 
-  def initialize(map_stage)
+  def initialize(screen)
     super()
 
-    @map_stage = map_stage
+    @screen = screen
     @hud_interface = DungeonCrawlInterface.new
+    @focus_character = nil
 
     self.add_actor(hud_interface)
   end
@@ -16,6 +18,21 @@ class DungeonCrawlHudStage < Stage
   def draw
     super
 
-    hud_interface.character_details.set_with_character(map_stage.get_keyboard_focus)
+    update_character_details
+  end
+
+  private
+
+  def update_character_details
+    if focus_character.nil? and hud_interface.character_details.table.is_visible
+      hud_interface.character_details.table.set_visible(false)
+
+    elsif !focus_character.nil?
+      unless hud_interface.character_details.table.is_visible
+        hud_interface.character_details.table.set_visible(true)
+      end
+
+      hud_interface.character_details.set_with_character(focus_character)
+    end
   end
 end

@@ -4,6 +4,7 @@ class DungeonLevelActor < Group
   TILE_WIDTH = 32
   TILE_HEIGHT = 32
 
+  attr_accessor :player_team
   attr_reader :dungeon_level, :tiled_map_renderer
 
   def initialize(dungeon_level)
@@ -53,6 +54,7 @@ class DungeonLevelActor < Group
     @controlled_character_index += 1
     @controlled_character_index = 0 if @controlled_character_index > (playable_characters.size - 1)
     get_stage.set_keyboard_focus(current_controlled_character)
+    get_stage.screen.hud_stage.focus_character = current_controlled_character
 
     get_stage.get_camera.move_to!(
       current_controlled_character.current_tile.center_x_position,
@@ -76,6 +78,7 @@ class DungeonLevelActor < Group
   #
   # Returns nothing.
   def act(delta_time)
+    get_stage.set_keyboard_focus(self) unless get_stage.get_keyboard_focus
     dungeon_level.tiles.each(&:apply_effects!)
     super
   end
@@ -98,7 +101,9 @@ class DungeonLevelActor < Group
   private
 
   def playable_characters
-    @character_actors.select(&:playable?)
+    @character_actors.select do |character_actor|
+      (character_actor.team == player_team) and character_actor.playable?
+    end
   end
 
   # Internal: Renders the Characters of the Level.
