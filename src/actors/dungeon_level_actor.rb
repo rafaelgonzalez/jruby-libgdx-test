@@ -77,6 +77,7 @@ class DungeonLevelActor < Group
   #
   # Returns nothing.
   def act(delta_time)
+    get_stage.set_keyboard_focus(self) unless get_stage.get_keyboard_focus
     dungeon_level.tiles.each(&:apply_effects!)
     super
   end

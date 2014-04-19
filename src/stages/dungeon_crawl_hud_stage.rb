@@ -16,6 +16,18 @@ class DungeonCrawlHudStage < Stage
   def draw
     super
 
-    hud_interface.character_details.set_with_character(map_stage.get_keyboard_focus)
+    set_character_details_from_keyboard_focus
+  end
+
+  def set_character_details_from_keyboard_focus
+    if map_stage.get_keyboard_focus.is_a?(DungeonLevelCharacterActor)
+      unless hud_interface.character_details.table.is_visible
+        hud_interface.character_details.table.set_visible(true)
+      end
+
+      hud_interface.character_details.set_with_character(map_stage.get_keyboard_focus)
+    else
+      hud_interface.character_details.table.set_visible(false)
+    end
   end
 end
