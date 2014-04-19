@@ -56,10 +56,12 @@ class Dungeon::Level
       (x_position * Dungeon::Level::TILE_WIDTH) - (Dungeon::Level::TILE_WIDTH / 2)
     end
 
+    # Refactor this
     def character_y_position
       (y_position * Dungeon::Level::TILE_HEIGHT) -
       (Dungeon::Level::TILE_HEIGHT / 2) +
-      DungeonLevelCharacterActorRenderer::CHARACTER_GROUND_OFFSET
+      25
+      # DungeonLevelCharacterActor::Renderer::CHARACTER_GROUND_OFFSET
     end
 
     def center_x_position

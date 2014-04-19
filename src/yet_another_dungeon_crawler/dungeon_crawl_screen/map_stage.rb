@@ -1,5 +1,3 @@
-require 'dungeon_level_actor'
-require 'dungeon_level_character_actor'
 require 'character_team'
 
 class YetAnotherDungeonCrawler < Game
@@ -65,4 +63,6 @@ class YetAnotherDungeonCrawler < Game
   end
 end
 
+require_relative 'map_stage/dungeon_level_actor'
+require_relative 'map_stage/dungeon_level_character_actor'
 require_relative 'map_stage/map_camera'
