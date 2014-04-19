@@ -16,7 +16,7 @@ class DungeonLevelCharacterActor < Actor
                               :current_direction, :armor, :health, :use_skill!, :alive?,
                               :playable?, :reset_for_new_turn!, :name, :maximum_stamina,
                               :maximum_mana, :stamina, :mana, :maximum_health,
-                              :maximum_action_points, :action_points
+                              :maximum_action_points, :action_points, :team
 
   def initialize(character)
     super()

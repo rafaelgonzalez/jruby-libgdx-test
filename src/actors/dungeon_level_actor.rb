@@ -4,6 +4,7 @@ class DungeonLevelActor < Group
   TILE_WIDTH = 32
   TILE_HEIGHT = 32
 
+  attr_accessor :player_team
   attr_reader :dungeon_level, :tiled_map_renderer
 
   def initialize(dungeon_level)
@@ -98,7 +99,9 @@ class DungeonLevelActor < Group
   private
 
   def playable_characters
-    @character_actors.select(&:playable?)
+    @character_actors.select do |character_actor|
+      (character_actor.team == player_team) and character_actor.playable?
+    end
   end
 
   # Internal: Renders the Characters of the Level.
