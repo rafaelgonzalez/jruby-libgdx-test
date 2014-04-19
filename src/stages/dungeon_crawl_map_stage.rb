@@ -1,11 +1,10 @@
 require 'dungeon_level_actor'
 require 'dungeon_level_character_actor'
 require 'dungeon_crawl_camera'
-require 'combat_logger'
 
 class DungeonCrawlMapStage < Stage
 
-  attr_reader :combat_logger, :dungeon_level_actor
+  attr_reader :dungeon_level_actor
 
   def initialize
     super
@@ -21,13 +20,5 @@ class DungeonCrawlMapStage < Stage
 
     # Add camera to viewport
     viewport.set_camera(DungeonCrawlCamera.new)
-
-    @combat_logger = CombatLogger.new
-  end
-
-  def draw
-    super
-
-    @combat_logger.draw
   end
 end
