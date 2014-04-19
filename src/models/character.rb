@@ -97,8 +97,9 @@ class Character
 
   def reset_for_new_turn!
     if alive?
-      @stamina = @maximum_stamina
-      @mana = @maximum_mana
+      @stamina += 1 if @stamina < @maximum_stamina
+      @mana += 1 if @mana < @maximum_mana
+      @action_points = @maximum_action_points
     end
   end
 
