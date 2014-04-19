@@ -6,8 +6,8 @@ class DungeonCrawlScreen < ScreenAdapter
   attr_reader :hud_stage, :map_stage
 
   def show
-    @map_stage = DungeonCrawlMapStage.new
-    @hud_stage = DungeonCrawlHudStage.new(map_stage)
+    @map_stage = DungeonCrawlMapStage.new(self)
+    @hud_stage = DungeonCrawlHudStage.new(self)
 
     input_multiplexer = InputMultiplexer.new
     input_multiplexer.add_processor(hud_stage)

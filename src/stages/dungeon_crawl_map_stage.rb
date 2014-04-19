@@ -5,10 +5,12 @@ require 'character_team'
 
 class DungeonCrawlMapStage < Stage
 
-  attr_reader :dungeon_level_actor
+  attr_reader :screen, :dungeon_level_actor
 
-  def initialize
-    super
+  def initialize(screen)
+    super()
+
+    @screen = screen
 
     viewport.set_camera(DungeonCrawlCamera.new)
 
