@@ -40,6 +40,8 @@ class DungeonCrawlMapStage < Stage
     vilains_team.add_character(vilain_character_2)
     vilains_team.add_character(vilain_character_3)
 
+    dungeon_level_actor.player_team = player_team
+
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(player_character_1), 14, 11)
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(player_character_2), 10, 9)
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(player_character_3), 7, 12)
@@ -47,7 +49,5 @@ class DungeonCrawlMapStage < Stage
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_1), 17, 11)
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_2), 20, 13)
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_3), 18, 14)
-
-    dungeon_level_actor.player_team = player_team
   end
 end

@@ -54,6 +54,7 @@ class DungeonLevelActor < Group
     @controlled_character_index += 1
     @controlled_character_index = 0 if @controlled_character_index > (playable_characters.size - 1)
     get_stage.set_keyboard_focus(current_controlled_character)
+    get_stage.screen.hud_stage.focus_character = current_controlled_character
 
     get_stage.get_camera.move_to!(
       current_controlled_character.current_tile.center_x_position,

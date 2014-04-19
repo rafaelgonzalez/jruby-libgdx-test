@@ -1,3 +1,4 @@
+require 'dungeon_level_character_actor_click_listener'
 require 'dungeon_level_character_input_listener'
 require 'dungeon_level_character_input_translator'
 require 'dungeon_level_character_actor_renderer'
@@ -36,6 +37,7 @@ class DungeonLevelCharacterActor < Actor
     @input_translator = DungeonLevelCharacterInputTranslator.new(self)
 
     add_listener(DungeonLevelCharacterInputListener.new(self))
+    add_listener(DungeonLevelCharacterActorClickListener.new(self))
   end
 
   # Public: Updates the DungeonLevelCharacterActor.
