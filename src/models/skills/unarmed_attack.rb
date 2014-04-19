@@ -15,25 +15,8 @@ module Skills
     end
 
     def execute!
-      return false unless usable?
-      character.actor.nil? ? attack_character : attack_character_actor
-    end
+      return false if !usable? or character.actor.is_moving?
 
-    def resource
-      RESOURCE
-    end
-
-    def cost
-      COST
-    end
-
-    def usable?
-      destination_tile and resource_available?
-    end
-
-    private
-
-    def attack_character
       log_message(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
 
       spend!
@@ -47,12 +30,6 @@ module Skills
       else
         log_message(I18n.t('skills.unarmed_attack.hits_nothing', attacker_name: character.name))
       end
-    end
-
-    def attack_character_actor
-      return false if character.actor.is_moving?
-
-      attack_character
 
       # start slash animation
       # TODO
@@ -67,6 +44,18 @@ module Skills
 
       # finish slash animation
       # TODO
+    end
+
+    def resource
+      RESOURCE
+    end
+
+    def cost
+      COST
+    end
+
+    def usable?
+      destination_tile and resource_available?
     end
   end
 end

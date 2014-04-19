@@ -23,39 +23,6 @@ module Skills
       #
       # Returns nothing.
       def execute!
-        character.actor.nil? ? move_character : move_character_actor
-      end
-
-      def resource
-        RESOURCE
-      end
-
-      def cost
-        COST
-      end
-
-      def can_move_to_destination?
-        !destination_tile.nil? and destination_tile.walkable?
-      end
-
-      private
-
-      def move_character
-        if resource_available? and can_move_to_destination?
-          spend!
-
-          character.current_tile = destination_tile
-          character.current_direction = direction
-
-        elsif resource_available? and !can_move_to_destination? and character.current_direction != direction
-          puts "MOVED"
-          spend!
-
-          character.current_direction = direction
-        end
-      end
-
-      def move_character_actor
         return false if character.actor.is_moving?
 
         if resource_available? and can_move_to_destination?
@@ -77,6 +44,18 @@ module Skills
 
           character.current_direction = direction
         end
+      end
+
+      def resource
+        RESOURCE
+      end
+
+      def cost
+        COST
+      end
+
+      def can_move_to_destination?
+        !destination_tile.nil? and destination_tile.walkable?
       end
     end
   end
