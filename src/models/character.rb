@@ -2,7 +2,7 @@ class Character
   extend Forwardable
 
   attr_accessor :actor, :current_direction, :current_tile, :destination_tile
-  attr_reader :armor, :health, :name, :maximum_stamina, :maximum_mana, :stamina, :mana
+  attr_reader :armor, :name, :maximum_health, :health, :maximum_stamina, :maximum_mana, :stamina, :mana
 
   def_delegators :@current_tile, :dungeon_level, :x_position, :y_position
 
@@ -25,6 +25,7 @@ class Character
     @maximum_mana = BASE_MANA
     @mana = BASE_MANA
 
+    @maximum_health = BASE_MAX_HEALTH
     @health = BASE_MAX_HEALTH
 
     @armor = BASE_ARMOR
