@@ -15,16 +15,6 @@ module Skills
     def costs
       raise "Skills::Base#costs must be implemented."
     end
-
-    private
-
-    def log_message(message)
-      if character.actor
-        character.actor.get_stage.combat_logger.add_message(message)
-      else
-        puts message
-      end
-    end
   end
 end
 
