@@ -9,7 +9,6 @@ class DungeonCrawlHudStage < Stage
 
     @map_stage = map_stage
     @hud_interface = DungeonCrawlInterface.new
-    @focus_character = nil
 
     self.add_actor(hud_interface)
   end
