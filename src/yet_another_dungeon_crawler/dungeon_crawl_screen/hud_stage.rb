@@ -1,5 +1,3 @@
-require 'dungeon_crawl_interface'
-
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class HudStage < Stage
@@ -11,7 +9,7 @@ class YetAnotherDungeonCrawler < Game
         super()
 
         @screen = screen
-        @hud_interface = DungeonCrawlInterface.new
+        @hud_interface = Hud.new
         @focus_character = nil
 
         self.add_actor(hud_interface)
@@ -40,3 +38,5 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
+
+require_relative 'hud_stage/hud'
