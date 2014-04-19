@@ -1,19 +1,19 @@
 module Skills
   class Base
-    def resource_available?
-      character.public_send("#{resource}") >= cost
+    def resources_available?
+      costs.all? do |resource, cost|
+        character.public_send("#{resource}") >= cost
+      end
     end
 
-    def spend!
-      character.public_send("spend_#{resource}!", cost)
+    def spend_resources!
+      costs.each do |resource, cost|
+        character.public_send("spend_#{resource}!", cost)
+      end
     end
 
-    def resource
-      raise "Skills::Base#resource must be implemented."
-    end
-
-    def cost
-      raise "Skills::Base#cost must be implemented."
+    def costs
+      raise "Skills::Base#costs must be implemented."
     end
 
     private

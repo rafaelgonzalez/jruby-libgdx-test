@@ -3,8 +3,10 @@ module Skills
     NAME = 'Unarmed attack'
     BASE_DAMAGE = 2
 
-    RESOURCE = :stamina
-    COST = 1
+    COSTS = {
+      action_points: 1,
+      stamina: 1
+    }
 
     attr_reader :character, :direction, :destination_tile
 
@@ -19,7 +21,7 @@ module Skills
 
       log_message(I18n.t('skills.unarmed_attack.attack_message', attacker_name: character.name))
 
-      spend!
+      spend_resources!
 
       if destination_tile.character
         log_message(I18n.t('skills.unarmed_attack.hits',
@@ -46,16 +48,12 @@ module Skills
       # TODO
     end
 
-    def resource
-      RESOURCE
-    end
-
-    def cost
-      COST
+    def costs
+      COSTS
     end
 
     def usable?
-      destination_tile and resource_available?
+      destination_tile and resources_available?
     end
   end
 end
