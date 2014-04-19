@@ -1,7 +1,0 @@
-en:
-  models:
-    character:
-      take_damage:
-        damage: "%{character_name} takes %{damage} damage."
-        hp_left: "%{character_name} has %{health} HP left."
-        no_damage: "%{character_name} takes no damage."
