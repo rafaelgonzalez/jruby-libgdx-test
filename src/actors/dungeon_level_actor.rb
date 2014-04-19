@@ -115,8 +115,4 @@ class DungeonLevelActor < Group
   def characters_by_drawing_order
     @character_actors.sort_by {|character_actor| character_actor.y_position}.reverse
   end
-
-  def log_message(message)
-    get_stage.combat_logger.add_message(message)
-  end
 end

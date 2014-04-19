@@ -62,8 +62,4 @@ class DungeonLevelCharacterActor < Actor
   def is_moving?
     @current_action == CharacterAction::WALK
   end
-
-  def log_message(message)
-    get_stage.combat_logger.add_message(message)
-  end
 end
