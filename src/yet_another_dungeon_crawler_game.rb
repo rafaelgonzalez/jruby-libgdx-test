@@ -20,18 +20,6 @@ class YetAnotherDungeonCrawler < Game
     render_fps
   end
 
-  def resize(width, height)
-  end
-
-  def pause
-  end
-
-  def resume
-  end
-
-  def dispose
-  end
-
   private
 
   def is_key_pressed?(key)

@@ -29,12 +29,6 @@ class DungeonCrawlScreen < ScreenAdapter
     hud_stage.viewport.update(width, height, true)
   end
 
-  def pause
-  end
-
-  def resume
-  end
-
   def dispose
     map_stage.dispose
     hud_stage.dispose
