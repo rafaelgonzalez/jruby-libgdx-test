@@ -1,7 +1,7 @@
 class Character
   extend Forwardable
 
-  attr_accessor :actor, :current_direction, :current_tile, :destination_tile
+  attr_accessor :actor, :current_direction, :current_tile, :destination_tile, :team
   attr_reader :armor, :name, :maximum_health, :health, :maximum_stamina, :stamina,
               :maximum_mana, :mana, :maximum_action_points, :action_points
 
