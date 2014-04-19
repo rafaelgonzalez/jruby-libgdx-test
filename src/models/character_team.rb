@@ -14,4 +14,8 @@ class CharacterTeam
       character.team = self
     end
   end
+
+  def defeated?
+    characters.none?(&:alive?)
+  end
 end

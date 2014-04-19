@@ -5,7 +5,7 @@ require 'character_team'
 
 class DungeonCrawlMapStage < Stage
 
-  attr_reader :screen, :dungeon_level_actor
+  attr_reader :screen, :dungeon_level_actor, :player_team, :vilains_team
 
   def initialize(screen)
     super()
@@ -29,8 +29,8 @@ class DungeonCrawlMapStage < Stage
     vilain_character_2 = Character.new('Baal')
     vilain_character_3 = Character.new('Mephisto')
 
-    player_team = CharacterTeam.new("Player's characters")
-    vilains_team = CharacterTeam.new('Vilains')
+    @player_team = CharacterTeam.new("Player's characters")
+    @vilains_team = CharacterTeam.new('Vilains')
 
     player_team.add_character(player_character_1)
     player_team.add_character(player_character_2)
@@ -49,5 +49,15 @@ class DungeonCrawlMapStage < Stage
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_1), 17, 11)
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_2), 20, 13)
     dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_3), 18, 14)
+  end
+
+  private
+
+  def victory?
+    vilains_team.defeated?
+  end
+
+  def defeat?
+    player_team.defeated?
   end
 end
