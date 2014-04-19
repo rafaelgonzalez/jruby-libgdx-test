@@ -1,6 +1,5 @@
 require 'dungeon_level_actor'
 require 'dungeon_level_character_actor'
-require 'dungeon_crawl_camera'
 require 'character_team'
 
 class YetAnotherDungeonCrawler < Game
@@ -14,7 +13,7 @@ class YetAnotherDungeonCrawler < Game
 
         @screen = screen
 
-        viewport.set_camera(DungeonCrawlCamera.new)
+        viewport.set_camera(MapCamera.new)
 
         @dungeon_level_actor = DungeonLevelActor.new(Dungeon::Level.new(:default_map))
         self.add_actor(dungeon_level_actor)
@@ -65,3 +64,5 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
+
+require_relative 'map_stage/map_camera'
