@@ -39,6 +39,7 @@ java_import com.badlogic.gdx.scenes.scene2d.ui.Skin
 java_import com.badlogic.gdx.scenes.scene2d.ui.Table
 java_import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 java_import com.badlogic.gdx.scenes.scene2d.ui.VerticalGroup
+java_import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 java_import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable
 
 java_import com.badlogic.gdx.maps.tiled.TmxMapLoader

@@ -1,6 +1,6 @@
 class DungeonCrawlInterface < Table
 
-  attr_reader :character_details
+  attr_reader :character_details, :end_turn_button
 
   def initialize
     super
@@ -12,8 +12,6 @@ class DungeonCrawlInterface < Table
     ###
 
     top_messages = Label.new("Your turn", skin)
-
-    combat_log = Dialog.new("Combat log", skin)
 
     ### Skill bar
 
@@ -35,7 +33,7 @@ class DungeonCrawlInterface < Table
 
     ####
 
-    end_turn_button = TextButton.new('END TURN', skin)
+    @end_turn_button = EndTurnButton.new(skin)
 
     ### Character details
     @character_details = CharacterDetails.new(skin)
@@ -46,13 +44,11 @@ class DungeonCrawlInterface < Table
 
     self.row
 
-    self.add(combat_log).colspan(3).right.height(150).width(250).padRight(10).padBottom(10)
-    self.row
-
     self.add(character_details.table).bottom.left.padLeft(10).padBottom(10).uniform
     self.add(skill_bar).expandX.bottom.padBottom(10)
-    self.add(end_turn_button).bottom.right.padRight(10).padBottom(10).uniform
+    self.add(end_turn_button.button).bottom.right.padRight(10).padBottom(10).uniform
   end
 end
 
 require_relative 'dungeon_crawl_interface/character_details'
+require_relative 'dungeon_crawl_interface/end_turn_button'

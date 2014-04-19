@@ -10,6 +10,12 @@ class YetAnotherDungeonCrawler < Game
     @map_stage = DungeonCrawlMapStage.new
     @hud_stage = DungeonCrawlHudStage.new(map_stage)
 
+    input_multiplexer = InputMultiplexer.new
+    input_multiplexer.add_processor(hud_stage)
+    input_multiplexer.add_processor(map_stage.get_camera.input_processor)
+    input_multiplexer.add_processor(map_stage)
+    Gdx.input.set_input_processor(input_multiplexer)
+
     @font = BitmapFont.new
     @screen_text = SpriteBatch.new
   end
