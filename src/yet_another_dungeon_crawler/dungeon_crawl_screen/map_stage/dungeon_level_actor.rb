@@ -10,14 +10,14 @@ class YetAnotherDungeonCrawler < Game
         attr_accessor :player_team
         attr_reader :dungeon_level, :tiled_map_renderer
 
-        def initialize(dungeon_level)
+        def initialize(dungeon_level, tiled_map)
           super()
 
           set_name 'Level characters'
 
           @dungeon_level = dungeon_level
 
-          @tiled_map_renderer = OrthogonalTiledMapRenderer.new(dungeon_level.tiled_map)
+          @tiled_map_renderer = OrthogonalTiledMapRenderer.new(tiled_map)
 
           @character_actors = []
           @controlled_character_index = 0

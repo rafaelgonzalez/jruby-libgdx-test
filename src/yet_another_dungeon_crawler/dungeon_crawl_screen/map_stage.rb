@@ -15,7 +15,12 @@ class YetAnotherDungeonCrawler < Game
 
         viewport.set_camera(Camera.new)
 
-        @dungeon_level_actor = DungeonLevelActor.new(Dungeon::Level.new(:default_map))
+        map_loader = MapLoader.new(:default_map)
+        map_loader.execute!
+
+        dungeon_level = Dungeon::Level.new(map_loader.tiles_array)
+        @dungeon_level_actor = DungeonLevelActor.new(dungeon_level, map_loader.tiled_map)
+
         self.add_actor(dungeon_level_actor)
 
         setup_teams
