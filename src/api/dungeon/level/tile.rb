@@ -52,26 +52,6 @@ class Dungeon::Level
       dungeon_level.tile(destination_tile_x, destination_tile_y)
     end
 
-    def character_x_position
-      (x_position * Dungeon::Level::TILE_WIDTH) - (Dungeon::Level::TILE_WIDTH / 2)
-    end
-
-    # Refactor this
-    def character_y_position
-      (y_position * Dungeon::Level::TILE_HEIGHT) -
-      (Dungeon::Level::TILE_HEIGHT / 2) +
-      25
-      # DungeonLevelCharacterActor::Renderer::CHARACTER_GROUND_OFFSET
-    end
-
-    def center_x_position
-      (x_position * Dungeon::Level::TILE_WIDTH) + (Dungeon::Level::TILE_WIDTH / 2)
-    end
-
-    def center_y_position
-      (y_position * Dungeon::Level::TILE_HEIGHT) + (Dungeon::Level::TILE_HEIGHT / 2)
-    end
-
     def has_same_positions_as?(level_tile)
       level_tile.x_position == @x_position and level_tile.y_position == @y_position
     end

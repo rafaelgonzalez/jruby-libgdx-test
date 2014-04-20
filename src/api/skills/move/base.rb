@@ -35,7 +35,7 @@ module Skills
 
           character.actor.add_action(
             ::Actions.sequence(
-              Actions::MoveToTile.new(destination_tile),
+              Actions::MoveToTile.new(character.actor, destination_tile),
               Actions::FinishMoveToTile.new
             )
           )
