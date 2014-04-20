@@ -6,9 +6,7 @@ jruby-libgdx-test
 
 ## Description ##
 
-This is a Proof of Concept game, mostly for myself.
-
-The goal is to create a functional game using the [libGDX](http://libgdx.badlogicgames.com/) Java game library with the polished elegance of Ruby thanks to [JRuby](http://jruby.org/).
+A proof of concept game using the [libGDX](http://libgdx.badlogicgames.com/) Java game library with [JRuby](http://jruby.org/).
 
 ## Set up ##
 
