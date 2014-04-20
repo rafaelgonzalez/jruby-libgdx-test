@@ -1,4 +1,4 @@
-require 'models/skills'
+require 'api/skills'
 
 require_relative 'dungeon_level_character_actor/renderer'
 
