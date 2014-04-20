@@ -11,7 +11,7 @@ class YetAnotherDungeonCrawler < Game
 
         @screen = screen
 
-        viewport.set_camera(MapCamera.new)
+        viewport.set_camera(Camera.new)
 
         @dungeon_level_actor = DungeonLevelActor.new(Dungeon::Level.new(:default_map))
         self.add_actor(dungeon_level_actor)
@@ -65,4 +65,4 @@ end
 
 require_relative 'map_stage/dungeon_level_actor'
 require_relative 'map_stage/dungeon_level_character_actor'
-require_relative 'map_stage/map_camera'
+require_relative 'map_stage/camera'

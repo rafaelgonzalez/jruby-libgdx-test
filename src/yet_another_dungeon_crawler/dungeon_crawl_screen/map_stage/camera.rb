@@ -1,7 +1,7 @@
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
-      class MapCamera < OrthographicCamera
+      class Camera < OrthographicCamera
         LERP_ALPHA_SMOOTH = 0.3
 
         MINIMUM_ZOOM_LIMIT = 0.5
@@ -94,4 +94,4 @@ class YetAnotherDungeonCrawler < Game
   end
 end
 
-require_relative 'map_camera/input_processor'
+require_relative 'camera/input_processor'

@@ -5,7 +5,7 @@ require 'key_bindings/camera'
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
-      class MapCamera < OrthographicCamera
+      class Camera < OrthographicCamera
         class InputProcessor < InputAdapter
           DRAG_BUTTON = 1
 
