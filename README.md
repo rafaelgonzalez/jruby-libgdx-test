@@ -6,9 +6,7 @@ jruby-libgdx-test
 
 ## Description ##
 
-This is a Proof of Concept game, mostly for myself.
-
-The goal is to create a functional game using the [LibGDX](http://libgdx.badlogicgames.com/) Java game library with the polished elegance of Ruby thanks to [JRuby](http://jruby.org/).
+A proof of concept game using the [libGDX](http://libgdx.badlogicgames.com/) Java game library with [JRuby](http://jruby.org/).
 
 ## Set up ##
 
@@ -17,7 +15,7 @@ The goal is to create a functional game using the [LibGDX](http://libgdx.badlogi
 You need the following (please refer to their specific installation guidelines)
 
 - Java SE Runtime Environment 1.6 or 1.7
-- jruby 1.7.8 (I recommend to install it with [rbenv](https://github.com/sstephenson/rbenv) or [RVM](http://rvm.io/))
+- jruby 1.7.11 (I recommend to install it with [rbenv](https://github.com/sstephenson/rbenv) or [RVM](http://rvm.io/))
 - [bundler gem](https://github.com/bundler/bundler)
 
 Then run:
@@ -29,6 +27,8 @@ Then run:
     jruby main.rb
 
 ## Building ##
+
+**This is broken at the moment**
 
 You will need JRuby as a JAR before you can start building. You can get it with:
 
@@ -58,7 +58,7 @@ Kudos to the following, without which this project would not exist.
 
 - [JRuby](http://jruby.org/) ([EPL/GPL/LGPL](https://github.com/jruby/jruby/blob/master/COPYING))
 
-  For providing the power of Java through the elegancy of Ruby.
+  For providing the power of Java through the elegance of Ruby.
 
 - [libGDX](http://libgdx.badlogicgames.com/) ([Apache 2 License](http://www.apache.org/licenses/LICENSE-2.0.html))
 
@@ -66,8 +66,8 @@ Kudos to the following, without which this project would not exist.
 
 - [Liberated Pixel Cup](http://lpc.opengameart.org/) ([CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) / [GNU GPL 3.0](http://www.gnu.org/licenses/gpl-3.0.html))
 
-  Cool assets made available to everyone.
+  Cool sprite assets made available to everyone.
 
-  Also this great repository that compiles up assets neatly: [Universal LPC spritesheet](https://github.com/makrohn/Universal-LPC-spritesheet).
+  Also this great repository that compiles them up neatly: [Universal LPC spritesheet](https://github.com/makrohn/Universal-LPC-spritesheet).
 
 - Peter Cooper and his ["Let’s Build a Simple Video Game with JRuby: A Tutorial" article](http://www.rubyinside.com/video-game-ruby-tutorial-5726.html) that sparked the initial flame.
