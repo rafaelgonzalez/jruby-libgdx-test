@@ -42,6 +42,24 @@ class YetAnotherDungeonCrawler < Game
             LpcSpriteSheetLoader::SPRITE_HEIGHT
           end
 
+          def screen_x_position(tile = current_tile)
+            (tile.x_position * DungeonLevelActor::TILE_WIDTH) - (DungeonLevelActor::TILE_WIDTH / 2)
+          end
+
+          def screen_y_position(tile = current_tile)
+            (tile.y_position * DungeonLevelActor::TILE_HEIGHT) -
+            (DungeonLevelActor::TILE_HEIGHT / 2) +
+            CHARACTER_GROUND_OFFSET
+          end
+
+          def screen_center_x_position
+            (current_tile.x_position * DungeonLevelActor::TILE_WIDTH) + (DungeonLevelActor::TILE_WIDTH / 2)
+          end
+
+          def screen_center_y_position
+            (current_tile.y_position * DungeonLevelActor::TILE_HEIGHT) + (DungeonLevelActor::TILE_HEIGHT / 2)
+          end
+
           private
 
           # Internal: Get the current animation according the the Character's state.
@@ -57,9 +75,6 @@ class YetAnotherDungeonCrawler < Game
           def current_animation_frame
             current_animation.get_key_frame(@state_time, true)
           end
-
-
-          private
 
           # Internal: Loads the character animations.
           #

@@ -55,8 +55,8 @@ class YetAnotherDungeonCrawler < Game
         def current_tile=(new_tile)
           character.current_tile = new_tile
 
-          set_x(current_tile.character_x_position)
-          set_y(current_tile.character_y_position)
+          set_x(screen_x_position)
+          set_y(screen_y_position)
         end
 
         # Public: Determines if the Character is moving.

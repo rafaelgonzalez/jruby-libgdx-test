@@ -10,14 +10,14 @@ class YetAnotherDungeonCrawler < Game
         attr_accessor :player_team
         attr_reader :dungeon_level, :tiled_map_renderer
 
-        def initialize(dungeon_level)
+        def initialize(dungeon_level, tiled_map)
           super()
 
           set_name 'Level characters'
 
           @dungeon_level = dungeon_level
 
-          @tiled_map_renderer = OrthogonalTiledMapRenderer.new(dungeon_level.tiled_map)
+          @tiled_map_renderer = OrthogonalTiledMapRenderer.new(tiled_map)
 
           @character_actors = []
           @controlled_character_index = 0
@@ -60,8 +60,8 @@ class YetAnotherDungeonCrawler < Game
           get_stage.screen.hud_stage.focus_character = current_controlled_character
 
           get_stage.get_camera.move_to!(
-            current_controlled_character.current_tile.center_x_position,
-            current_controlled_character.current_tile.center_y_position
+            current_controlled_character.screen_center_x_position,
+            current_controlled_character.screen_center_y_position
           )
         end
 
