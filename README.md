@@ -68,8 +68,8 @@ Kudos to the following, without which this project would not exist.
 
 - [Liberated Pixel Cup](http://lpc.opengameart.org/) ([CC BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/) / [GNU GPL 3.0](http://www.gnu.org/licenses/gpl-3.0.html))
 
-  Cool assets made available to everyone.
+  Cool sprite assets made available to everyone.
 
-  Also this great repository that compiles up assets neatly: [Universal LPC spritesheet](https://github.com/makrohn/Universal-LPC-spritesheet).
+  Also this great repository that compiles them up neatly: [Universal LPC spritesheet](https://github.com/makrohn/Universal-LPC-spritesheet).
 
 - Peter Cooper and his ["Let’s Build a Simple Video Game with JRuby: A Tutorial" article](http://www.rubyinside.com/video-game-ruby-tutorial-5726.html) that sparked the initial flame.
