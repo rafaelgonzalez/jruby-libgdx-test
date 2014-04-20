@@ -20,8 +20,6 @@ class Dungeon
     def tile(x, y)
       return nil if (x < 0) or (y < 0)
 
-      discard_empty_tiles!
-
       if tile = @tiles.select{|tile| tile.x_position == x and tile.y_position == y}.first
         tile
       elsif tiles_array[y] and tiles_array[y][x]
@@ -31,15 +29,6 @@ class Dungeon
       else
         nil
       end
-    end
-
-    private
-
-    # Internal: Discard tiles that have no characters on them, in order to free up memory.
-    #
-    # Returns nothing.
-    def discard_empty_tiles!
-      @tiles = @tiles.select {|tile| tile.character }
     end
   end
 end
