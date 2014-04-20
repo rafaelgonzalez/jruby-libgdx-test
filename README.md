@@ -30,6 +30,8 @@ Then run:
 
 ## Building ##
 
+**This is broken at the moment**
+
 You will need JRuby as a JAR before you can start building. You can get it with:
 
     rawr install
