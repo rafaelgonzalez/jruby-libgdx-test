@@ -58,7 +58,7 @@ Kudos to the following, without which this project would not exist.
 
 - [JRuby](http://jruby.org/) ([EPL/GPL/LGPL](https://github.com/jruby/jruby/blob/master/COPYING))
 
-  For providing the power of Java through the elegancy of Ruby.
+  For providing the power of Java through the elegance of Ruby.
 
 - [libGDX](http://libgdx.badlogicgames.com/) ([Apache 2 License](http://www.apache.org/licenses/LICENSE-2.0.html))
 
