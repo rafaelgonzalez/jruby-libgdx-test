@@ -1,5 +1,3 @@
-require 'character_team'
-
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage

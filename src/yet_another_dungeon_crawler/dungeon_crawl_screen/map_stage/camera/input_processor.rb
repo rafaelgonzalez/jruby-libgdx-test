@@ -1,7 +1,3 @@
-require 'direction'
-require 'key_bindings/base'
-require 'key_bindings/camera'
-
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage

@@ -1,5 +1,3 @@
-require 'api/skills'
-
 require_relative 'dungeon_level_character_actor/renderer'
 
 class YetAnotherDungeonCrawler < Game

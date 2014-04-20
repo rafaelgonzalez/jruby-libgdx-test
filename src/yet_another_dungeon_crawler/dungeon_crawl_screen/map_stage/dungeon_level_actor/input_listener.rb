@@ -1,6 +1,3 @@
-require 'key_bindings/base'
-require 'key_bindings/dungeon_level'
-
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage

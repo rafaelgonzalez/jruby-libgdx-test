@@ -1,5 +1,3 @@
-require 'direction'
-
 module Skills
   class Base
     def resources_available?
