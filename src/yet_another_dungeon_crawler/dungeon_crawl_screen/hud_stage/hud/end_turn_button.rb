@@ -8,17 +8,12 @@ class YetAnotherDungeonCrawler < Game
 
           def initialize(skin)
             @button = TextButton.new('END TURN', skin)
-            button.add_listener(EndTurnButtonClickListener.new(Input::Buttons::LEFT))
-          end
-        end
-
-        class EndTurnButtonClickListener < ClickListener
-          def clicked(event, x, y)
-            event.get_stage.map_stage.dungeon_level_actor.new_turn!
-            true
+            button.add_listener(ClickListener.new(Input::Buttons::LEFT))
           end
         end
       end
     end
   end
 end
+
+require_relative 'end_turn_button/click_listener'
