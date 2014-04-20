@@ -1,5 +1,3 @@
-require 'dungeon_level_input_listener'
-
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
@@ -22,7 +20,7 @@ class YetAnotherDungeonCrawler < Game
           @character_actors = []
           @controlled_character_index = 0
 
-          add_listener(DungeonLevelInputListener.new(self))
+          add_listener(InputListener.new(self))
         end
 
         # Public: Spawns a DungeonLevelCharacterActor into the map.
@@ -126,3 +124,5 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
+
+require_relative 'dungeon_level_actor/input_listener'

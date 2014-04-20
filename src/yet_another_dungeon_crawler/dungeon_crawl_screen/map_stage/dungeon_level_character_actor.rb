@@ -1,7 +1,3 @@
-require 'dungeon_level_character_actor_click_listener'
-require 'dungeon_level_character_input_listener'
-require 'dungeon_level_character_input_translator'
-
 require 'models/skills'
 
 require_relative 'dungeon_level_character_actor/renderer'
@@ -38,10 +34,10 @@ class YetAnotherDungeonCrawler < Game
           set_height(LpcSpriteSheetLoader::SPRITE_HEIGHT)
           set_width(LpcSpriteSheetLoader::SPRITE_WIDTH)
 
-          @input_translator = DungeonLevelCharacterInputTranslator.new(self)
+          @input_translator = InputTranslator.new(self)
 
-          add_listener(DungeonLevelCharacterInputListener.new(self))
-          add_listener(DungeonLevelCharacterActorClickListener.new(self))
+          add_listener(InputListener.new(self))
+          add_listener(ClickListener.new(self))
         end
 
         # Public: Updates the DungeonLevelCharacterActor.
@@ -73,3 +69,6 @@ class YetAnotherDungeonCrawler < Game
   end
 end
 
+require_relative 'dungeon_level_character_actor/click_listener'
+require_relative 'dungeon_level_character_actor/input_listener'
+require_relative 'dungeon_level_character_actor/input_translator'

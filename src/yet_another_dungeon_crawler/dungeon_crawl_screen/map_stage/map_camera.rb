@@ -1,5 +1,3 @@
-require 'dungeon_crawl_camera_input_processor'
-
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
@@ -14,7 +12,7 @@ class YetAnotherDungeonCrawler < Game
         def initialize
           super
           @destination_vector = nil
-          @input_processor = DungeonCrawlCameraInputProcessor.new(self)
+          @input_processor = InputProcessor.new(self)
         end
 
         # Public: Makes the camera move smoothly to the given coordinates.
@@ -95,3 +93,5 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
+
+require_relative 'map_camera/input_processor'
