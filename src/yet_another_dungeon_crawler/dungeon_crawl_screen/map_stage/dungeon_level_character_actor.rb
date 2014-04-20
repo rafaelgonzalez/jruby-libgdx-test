@@ -1,3 +1,6 @@
+require_relative 'dungeon_level_character_actor/click_listener'
+require_relative 'dungeon_level_character_actor/input_listener'
+require_relative 'dungeon_level_character_actor/input_translator'
 require_relative 'dungeon_level_character_actor/renderer'
 
 class YetAnotherDungeonCrawler < Game
@@ -66,7 +69,3 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
-
-require_relative 'dungeon_level_character_actor/click_listener'
-require_relative 'dungeon_level_character_actor/input_listener'
-require_relative 'dungeon_level_character_actor/input_translator'

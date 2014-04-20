@@ -1,3 +1,5 @@
+require_relative 'dungeon_level_actor/input_listener'
+
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
@@ -124,5 +126,3 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
-
-require_relative 'dungeon_level_actor/input_listener'

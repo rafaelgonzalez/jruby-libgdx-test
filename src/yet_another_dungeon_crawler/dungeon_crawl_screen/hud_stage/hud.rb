@@ -1,3 +1,6 @@
+require_relative 'hud/character_details'
+require_relative 'hud/end_turn_button'
+
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class HudStage < Stage
@@ -55,6 +58,3 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
-
-require_relative 'hud/character_details'
-require_relative 'hud/end_turn_button'

@@ -1,3 +1,5 @@
+require_relative 'yet_another_dungeon_crawler/dungeon_crawl_screen'
+
 class YetAnotherDungeonCrawler < Game
   include Input
 
@@ -30,5 +32,3 @@ class YetAnotherDungeonCrawler < Game
     @screen_text.end
   end
 end
-
-require_relative 'yet_another_dungeon_crawler/dungeon_crawl_screen'

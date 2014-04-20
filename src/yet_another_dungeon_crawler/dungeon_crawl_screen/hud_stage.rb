@@ -1,3 +1,5 @@
+require_relative 'hud_stage/hud'
+
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class HudStage < Stage
@@ -38,5 +40,3 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
-
-require_relative 'hud_stage/hud'

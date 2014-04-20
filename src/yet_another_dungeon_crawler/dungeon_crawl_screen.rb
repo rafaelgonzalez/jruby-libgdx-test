@@ -1,3 +1,6 @@
+require_relative 'dungeon_crawl_screen/map_stage'
+require_relative 'dungeon_crawl_screen/hud_stage'
+
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
 
@@ -33,6 +36,3 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
-
-require_relative 'dungeon_crawl_screen/map_stage'
-require_relative 'dungeon_crawl_screen/hud_stage'

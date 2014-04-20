@@ -1,3 +1,5 @@
+require_relative 'camera/input_processor'
+
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
@@ -93,5 +95,3 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
-
-require_relative 'camera/input_processor'

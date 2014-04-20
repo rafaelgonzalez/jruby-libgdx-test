@@ -1,3 +1,7 @@
+require_relative 'map_stage/dungeon_level_actor'
+require_relative 'map_stage/dungeon_level_character_actor'
+require_relative 'map_stage/camera'
+
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
@@ -60,7 +64,3 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
-
-require_relative 'map_stage/dungeon_level_actor'
-require_relative 'map_stage/dungeon_level_character_actor'
-require_relative 'map_stage/camera'

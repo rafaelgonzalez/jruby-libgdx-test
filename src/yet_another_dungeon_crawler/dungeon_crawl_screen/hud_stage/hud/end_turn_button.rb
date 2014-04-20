@@ -1,3 +1,5 @@
+require_relative 'end_turn_button/click_listener'
+
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class HudStage < Stage
@@ -15,5 +17,3 @@ class YetAnotherDungeonCrawler < Game
     end
   end
 end
-
-require_relative 'end_turn_button/click_listener'
