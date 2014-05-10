@@ -29,6 +29,10 @@ class Dungeon::Level
     #
     # Returns a Boolean.
     def walkable?
+      empty?
+    end
+
+    def empty?
       !@character
     end
 

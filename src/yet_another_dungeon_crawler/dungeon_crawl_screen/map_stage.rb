@@ -1,3 +1,4 @@
+require_relative 'map_stage/dungeon_actor'
 require_relative 'map_stage/dungeon_level_actor'
 require_relative 'map_stage/dungeon_level_character_actor'
 require_relative 'map_stage/camera'
@@ -6,7 +7,7 @@ class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
 
-      attr_reader :screen, :dungeon_level_actor, :player_team, :vilains_team
+      attr_reader :screen, :dungeon_actor
 
       def initialize(screen)
         super()
@@ -18,53 +19,28 @@ class YetAnotherDungeonCrawler < Game
         map_loader = MapLoader.new(:default_map)
         map_loader.execute!
 
+        dungeon = Dungeon.new
+        @dungeon_actor = DungeonActor.new(dungeon)
+
         dungeon_level = Dungeon::Level.new(map_loader.tiles_array)
-        @dungeon_level_actor = DungeonLevelActor.new(dungeon_level, map_loader.tiled_map)
+        dungeon_level_actor = DungeonLevelActor.new(dungeon_level, map_loader.tiled_map)
 
-        self.add_actor(dungeon_level_actor)
+        self.add_actor(dungeon_actor)
+        dungeon_actor.add_actor(dungeon_level_actor)
 
-        setup_teams
-      end
-
-      def setup_teams
-        player_character_1 = Character.new('Geralt')
-        player_character_2 = Character.new('Syrio')
-        player_character_3 = Character.new('Snake')
-
-        vilain_character_1 = Character.new('Diablo')
-        vilain_character_2 = Character.new('Baal')
-        vilain_character_3 = Character.new('Mephisto')
-
-        @player_team = CharacterTeam.new("Player's characters")
-        @vilains_team = CharacterTeam.new('Vilains')
-
-        player_team.add_character(player_character_1)
-        player_team.add_character(player_character_2)
-        player_team.add_character(player_character_3)
-
-        vilains_team.add_character(vilain_character_1)
-        vilains_team.add_character(vilain_character_2)
-        vilains_team.add_character(vilain_character_3)
-
-        dungeon_level_actor.player_team = player_team
-
-        dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(player_character_1), 14, 11)
-        dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(player_character_2), 10, 9)
-        dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(player_character_3), 7, 12)
-
-        dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_1), 17, 11)
-        dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_2), 20, 13)
-        dungeon_level_actor.spawn_character!(DungeonLevelCharacterActor.new(vilain_character_3), 18, 14)
+        spawn_dungeon_characters(dungeon, dungeon_level)
       end
 
       private
 
-      def victory?
-        vilains_team.defeated?
-      end
+      def spawn_dungeon_characters(dungeon, dungeon_level)
+        characters = dungeon.teams.map(&:characters).flatten
 
-      def defeat?
-        player_team.defeated?
+        characters.each do |character|
+          dungeon_level.spawn_character!(character,
+                                         rand(dungeon_level.height),
+                                         rand(dungeon_level.width))
+        end
       end
     end
   end

@@ -1,8 +1,8 @@
 module KeyBinding
-  class DungeonLevel < Base
+  class Dungeon < Base
     BINDINGS = {
       Keys::TAB => [:switch_control_to_next_playable_character!, []],
-      Keys::ENTER => [:new_turn!, []],
+      Keys::ENTER => [:end_current_playing_team_turn!, []],
     }
 
     def bindings
