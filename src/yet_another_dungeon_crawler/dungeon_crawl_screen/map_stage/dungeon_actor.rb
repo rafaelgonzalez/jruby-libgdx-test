@@ -16,7 +16,13 @@ class YetAnotherDungeonCrawler < Game
 
         def act(delta_time)
           super
-          switch_control_to_next_playable_character! unless get_stage.get_keyboard_focus
+
+          if dungeon.current_playing_team.artificial_intelligence
+            get_stage.set_keyboard_focus(nil)
+            dungeon.current_playing_team.artificial_intelligence.execute(delta_time)
+          elsif get_stage.get_keyboard_focus.nil?
+            switch_control_to_next_playable_character!
+          end
         end
 
         def end_current_playing_team_turn!

@@ -1,10 +1,11 @@
 class Dungeon
   class Level
 
-    attr_reader :tiles_array, :tiles, :characters
+    attr_reader :tiles_array, :tiles, :characters, :dungeon
 
-    def initialize(tiles_array)
+    def initialize(tiles_array, dungeon)
       @tiles_array = tiles_array
+      @dungeon = dungeon
       @tiles = []
       @characters = []
     end

@@ -1,11 +1,12 @@
 class CharacterTeam
 
   attr_accessor :name
-  attr_reader :characters
+  attr_reader :characters, :artificial_intelligence
 
-  def initialize(name)
+  def initialize(name, artificial_intelligence = nil)
     @name = name
     @characters = []
+    @artificial_intelligence = artificial_intelligence
   end
 
   def add_character(character)
