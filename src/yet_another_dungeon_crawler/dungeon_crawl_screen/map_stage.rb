@@ -16,7 +16,7 @@ class YetAnotherDungeonCrawler < Game
 
         viewport.set_camera(Camera.new)
 
-        map_loader = MapLoader.new(:default_map)
+        map_loader = MapLoader.new(:groto)
         map_loader.execute!
 
         dungeon = Dungeon.new

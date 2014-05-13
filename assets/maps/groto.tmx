@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="mountains" tilewidth="32" tileheight="32">
+  <image source="../tiles/mountains.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="109" name="dirt2" tilewidth="32" tileheight="32">
+  <image source="../tiles/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <layer name="floor" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJyNlUEOAzEIA/fXOZG3t4ethEZj6CFSuiHEGOPe53nud9W7DvZ9/eLuu/r3vu+r2nm1deV3z1NyfrA/cm55jsTb3R7f8ZMD1pnuGH7jjL/rcbz9zYN3eMY48m73Svbsj+Fh/0wf/cw45TuGn3HMZ9ipG6vD+tNzbhwn/KY30+RWp9Wa5sqwJ01wX3jHemHznWaaNW73qBnrK7XInjEXe23fyLPltZm1ZVwlzJs+Uy+TB9h823vJVy0/cZrmyDs5sPjJk2xeJu5T7xIP9NYNv+llwke+Js+lrqhbi006t3lNvsE81MC/njr915iHTB409cTyTtyxx+ndVEeaqdQfm1/rRdIl6yQG8wK+P3FueMx/kk/QP7e4vqc2+M14Ma2ZJhKehM80YRxP/wMpxjAn/pPHmveYTk0jfM/mw/zXzjacaR4tL/Oned/6n7zJ7lid04zSI8xPqAe7R2xpbtKsWM2mwzQ/xkHyZfv9AVggskM=
+  </data>
+ </layer>
+ <layer name="walls" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJylVstSAjEQHMU9InBU4ajiUfk4Ttlvd1NmimzT89i1q7qoSqB7mcx09iAir437ic8dD93eWqKm8jTxo/Ho7K0laiq/Jv40np29tURN5U7+cJ24NfYilPZ7/eyBmsz3ReZn80Y8HiY+Gtys8K14l/nZfLb1sbE4OpUDeZanhO+3zM/m0tZL88WaWL2aIZ5hERsFamL1aoasNuzcWE2sXs0wkw3YX0Xss0a9TG5Y1P7qMRq+qJfJDYsXuQebd6ZnnQWb0Qws353c5s6qSSWr4X99Nbs8X1bDCsylDexXTcw37UHNGC9nMNfUE3NmAO+qjfmmPagZU4xn25P/wTxZxlRdzDftwd6XPdtR7vPKy0H0vcqtpiPUQu8m9mxn4uvl4JJ7UcmwJVpeDmZ9IzBf3I98vfvYmoeqO5B1yxd7mn0nc+9tjXVP0+tD7y6wfNn/tnKhhzUnkS/eW72ulQs9rDmJfPHe6nWtXIgQ1an64r2V0Y0Q1Smao7WI6sR8M/PIZm4J+vmN3neXvgt6rB6/v8hMHA==
+  </data>
+ </layer>
+</map>

@@ -1,7 +1,8 @@
 class MapLoader
 
   MAPS = {
-    default_map: 'assets/maps/level_1.tmx'
+    default_map: 'assets/maps/level_1.tmx',
+    groto: 'assets/maps/groto.tmx'
   }
 
   attr_reader :tiled_map, :tiles_array, :map_name
