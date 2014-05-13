@@ -12,6 +12,9 @@
   </data>
  </layer>
  <layer name="walls" width="30" height="30">
+  <properties>
+   <property name="walkable" value="false"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJylVstSAjEQHMU9InBU4ajiUfk4Ttlvd1NmimzT89i1q7qoSqB7mcx09iAir437ic8dD93eWqKm8jTxo/Ho7K0laiq/Jv40np29tURN5U7+cJ24NfYilPZ7/eyBmsz3ReZn80Y8HiY+Gtys8K14l/nZfLb1sbE4OpUDeZanhO+3zM/m0tZL88WaWL2aIZ5hERsFamL1aoasNuzcWE2sXs0wkw3YX0Xss0a9TG5Y1P7qMRq+qJfJDYsXuQebd6ZnnQWb0Qws353c5s6qSSWr4X99Nbs8X1bDCsylDexXTcw37UHNGC9nMNfUE3NmAO+qjfmmPagZU4xn25P/wTxZxlRdzDftwd6XPdtR7vPKy0H0vcqtpiPUQu8m9mxn4uvl4JJ7UcmwJVpeDmZ9IzBf3I98vfvYmoeqO5B1yxd7mn0nc+9tjXVP0+tD7y6wfNn/tnKhhzUnkS/eW72ulQs9rDmJfPHe6nWtXIgQ1an64r2V0Y0Q1Smao7WI6sR8M/PIZm4J+vmN3neXvgt6rB6/v8hMHA==
   </data>

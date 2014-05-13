@@ -43,7 +43,7 @@ class Dungeon
       if tile = @tiles.select{|tile| tile.x_position == x and tile.y_position == y}.first
         tile
       elsif tiles_array[y] and tiles_array[y][x]
-        new_tile = Dungeon::Level::Tile.new(x, y, self)
+        new_tile = Dungeon::Level::Tile.new(x, y, tiles_array[y][x], self)
         @tiles.push new_tile
         new_tile
       else
