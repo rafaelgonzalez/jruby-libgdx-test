@@ -27,6 +27,8 @@ class YetAnotherDungeonCrawler < Game
           else
             end_turn_button.enable!
           end
+
+          get_stage.screen.hud_stage.hud_interface.top_message.set_text("#{dungeon.current_playing_team.name}")
         end
 
         def end_current_playing_team_turn!
