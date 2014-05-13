@@ -1,17 +1,20 @@
 class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
-      class DungeonLevelActor < Group
+      class DungeonActor < Group
         class InputListener < InputListener
-          def initialize(level)
+
+          attr_reader :dungeon_actor
+
+          def initialize(dungeon_actor)
             super()
-            @key_bindings = KeyBinding::DungeonLevel.new
-            @level = level
+            @key_bindings = KeyBinding::Dungeon.new
+            @dungeon_actor = dungeon_actor
           end
 
           def keyDown(input_event, keycode)
             if action = @key_bindings.input_action_from_keycode(keycode)
-              @level.public_send(action[0], *action[1])
+              dungeon_actor.public_send(action[0], *action[1])
               return true
             end
 

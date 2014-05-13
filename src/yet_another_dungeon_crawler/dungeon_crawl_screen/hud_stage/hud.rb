@@ -6,7 +6,7 @@ class YetAnotherDungeonCrawler < Game
     class HudStage < Stage
       class Hud < Table
 
-        attr_reader :character_details, :end_turn_button
+        attr_reader :character_details, :end_turn_button, :top_message
 
         def initialize
           super
@@ -17,7 +17,7 @@ class YetAnotherDungeonCrawler < Game
 
           ###
 
-          top_messages = Label.new("Your turn", skin)
+          @top_message = Label.new("Your turn", skin)
 
           ### Skill bar
 
@@ -46,7 +46,7 @@ class YetAnotherDungeonCrawler < Game
 
           ### Layout setup
 
-          self.add(top_messages).colspan(2).top.expand
+          self.add(top_message).colspan(2).top.expand
 
           self.row
 
