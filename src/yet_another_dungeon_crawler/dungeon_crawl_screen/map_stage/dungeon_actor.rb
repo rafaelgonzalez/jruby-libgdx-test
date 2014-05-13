@@ -34,7 +34,9 @@ class YetAnotherDungeonCrawler < Game
         def end_current_playing_team_turn!
           dungeon.end_current_playing_team_turn!
 
-          unless dungeon.current_playing_team.artificial_intelligence
+          if dungeon.current_playing_team.artificial_intelligence
+            focus_on_current_playing_character
+          else
             switch_control_to_next_player_playable_character!
           end
         end
@@ -46,6 +48,10 @@ class YetAnotherDungeonCrawler < Game
           dungeon.current_playing_team.control_next_character!
           get_stage.set_keyboard_focus(dungeon.current_playing_team.current_controlled_character.actor)
 
+          focus_on_current_playing_character
+        end
+
+        def focus_on_current_playing_character
           get_stage.screen.hud_stage.focus_character = dungeon.current_playing_team.current_controlled_character
 
           get_stage.get_camera.move_to!(
