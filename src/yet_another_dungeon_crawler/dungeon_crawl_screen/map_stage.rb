@@ -39,9 +39,10 @@ class YetAnotherDungeonCrawler < Game
         characters = dungeon.teams.map(&:characters).flatten
 
         characters.each do |character|
-          dungeon_level.spawn_character!(character,
+          while !dungeon_level.spawn_character!(character,
                                          rand(dungeon_level.height),
-                                         rand(dungeon_level.width))
+                                         rand(dungeon_level.width)) do
+          end
         end
       end
     end
