@@ -23,7 +23,7 @@ class YetAnotherDungeonCrawler < Game
             dungeon.current_playing_team.artificial_intelligence.execute(delta_time)
           elsif get_stage.get_keyboard_focus.nil?
             end_turn_button.enable!
-            switch_control_to_next_playable_character!
+            switch_control_to_next_player_playable_character!
           else
             end_turn_button.enable!
           end
@@ -31,13 +31,16 @@ class YetAnotherDungeonCrawler < Game
 
         def end_current_playing_team_turn!
           dungeon.end_current_playing_team_turn!
-          switch_control_to_next_playable_character!
+
+          unless dungeon.current_playing_team.artificial_intelligence
+            switch_control_to_next_player_playable_character!
+          end
         end
 
         # Public: Gives keyboard focus to the next Character in the list, and moves Camera to the Character.
         #
         # Returns nothing.
-        def switch_control_to_next_playable_character!
+        def switch_control_to_next_player_playable_character!
           dungeon.current_playing_team.control_next_character!
           get_stage.set_keyboard_focus(dungeon.current_playing_team.current_controlled_character.actor)
 
