@@ -38,11 +38,17 @@ class YetAnotherDungeonCrawler < Game
           sprite_batch.end
 
           tiled_map_renderer.set_view(get_stage.camera)
-          tiled_map_renderer.render
+          tiled_map_renderer.render(map_layers_below_characters)
 
           sprite_batch.begin
 
           draw_character_actors(sprite_batch, alpha)
+
+          sprite_batch.end
+
+          tiled_map_renderer.render(map_layers_above_characters)
+
+          sprite_batch.begin
         end
 
         private
@@ -71,6 +77,30 @@ class YetAnotherDungeonCrawler < Game
         # Returns an Array of Characaters.
         def characters_by_drawing_order
           character_actors.sort_by {|character_actor| character_actor.y_position}.reverse
+        end
+
+        def map_layers_below_characters
+          layers = []
+
+          tiled_map_renderer.map.get_layers.each_with_index do |layer, index|
+            unless layer.get_properties.get('render') == 'hover'
+              layers.push index
+            end
+          end
+
+          layers.to_java(:int)
+        end
+
+        def map_layers_above_characters
+          layers = []
+
+          tiled_map_renderer.map.get_layers.each_with_index do |layer, index|
+            if layer.get_properties.get('render') == 'hover'
+              layers.push index
+            end
+          end
+
+          layers.to_java(:int)
         end
       end
     end

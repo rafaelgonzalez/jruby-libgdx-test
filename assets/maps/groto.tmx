@@ -20,6 +20,9 @@
   </data>
  </layer>
  <layer name="walls_walkable" width="30" height="30">
+  <properties>
+   <property name="render" value="hover"/>
+  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFowABGIGYCQdmHiA3sWJxyyhAAFzxNdDxNgpGAbUAerlEjzQNspMFTYyVynajm4XNzlEwcgG++phQfiAln1A7P/FT2TxiAaytMFrnjQJaAGLyI7XSHrKZxNQJ2NrJpGAQAADuAQDI
   </data>
