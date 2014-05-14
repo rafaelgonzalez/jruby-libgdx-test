@@ -16,7 +16,7 @@
    <property name="walkable" value="false"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJy9VssSgjAM7EGPIBxVPKp4VP//34QZOpbMbhJaa2b2VNgteWzoQwinBd2ENkGfnOVCckZcJtwWDMpZLiRnxGPCa8GonOVCckYcwjca5Sw3JCfiPoZ1bc5/0r2GdW3uG3haortz6D7DujZvwJPmhPWqB1trmOaE9aoH+426aU5Yr3rg8QbWX6jWks/jGwyov5iu5PP4BgPqL6Yr+VgtSmYU6co+ZXPHclhbl+XQE9LfUA8yXS2s56S/oR5Ed+ucmiyH0t9QD6K7DYBL88Gc/YTuNgIuzQd/sRfnaACX5oM1deV5LV1tL0hd9Ky2j9md03c8uuib2ZyU6Hp8gc2JpSv3Vsrr8QU2J5au3Fspr8cXUFh5mnXl3irx6xhWnqw5yg0rT7V0rWDza81iacz/1B/8vTLE
+   eJy9VssOgkAQ24MeUTiqePR1VP//34QE4tK0M8MiTtILS9plHh2alNJxQN1hl6HJzkqBnCPOHa4DWuOsFMg54tHhNeBunJUCOUfs0zcq46w0kJNxH9K0Nqc/6V7StDa3GTw7obsJ6D7TtDZvwpPnRPVqBHNrmOdE9WoE25m6eU5Ur0YQ8QbVX6zWyBfxDQXWX0oX+SK+ocD6S+kin6rFkhllutinau5UDtfWVTmMBPob60Gla4X3Hvob60F2tzqoqXKI/sZ6kN2tJVyWD5bsJ3a3O+GyfPAXe7GPinBZPrimLp6vpWvtBdRl71r7WN25Es8tTqsPrV2gdNm3RHxBzYmni3sr5434gpoTTxf3Vs4b8QUWXp56XdxbS/x6DC9P3hyVhpentXS9UPPrzeLS6P+pP0TUMtg=
   </data>
  </layer>
  <layer name="walls_walkable" width="30" height="30">
@@ -24,7 +24,7 @@
    <property name="render" value="hover"/>
   </properties>
   <data encoding="base64" compression="zlib">
-   eJxjYBgFowABGIGYCQdmHiA3sWJxyyhAAFzxNdDxNgpGAbUAerlEjzQNspMFTYyVynajm4XNzlEwcgG++phQfiAln1A7P/FT2TxiAaytMFrnjQJaAGLyI7XSHrKZxNQJ2NrJpGAQAADuAQDI
+   eJxjYBgFowABGIGYCQdmHiA3sWJxyyhAAFzxNdDxNgpGAbUAerlEjzQNspMFTYyVynajm4XNzlEwcgG++phQfiAlnwynOmK0zhsFtALE5EdqpT1kM4mpE7C1k0nBIAAApfkAtA==
   </data>
  </layer>
 </map>
