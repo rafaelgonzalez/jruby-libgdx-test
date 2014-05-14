@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="30" height="30" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="mountains" tilewidth="32" tileheight="32">
+  <image source="../tiles/mountains.png" width="384" height="288"/>
+ </tileset>
+ <tileset firstgid="109" name="dirt2" tilewidth="32" tileheight="32">
+  <image source="../tiles/dirt2.png" width="96" height="192"/>
+ </tileset>
+ <layer name="floor" width="30" height="30">
+  <data encoding="base64" compression="zlib">
+   eJyNlUEOAzEIA/fXOZG3t4ethEZj6CFSuiHEGOPe53nud9W7DvZ9/eLuu/r3vu+r2nm1deV3z1NyfrA/cm55jsTb3R7f8ZMD1pnuGH7jjL/rcbz9zYN3eMY48m73Svbsj+Fh/0wf/cw45TuGn3HMZ9ipG6vD+tNzbhwn/KY30+RWp9Wa5sqwJ01wX3jHemHznWaaNW73qBnrK7XInjEXe23fyLPltZm1ZVwlzJs+Uy+TB9h823vJVy0/cZrmyDs5sPjJk2xeJu5T7xIP9NYNv+llwke+Js+lrqhbi006t3lNvsE81MC/njr915iHTB409cTyTtyxx+ndVEeaqdQfm1/rRdIl6yQG8wK+P3FueMx/kk/QP7e4vqc2+M14Ma2ZJhKehM80YRxP/wMpxjAn/pPHmveYTk0jfM/mw/zXzjacaR4tL/Oned/6n7zJ7lid04zSI8xPqAe7R2xpbtKsWM2mwzQ/xkHyZfv9AVggskM=
+  </data>
+ </layer>
+ <layer name="walls" width="30" height="30">
+  <properties>
+   <property name="walkable" value="false"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJy9VssOgkAQ24MeUTiqePR1VP//34QE4tK0M8MiTtILS9plHh2alNJxQN1hl6HJzkqBnCPOHa4DWuOsFMg54tHhNeBunJUCOUfs0zcq46w0kJNxH9K0Nqc/6V7StDa3GTw7obsJ6D7TtDZvwpPnRPVqBHNrmOdE9WoE25m6eU5Ur0YQ8QbVX6zWyBfxDQXWX0oX+SK+ocD6S+kin6rFkhllutinau5UDtfWVTmMBPob60Gla4X3Hvob60F2tzqoqXKI/sZ6kN2tJVyWD5bsJ3a3O+GyfPAXe7GPinBZPrimLp6vpWvtBdRl71r7WN25Es8tTqsPrV2gdNm3RHxBzYmni3sr5434gpoTTxf3Vs4b8QUWXp56XdxbS/x6DC9P3hyVhpentXS9UPPrzeLS6P+pP0TUMtg=
+  </data>
+ </layer>
+ <layer name="walls_walkable" width="30" height="30">
+  <properties>
+   <property name="render" value="hover"/>
+  </properties>
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFowABGIGYCQdmHiA3sWJxyyhAAFzxNdDxNgpGAbUAerlEjzQNspMFTYyVynajm4XNzlEwcgG++phQfiAlnwynOmK0zhsFtALE5EdqpT1kM4mpE7C1k0nBIAAApfkAtA==
+  </data>
+ </layer>
+</map>

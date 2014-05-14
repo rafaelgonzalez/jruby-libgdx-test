@@ -16,7 +16,7 @@ class YetAnotherDungeonCrawler < Game
 
         viewport.set_camera(Camera.new)
 
-        map_loader = MapLoader.new(:default_map)
+        map_loader = MapLoader.new(:groto)
         map_loader.execute!
 
         dungeon = Dungeon.new
@@ -39,9 +39,10 @@ class YetAnotherDungeonCrawler < Game
         characters = dungeon.teams.map(&:characters).flatten
 
         characters.each do |character|
-          dungeon_level.spawn_character!(character,
+          while !dungeon_level.spawn_character!(character,
                                          rand(dungeon_level.height),
-                                         rand(dungeon_level.width))
+                                         rand(dungeon_level.width)) do
+          end
         end
       end
     end

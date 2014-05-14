@@ -1,12 +1,13 @@
 class Dungeon::Level
   class Tile
 
-    attr_reader :x_position, :y_position, :dungeon_level, :effects
+    attr_reader :x_position, :y_position, :dungeon_level, :effects, :cost
     attr_accessor :character
 
-    def initialize(x_position, y_position, dungeon_level)
+    def initialize(x_position, y_position, cost, dungeon_level)
       @x_position = x_position
       @y_position = y_position
+      @cost = cost
       @dungeon_level = dungeon_level
       @character = nil
       @effects = []
@@ -29,7 +30,11 @@ class Dungeon::Level
     #
     # Returns a Boolean.
     def walkable?
-      empty?
+      !difficulty_impossible? and empty?
+    end
+
+    def difficulty_impossible?
+      cost == false
     end
 
     def empty?

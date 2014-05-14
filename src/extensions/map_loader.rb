@@ -1,7 +1,8 @@
 class MapLoader
 
   MAPS = {
-    default_map: 'assets/maps/level_1.tmx'
+    default_map: 'assets/maps/level_1.tmx',
+    groto: 'assets/maps/groto.tmx'
   }
 
   attr_reader :tiled_map, :tiles_array, :map_name
@@ -39,7 +40,11 @@ class MapLoader
           @tiles_array[y] = [] if @tiles_array[y].nil?
 
           if layer.get_cell(x, y)
-            @tiles_array[y][x] = 0.0
+            if layer.get_properties.get('walkable') == 'false'
+              @tiles_array[y][x] = false
+            else
+              @tiles_array[y][x] = 0.0
+            end
           elsif !@tiles_array[y][x]
             @tiles_array[y][x] = false
           end
