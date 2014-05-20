@@ -1,7 +1,7 @@
 class CharacterTeam
 
-  attr_accessor :name
-  attr_reader :characters, :artificial_intelligence
+  attr_accessor :name, :characters
+  attr_reader :artificial_intelligence
 
   def initialize(name, artificial_intelligence = nil)
     @name = name
@@ -21,14 +21,9 @@ class CharacterTeam
   end
 
   def control_next_character!
+    return if defeated?
     @characters.push(@characters.shift)
     control_next_character! unless current_controlled_character.playable?
-  end
-
-  def playable_characters
-    characters.select do |character|
-      character.playable?
-    end
   end
 
   def defeated?

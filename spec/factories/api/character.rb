@@ -5,5 +5,9 @@ FactoryGirl.define do
     end
 
     initialize_with { new(name) }
+
+    trait :dead do
+      health 0
+    end
   end
 end
