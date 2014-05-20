@@ -7,8 +7,8 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 
 SimpleCov.start do
+  add_group "API", "src/api"
   add_group "Extensions", "src/extensions"
-  add_group "Models", "src/models"
 end
 
 require 'initializer'
