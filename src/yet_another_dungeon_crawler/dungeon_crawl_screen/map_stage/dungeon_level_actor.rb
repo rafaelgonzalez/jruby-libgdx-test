@@ -26,7 +26,6 @@ class YetAnotherDungeonCrawler < Game
         # Returns nothing.
         def act(delta_time)
           create_actors
-          dungeon_level.tiles.each(&:apply_effects!)
           super
         end
 

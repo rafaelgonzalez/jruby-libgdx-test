@@ -1,3 +1,6 @@
+require 'character_action'
+require 'direction'
+
 class LpcSpriteSheetLoader
   SPRITE_WIDTH = 64
   SPRITE_HEIGHT = 64

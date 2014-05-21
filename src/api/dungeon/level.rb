@@ -22,9 +22,9 @@ class Dungeon
     def spawn_character!(character, x, y)
       tile = tile(x, y)
 
-      if tile and tile.empty?
+      if tile and tile.walkable?
         character.current_tile = tile
-        @characters.push(character)
+        @characters.push(character) unless characters.include?(character)
         true
       else
         false
@@ -42,7 +42,7 @@ class Dungeon
 
       if tile = @tiles.select{|tile| tile.x_position == x and tile.y_position == y}.first
         tile
-      elsif tiles_array[y] and tiles_array[y][x]
+      elsif tiles_array[y] and (tiles_array[y][x] or tiles_array[y][x] == false)
         new_tile = Dungeon::Level::Tile.new(x, y, tiles_array[y][x], self)
         @tiles.push new_tile
         new_tile
@@ -56,11 +56,7 @@ class Dungeon
     end
 
     def width
-      if tiles_array[0]
-        tiles_array[0].size
-      else
-        0
-      end
+      tiles_array.map(&:size).max
     end
   end
 end
