@@ -24,7 +24,7 @@ class Dungeon
 
       if tile and tile.walkable?
         character.current_tile = tile
-        @characters.push(character)
+        @characters.push(character) unless characters.include?(character)
         true
       else
         false
@@ -56,11 +56,7 @@ class Dungeon
     end
 
     def width
-      if tiles_array[0]
-        tiles_array[0].size
-      else
-        0
-      end
+      tiles_array.map(&:size).max
     end
   end
 end

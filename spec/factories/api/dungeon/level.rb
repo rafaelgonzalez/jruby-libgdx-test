@@ -4,8 +4,9 @@ FactoryGirl.define do
       sequence(:tiles_array) do
         [
           [1, false, 3, 1],
-          [1, 2, 1, false],
-          [false, 1, 1, 1]
+          [1, 2, 1, false, 3],
+          [false, 1, 1, 1],
+          [1, 1, 1]
         ]
       end
 
