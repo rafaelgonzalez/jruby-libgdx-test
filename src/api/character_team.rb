@@ -16,7 +16,9 @@ class CharacterTeam
   end
 
   def current_controlled_character
-    characters.first
+    if characters.first and characters.first.playable?
+      characters.first
+    end
   end
 
   def control_next_character!

@@ -46,10 +46,29 @@ describe CharacterTeam do
   end
 
   describe '#current_controlled_character' do
+    subject { FactoryGirl.build(:character_team, characters: characters.dup) }
+
+    context 'with no characters' do
+      let(:characters) { [] }
+
+      its(:current_controlled_character) { should be_nil }
+    end
+
+    context 'with no playable characters' do
+      let(:characters) { FactoryGirl.build_list(:character, 5, :dead) }
+
+      its(:current_controlled_character) { should be_nil }
+    end
+
+    context 'with playable characters' do
+      let(:characters) { FactoryGirl.build_list(:character, 5) }
+
+      its(:current_controlled_character) { should eql characters.first }
+    end
   end
 
   describe '#control_next_character!' do
-    subject { FactoryGirl.build(:character_team, characters: characters) }
+    subject { FactoryGirl.build(:character_team, characters: characters.dup) }
 
     context 'with an unplayable character as the next character' do
       let(:playable_characters) { FactoryGirl.build_list(:character, 2) }
