@@ -5,7 +5,7 @@ module Skills
   module Move
     class Base < Skills::Base
 
-      attr_reader :character, :direction, :destination_tile
+      attr_reader :character, :direction
 
       COSTS = {
         action_points: 1
@@ -17,7 +17,11 @@ module Skills
         end
 
         @character = character
-        @destination_tile = character.current_tile.adjacent_tile(direction)
+      end
+
+      def destination_tile
+        return nil unless character.current_tile
+        character.current_tile.adjacent_tile(direction)
       end
 
       # Public: Handles the character's movement sequence to it's destination Tile.
