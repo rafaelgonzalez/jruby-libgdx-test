@@ -30,8 +30,6 @@ module Skills
       # character.actor.current_action = ::CharacterAction::SLASH
 
       # apply damage
-      # damage_effect = ::Dungeon::Level::Tile::Effect::Damage.new(BASE_DAMAGE)
-      # destination_tile.add_effect!(damage_effect)
 
       # animate attack receiver
       # TODO
