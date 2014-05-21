@@ -3,6 +3,7 @@ jruby-libgdx-test
 [![Build Status](https://travis-ci.org/rafaelgonzalez/jruby-libgdx-test.png?branch=master)](https://travis-ci.org/rafaelgonzalez/jruby-libgdx-test)
 [![Coverage Status](https://coveralls.io/repos/rafaelgonzalez/jruby-libgdx-test/badge.png?branch=master)](https://coveralls.io/r/rafaelgonzalez/jruby-libgdx-test)
 [![Code Climate](https://codeclimate.com/github/rafaelgonzalez/jruby-libgdx-test.png)](https://codeclimate.com/github/rafaelgonzalez/jruby-libgdx-test)
+[![Dependency Status](https://gemnasium.com/rafaelgonzalez/jruby-libgdx-test.svg)](https://gemnasium.com/rafaelgonzalez/jruby-libgdx-test)
 
 ## Description ##
 
