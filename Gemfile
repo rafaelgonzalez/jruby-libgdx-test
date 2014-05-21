@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 source 'http://gems.neurogami.com'
 
-gem 'activesupport', '~> 4.1.0'
+gem 'activesupport', '~> 4.1.1'
 
 group :development do
-  gem 'rawr'
-  gem 'pry'
+  gem 'rawr', '~> 1.7.0'
+  gem 'pry', '~> 0.9.12.6'
 end
 
 group :test do
-  gem 'rake' # Needed for travis
-  gem 'rspec'
-  gem 'simplecov', require: false
-  gem 'cane'
-  gem 'coveralls', require: false
+  gem 'rake', '~> 10.3' # Needed for travis
+  gem 'rspec', '~> 2.14.1'
+  gem 'simplecov', '~> 0.8.2', require: false
+  gem 'cane', '~> 2.6.2'
+  gem 'coveralls', '~> 0.7.0', require: false
 end
 
 group :development, :test do
