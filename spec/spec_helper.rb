@@ -7,8 +7,13 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 ]
 
 SimpleCov.start do
-  add_group "API", "src/api"
+  add_group "Game API", "src/api"
+  add_group "Game Engine", "src/yet_another_dungeon_crawler"
   add_group "Extensions", "src/extensions"
+
+  add_filter 'initializer'
+  add_filter 'spec'
+  add_filter 'src/config'
 end
 
 require 'initializer'
