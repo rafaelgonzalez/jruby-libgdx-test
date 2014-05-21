@@ -1,9 +1,10 @@
 class Dungeon
 
-  attr_reader :teams, :current_level
+  attr_accessor :teams
+  attr_reader :current_level
 
   def initialize
-    setup_teams
+    @teams = []
   end
 
   def current_playing_team
@@ -23,32 +24,5 @@ class Dungeon
         team.artificial_intelligence.dungeon_level = current_level
       end
     end
-  end
-
-  private
-
-  def setup_teams
-    @teams = []
-
-    player_character_1 = Character.new('Geralt')
-    player_character_2 = Character.new('Syrio')
-    player_character_3 = Character.new('Snake')
-
-    vilain_character_1 = Character.new('Diablo')
-    vilain_character_2 = Character.new('Baal')
-    vilain_character_3 = Character.new('Mephisto')
-
-    player_team = CharacterTeam.new("Player's characters")
-    vilains_team = CharacterTeam.new('Vilains', ArtificialIntelligence::EndTurn.new)
-
-    player_team.add_character(player_character_1)
-    player_team.add_character(player_character_2)
-    player_team.add_character(player_character_3)
-
-    vilains_team.add_character(vilain_character_1)
-    vilains_team.add_character(vilain_character_2)
-    vilains_team.add_character(vilain_character_3)
-
-    teams.push(player_team, vilains_team)
   end
 end

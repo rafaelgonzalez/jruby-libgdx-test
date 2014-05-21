@@ -1,7 +1,6 @@
 class CharacterTeam
 
-  attr_accessor :name, :characters
-  attr_reader :artificial_intelligence
+  attr_accessor :name, :characters, :artificial_intelligence
 
   def initialize(name, artificial_intelligence = nil)
     @name = name
