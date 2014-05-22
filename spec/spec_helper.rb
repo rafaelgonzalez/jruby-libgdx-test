@@ -10,6 +10,9 @@ SimpleCov.start do
   add_filter 'src/config'
 end
 
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 require 'initializer'
 
 require 'factory_girl'
