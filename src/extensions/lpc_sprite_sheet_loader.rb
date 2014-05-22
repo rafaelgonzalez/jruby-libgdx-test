@@ -1,5 +1,6 @@
 require 'character_action'
 require 'direction'
+require 'sprite_sheet_loader'
 
 class LpcSpriteSheetLoader
   SPRITE_WIDTH = 64
