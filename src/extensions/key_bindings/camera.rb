@@ -1,3 +1,5 @@
+require 'direction'
+
 module KeyBinding
   class Camera < Base
     BINDINGS = {
