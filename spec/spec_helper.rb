@@ -1,10 +1,4 @@
 require 'simplecov'
-require 'coveralls'
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-  Coveralls::SimpleCov::Formatter
-]
 
 SimpleCov.start do
   add_group "Game API", "src/api"
@@ -15,6 +9,9 @@ SimpleCov.start do
   add_filter 'spec'
   add_filter 'src/config'
 end
+
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 require 'initializer'
 

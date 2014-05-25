@@ -4,3 +4,4 @@ rvm:
 jdk:
   - openjdk7
   - openjdk6
+env: CODECLIMATE_REPO_TOKEN=63b648cc1d790979e9973fb3f2b47a62ba4700b458d2e1b7133f453b8186dace

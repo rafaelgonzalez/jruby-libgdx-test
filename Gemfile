@@ -13,7 +13,7 @@ group :test do
   gem 'rspec', '~> 2.14.1'
   gem 'simplecov', '~> 0.8.2', require: false
   gem 'cane', '~> 2.6.2'
-  gem 'coveralls', '~> 0.7.0', require: false
+  gem 'codeclimate-test-reporter', '~> 0.3.0', require: false
 end
 
 group :development, :test do
