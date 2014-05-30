@@ -1,3 +1,5 @@
+require 'direction'
+
 require_relative 'actions/finish_move_to_tile'
 require_relative 'actions/move_to_tile'
 
@@ -35,7 +37,7 @@ module Skills
 
           character.destination_tile = destination_tile
           character.current_direction = direction
-          character.actor.current_action = CharacterAction::WALK
+          character.actor.current_action = Character::Action::WALK
 
           character.actor.add_action(
             ::Actions.sequence(

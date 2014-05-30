@@ -2,11 +2,25 @@
 
 ROOT_PATH = File.dirname(__FILE__)
 
-# Require initializers
+# Require dependencies
 
-initializers_path = File.expand_path(File.join(ROOT_PATH, 'src', 'config', 'initializers'))
-$LOAD_PATH << initializers_path
+require_relative File.join(ROOT_PATH, 'src', 'config', 'dependencies')
 
-Dir.entries(initializers_path).keep_if {|file| file =~ /(\.rb$)/ }.each do |file|
-  require File.join(initializers_path, file)
+# Require game files
+
+path = File.expand_path(File.join(ROOT_PATH, 'src'))
+$LOAD_PATH << path
+
+# Require game API and extensions
+
+%w{ api extensions }.each do |dir|
+  path = File.expand_path(File.join(ROOT_PATH, 'src', dir))
+
+  $LOAD_PATH << path
+
+  Dir[File.join(path, '**', '*.rb')].each { |f| require(f) }
 end
+
+# Require game engine
+
+require 'yet_another_dungeon_crawler'
