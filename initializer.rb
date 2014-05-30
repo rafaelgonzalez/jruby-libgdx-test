@@ -21,8 +21,6 @@ $LOAD_PATH << path
   Dir[File.join(path, '**', '*.rb')].each { |f| require(f) }
 end
 
-require 'forwardable'
-
 # Require game engine
 
 require 'yet_another_dungeon_crawler'

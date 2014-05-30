@@ -1,3 +1,5 @@
+require 'forwardable'
+
 require_relative 'dungeon_level_character_actor/click_listener'
 require_relative 'dungeon_level_character_actor/input_listener'
 require_relative 'dungeon_level_character_actor/input_translator'
