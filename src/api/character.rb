@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'direction'
 
 class Character
   extend Forwardable

@@ -28,7 +28,7 @@ class YetAnotherDungeonCrawler < Game
           @character = character
           character.actor = self
 
-          @current_action = CharacterAction::STAND
+          @current_action = Character::Action::STAND
 
           @state_time = 0.0
 
@@ -51,7 +51,7 @@ class YetAnotherDungeonCrawler < Game
           @state_time += delta_time
           super
 
-          @current_action = CharacterAction::DEATH unless alive?
+          @current_action = Character::Action::DEATH unless alive?
         end
 
         def current_tile=(new_tile)
@@ -65,7 +65,7 @@ class YetAnotherDungeonCrawler < Game
         #
         # Returns a Boolean.
         def is_moving?
-          @current_action == CharacterAction::WALK
+          @current_action == Character::Action::WALK
         end
       end
     end

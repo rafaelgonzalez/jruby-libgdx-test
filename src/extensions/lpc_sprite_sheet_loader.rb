@@ -1,5 +1,3 @@
-require 'character_action'
-require 'direction'
 require 'sprite_sheet_loader'
 
 class LpcSpriteSheetLoader
@@ -7,28 +5,28 @@ class LpcSpriteSheetLoader
   SPRITE_HEIGHT = 64
 
   LPC_SPRITE_SHEETS_INDEXES = {
-    CharacterAction::DEATH => {
+    Character::Action::DEATH => {
       Direction::UP => [20, 5],
       Direction::LEFT => [20, 5],
       Direction::DOWN => [20, 5],
       Direction::RIGHT => [20, 5],
     },
 
-    CharacterAction::STAND => {
+    Character::Action::STAND => {
       Direction::UP => [8, (0..0)],
       Direction::LEFT => [9, (0..0)],
       Direction::DOWN => [10, (0..0)],
       Direction::RIGHT => [11, (0..0)],
     },
 
-    CharacterAction::WALK => {
+    Character::Action::WALK => {
       Direction::UP => [8, (1..8)],
       Direction::LEFT => [9, (1..8)],
       Direction::DOWN => [10, (1..8)],
       Direction::RIGHT => [11, (1..8)]
     },
 
-    CharacterAction::SLASH => {
+    Character::Action::SLASH => {
       Direction::UP => [12, (0..5)],
       Direction::LEFT => [13, (0..5)],
       Direction::DOWN => [14, (0..5)],

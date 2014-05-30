@@ -5,7 +5,7 @@ module Skills
 
         def run
           actor.current_tile = actor.destination_tile
-          actor.current_action = CharacterAction::STAND
+          actor.current_action = Character::Action::STAND
 
           direction = actor.input_translator.movement_direction
         end
