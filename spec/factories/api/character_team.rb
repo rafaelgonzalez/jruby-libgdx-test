@@ -11,7 +11,9 @@ FactoryGirl.define do
     end
 
     trait :with_ai do
-      sequence(:artificial_intelligence) { ArtificialIntelligence::EndTurn.new }
+      sequence(:artificial_intelligence) do
+        ArtificialIntelligence::EndTurn.new(FactoryGirl.build(:level))
+      end
     end
   end
 end

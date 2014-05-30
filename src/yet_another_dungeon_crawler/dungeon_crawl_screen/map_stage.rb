@@ -7,7 +7,7 @@ class YetAnotherDungeonCrawler < Game
   class DungeonCrawlScreen < ScreenAdapter
     class MapStage < Stage
 
-      attr_reader :screen, :dungeon, :dungeon_actor
+      attr_reader :screen, :dungeon, :dungeon_actor, :dungeon_level
 
       def initialize(screen)
         super()
@@ -23,7 +23,7 @@ class YetAnotherDungeonCrawler < Game
 
         @dungeon_actor = DungeonActor.new(dungeon)
 
-        dungeon_level = Dungeon::Level.new(map_loader.tiles_array, dungeon)
+        @dungeon_level = Dungeon::Level.new(map_loader.tiles_array, dungeon)
         dungeon.current_level = dungeon_level
 
         dungeon_level_actor = DungeonLevelActor.new(dungeon_level, map_loader.tiled_map)
@@ -48,7 +48,7 @@ class YetAnotherDungeonCrawler < Game
         vilain_character_3 = Character.new('Mephisto')
 
         player_team = CharacterTeam.new("Player's characters")
-        vilains_team = CharacterTeam.new('Vilains', ArtificialIntelligence::EndTurn.new)
+        vilains_team = CharacterTeam.new('Vilains', ArtificialIntelligence::EndTurn.new(dungeon_level))
 
         player_team.add_character(player_character_1)
         player_team.add_character(player_character_2)
