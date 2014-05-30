@@ -38,28 +38,4 @@ describe Dungeon do
       expect(subject.current_playing_team).to eql teams[1]
     end
   end
-
-  describe '#current_level=' do
-    let(:ai_teams) { FactoryGirl.build_list(:character_team, 3, :with_ai) }
-    let(:level) { FactoryGirl.build(:level) }
-
-    subject { FactoryGirl.build(:dungeon, teams: ai_teams) }
-
-    it "changes the dungeon's current level" do
-      subject.current_level = level
-      expect(subject.current_level).to eql level
-    end
-
-    it 'updates the dungeon level of artificial intelligences' do
-      ai_teams.each do |team|
-        expect(team.artificial_intelligence.dungeon_level).to be_nil
-      end
-
-      subject.current_level = level
-
-      ai_teams.each do |team|
-        expect(team.artificial_intelligence.dungeon_level).to eql level
-      end
-    end
-  end
 end
