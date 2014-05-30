@@ -3,13 +3,12 @@ module ArtificialIntelligence
 
     attr_accessor :dungeon_level, :elapsed_time
 
-    def initialize
+    def initialize(dungeon_level)
+      @dungeon_level = dungeon_level
       @elapsed_time = 0
     end
 
     def execute(delta_time = nil)
-      return false unless dungeon_level
-
       if delta_time
         @elapsed_time = elapsed_time + delta_time
 
