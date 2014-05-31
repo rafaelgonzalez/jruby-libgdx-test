@@ -24,7 +24,6 @@ class YetAnotherDungeonCrawler < Game
         @dungeon_actor = DungeonActor.new(dungeon)
 
         @dungeon_level = Dungeon::Level.new(map_loader.tiles_array, dungeon)
-        dungeon.current_level = dungeon_level
 
         dungeon_level_actor = DungeonLevelActor.new(dungeon_level, map_loader.tiled_map)
 
