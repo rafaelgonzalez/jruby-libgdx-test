@@ -8,13 +8,13 @@ describe Dungeon::Level::Tile do
     context 'with a character' do
       before { subject.character = FactoryGirl.build(:character) }
 
-      its(:walkable?) { should be_false }
+      it { expect(subject.walkable?).to be_falsey }
     end
 
     context 'with an impossible cost' do
       before { subject.cost = false }
 
-      its(:walkable?) { should be_false }
+      it { expect(subject.walkable?).to be_falsey }
     end
 
     context 'without a character and with a possible cost' do
@@ -23,7 +23,7 @@ describe Dungeon::Level::Tile do
         subject.cost = 1
       end
 
-      its(:walkable?) { should be_true }
+      it { expect(subject.walkable?).to be_truthy }
     end
   end
 
@@ -32,17 +32,17 @@ describe Dungeon::Level::Tile do
 
     context 'with a cost set to 0' do
       let(:cost) { 0 }
-      its(:difficulty_impossible?) { should be_false }
+      it { expect(subject.difficulty_impossible?).to be_falsey }
     end
 
     context 'with a cost set to 90000001' do
       let(:cost) { 90000001 }
-      its(:difficulty_impossible?) { should be_false }
+      it { expect(subject.difficulty_impossible?).to be_falsey }
     end
 
     context 'with a cost set to false' do
       let(:cost) { false }
-      its(:difficulty_impossible?) { should be_true }
+      it { expect(subject.difficulty_impossible?).to be_truthy }
     end
   end
 
@@ -50,13 +50,13 @@ describe Dungeon::Level::Tile do
     context 'with no character' do
       before { subject.character = nil }
 
-      its(:empty?) { should be_true }
+      it { expect(subject.empty?).to be_truthy }
     end
 
     context 'with a character' do
       before { subject.character = FactoryGirl.build(:character) }
 
-      its(:empty?) { should be_false }
+      it { expect(subject.empty?).to be_falsey }
     end
   end
 

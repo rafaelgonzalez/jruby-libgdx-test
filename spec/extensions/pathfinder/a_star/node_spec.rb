@@ -5,7 +5,7 @@ describe Pathfinder::AStar::Node do
 
   subject { Pathfinder::AStar::Node.new(tile) }
 
-  its(:tile) { should eql tile }
+  it { expect(subject.tile).to eql tile }
 
   describe '#==' do
     let(:tile) { FactoryGirl.build(:tile, x_position: 1, y_position: 3) }
@@ -14,14 +14,14 @@ describe Pathfinder::AStar::Node do
     context 'with the same tile' do
       let(:other_node) { Pathfinder::AStar::Node.new(tile) }
 
-      it { expect(node == other_node).to be_true }
+      it { expect(node == other_node).to be_truthy }
     end
 
     context 'with a different tile' do
       let(:other_tile) { FactoryGirl.build(:tile, x_position: 1, y_position: 3) }
       let(:other_node) { Pathfinder::AStar::Node.new(other_tile) }
 
-      it { expect(node == other_node).to be_false }
+      it { expect(node == other_node).to be_falsey }
     end
   end
 

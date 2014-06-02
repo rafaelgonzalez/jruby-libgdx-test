@@ -4,8 +4,8 @@ describe Dungeon::Level do
   subject { FactoryGirl.build(:level) }
 
   describe 'initialization' do
-    its(:tiles) { should be_empty }
-    its(:characters) { should be_empty }
+    it { expect(subject.tiles).to be_empty }
+    it { expect(subject.characters).to be_empty }
   end
 
   describe '#spawn_character!' do
@@ -13,7 +13,7 @@ describe Dungeon::Level do
 
     context 'on a non-existant tile' do
       it 'does not spawn the character' do
-        expect(subject.spawn_character!(character, 100, 100)).to be_false
+        expect(subject.spawn_character!(character, 100, 100)).to be_falsey
         expect(character.current_tile).to be_nil
         expect(subject.characters).not_to include(character)
       end
@@ -21,7 +21,7 @@ describe Dungeon::Level do
 
     context 'on a non-walkable tile' do
       it 'does not spawn the character' do
-        expect(subject.spawn_character!(character, 2, 4)).to be_false
+        expect(subject.spawn_character!(character, 2, 4)).to be_falsey
         expect(character.current_tile).to be_nil
         expect(subject.characters).not_to include(character)
       end
@@ -29,7 +29,7 @@ describe Dungeon::Level do
 
     context 'on a walkable tile' do
       it 'spawns the character' do
-        expect(subject.spawn_character!(character, 3, 2)).to be_true
+        expect(subject.spawn_character!(character, 3, 2)).to be_truthy
         expect(character.current_tile.x_position).to eql 3
         expect(character.current_tile.y_position).to eql 2
         expect(subject.characters).to include(character)
@@ -39,7 +39,7 @@ describe Dungeon::Level do
         before { subject.spawn_character!(character, 3, 2) }
 
         it "changes the character's current tile" do
-          expect(subject.spawn_character!(character, 1, 2)).to be_true
+          expect(subject.spawn_character!(character, 1, 2)).to be_truthy
           expect(character.current_tile.x_position).to eql 1
           expect(character.current_tile.y_position).to eql 2
           expect(subject.characters.select {|c| c == character}.count).to eql 1
@@ -105,10 +105,10 @@ describe Dungeon::Level do
   end
 
   describe '#height' do
-    its(:height) { should eql 4 }
+    it { expect(subject.height).to eql 4 }
   end
 
   describe '#width' do
-    its(:width) { should eql 5 }
+    it { expect(subject.width).to eql 5 }
   end
 end

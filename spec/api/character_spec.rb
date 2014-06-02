@@ -4,19 +4,19 @@ describe Character do
   subject { FactoryGirl.build(:character, name: 'Master of combat') }
 
   describe 'initialization' do
-    its(:name) { should eql 'Master of combat' }
-    its(:actor) { should be_nil }
-    its(:maximum_stamina) { should eql Character::BASE_STAMINA }
-    its(:stamina) { should eql Character::BASE_STAMINA }
-    its(:maximum_mana) { should eql Character::BASE_MANA }
-    its(:mana) { should eql Character::BASE_MANA }
-    its(:maximum_health) { should eql Character::BASE_HEALTH }
-    its(:health) { should eql Character::BASE_HEALTH }
-    its(:maximum_action_points) { should eql Character::BASE_ACTION_POINTS }
-    its(:action_points) { should eql Character::BASE_ACTION_POINTS }
-    its(:current_direction) { should eql Character::DEFAULT_DIRECTION }
-    its(:current_tile) { should be_nil }
-    its(:destination_tile) { should be_nil }
+    it { expect(subject.name).to eql 'Master of combat' }
+    it { expect(subject.actor).to be_nil }
+    it { expect(subject.maximum_stamina).to eql Character::BASE_STAMINA }
+    it { expect(subject.stamina).to eql Character::BASE_STAMINA }
+    it { expect(subject.maximum_mana).to eql  Character::BASE_MANA }
+    it { expect(subject.mana).to eql  Character::BASE_MANA }
+    it { expect(subject.maximum_health).to eql Character::BASE_HEALTH }
+    it { expect(subject.health).to eql Character::BASE_HEALTH }
+    it { expect(subject.maximum_action_points).to eql Character::BASE_ACTION_POINTS }
+    it { expect(subject.action_points).to eql Character::BASE_ACTION_POINTS }
+    it { expect(subject.current_direction).to eql Character::DEFAULT_DIRECTION }
+    it { expect(subject.current_tile).to be_nil }
+    it { expect(subject.destination_tile).to be_nil }
   end
 
   describe '#current_tile=' do
@@ -64,7 +64,7 @@ describe Character do
   end
 
   describe '#armor' do
-    its(:armor) { should eql Character::BASE_ARMOR }
+    it { expect(subject.armor).to eql Character::BASE_ARMOR }
   end
 
   describe '#alive?' do
@@ -72,17 +72,17 @@ describe Character do
 
     context 'with health superior to 0' do
       let(:health) { 1 }
-      its(:alive?) { should be_true }
-    end
+      it { expect(subject.alive?).to be_truthy }
+  end
 
     context 'with health equal to 0' do
       let(:health) { 0 }
-      its(:alive?) { should be_false }
+      it { expect(subject.alive?).to be_falsey }
     end
 
     context 'with health inferior to 0' do
       let(:health) { -1 }
-      its(:alive?) { should be_false }
+      it { expect(subject.alive?).to be_falsey }
     end
   end
 
@@ -91,17 +91,17 @@ describe Character do
 
     context 'with health superior to 0' do
       let(:health) { 1 }
-      its(:playable?) { should be_true }
+      it { expect(subject.playable?).to be_truthy }
     end
 
     context 'with health equal to 0' do
       let(:health) { 0 }
-      its(:playable?) { should be_false }
+      it { expect(subject.playable?).to be_falsey }
     end
 
     context 'with health inferior to 0' do
       let(:health) { -1 }
-      its(:playable?) { should be_false }
+      it { expect(subject.playable?).to be_falsey }
     end
   end
 
@@ -113,17 +113,17 @@ describe Character do
 
     context 'with stamina superior to amount' do
       let(:amount) { 20 }
-      its(:stamina) { should eql 0 }
+      it { expect(subject.stamina).to eql 0 }
     end
 
     context 'with stamina equal to amount' do
       let(:amount) { 10 }
-      its(:stamina) { should eql 0 }
+      it { expect(subject.stamina).to eql 0 }
     end
 
     context 'with stamina inferior to amount' do
       let(:amount) { 5 }
-      its(:stamina) { should eql 5 }
+      it { expect(subject.stamina).to eql 5 }
     end
   end
 
@@ -135,17 +135,17 @@ describe Character do
 
     context 'with mana superior to amount' do
       let(:amount) { 20 }
-      its(:mana) { should eql 0 }
+      it { expect(subject.mana).to eql 0 }
     end
 
     context 'with mana equal to amount' do
       let(:amount) { 10 }
-      its(:mana) { should eql 0 }
+      it { expect(subject.mana).to eql 0 }
     end
 
     context 'with mana inferior to amount' do
       let(:amount) { 5 }
-      its(:mana) { should eql 5 }
+      it { expect(subject.mana).to eql 5 }
     end
   end
 
@@ -157,17 +157,17 @@ describe Character do
 
     context 'with action_points superior to amount' do
       let(:amount) { 20 }
-      its(:action_points) { should eql 0 }
+      it { expect(subject.action_points).to eql 0 }
     end
 
     context 'with action_points equal to amount' do
       let(:amount) { 10 }
-      its(:action_points) { should eql 0 }
+      it { expect(subject.action_points).to eql 0 }
     end
 
     context 'with action_points inferior to amount' do
       let(:amount) { 5 }
-      its(:action_points) { should eql 5 }
+      it { expect(subject.action_points).to eql 5 }
     end
   end
 
