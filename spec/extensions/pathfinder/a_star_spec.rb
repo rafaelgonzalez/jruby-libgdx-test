@@ -8,9 +8,9 @@ describe Pathfinder::AStar do
   subject { Pathfinder::AStar.new(start_tile, end_tile) }
 
   describe '#initialize' do
-    its(:open_list) { should be_empty }
-    its(:closed_list) { should be_empty }
-    its(:path) { should be_empty }
+    it { expect(subject.open_list).to be_empty }
+    it { expect(subject.closed_list).to be_empty }
+    it { expect(subject.path).to be_empty }
 
     it 'sets start_node and end_node with tiles' do
       expect(subject.start_node.tile).to eql start_tile

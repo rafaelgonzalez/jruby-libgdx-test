@@ -5,5 +5,5 @@ describe Skills::Move::Left do
 
   subject { Skills::Move::Left.new(character) }
 
-  its(:direction) { should eql Direction::LEFT }
+  it { expect(subject.direction).to eql Direction::LEFT }
 end

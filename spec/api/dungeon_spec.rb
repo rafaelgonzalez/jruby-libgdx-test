@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Dungeon do
 
   describe 'initialization' do
-    its(:teams) { should be_empty }
+    it { expect(subject.teams).to be_empty }
   end
 
   describe '#current_playing_team' do
@@ -12,13 +12,13 @@ describe Dungeon do
     context 'with no teams' do
       let(:teams) { [] }
 
-      its(:current_playing_team) { should be_nil }
+      it { expect(subject.current_playing_team).to be_nil }
     end
 
     context 'with teams' do
       let(:teams) { FactoryGirl.build_list(:character_team, 5) }
 
-      its(:current_playing_team) { should eql teams.first }
+      it { expect(subject.current_playing_team).to eql teams.first }
     end
   end
 

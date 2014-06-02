@@ -4,8 +4,8 @@ describe CharacterTeam do
   subject { FactoryGirl.build(:character_team, name: 'Team Awesome') }
 
   describe 'initialization' do
-    its(:name) { should eql 'Team Awesome' }
-    its(:characters) { should be_empty }
+    it { expect(subject.name).to eql 'Team Awesome' }
+    it { expect(subject.characters).to be_empty }
   end
 
   describe '#add_character' do
@@ -51,19 +51,19 @@ describe CharacterTeam do
     context 'with no characters' do
       let(:characters) { [] }
 
-      its(:current_controlled_character) { should be_nil }
-    end
+      it { expect(subject.current_controlled_character).to be_nil }
+  end
 
     context 'with no playable characters' do
       let(:characters) { FactoryGirl.build_list(:character, 5, :dead) }
 
-      its(:current_controlled_character) { should be_nil }
+      it { expect(subject.current_controlled_character).to be_nil }
     end
 
     context 'with playable characters' do
       let(:characters) { FactoryGirl.build_list(:character, 5) }
 
-      its(:current_controlled_character) { should eql characters.first }
+      it { expect(subject.current_controlled_character).to eql characters.first }
     end
   end
 
@@ -101,13 +101,13 @@ describe CharacterTeam do
         ]
       end
 
-      its(:defeated?) { should be_false }
+      it { expect(subject.defeated?).to be_falsey }
     end
 
     context 'with all characters dead' do
       let(:characters) { FactoryGirl.build_list(:character, 5, :dead) }
 
-      its(:defeated?) { should be_true }
+      it { expect(subject.defeated?).to be_truthy }
     end
   end
 end

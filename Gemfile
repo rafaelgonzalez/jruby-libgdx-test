@@ -10,7 +10,7 @@ end
 
 group :test do
   gem 'rake', '~> 10.3' # Needed for travis
-  gem 'rspec', '~> 2.14.1'
+  gem 'rspec', '~> 3.0.0'
   gem 'simplecov', '~> 0.8.2', require: false
   gem 'cane', '~> 2.6.2'
   gem 'codeclimate-test-reporter', '~> 0.3.0', require: false
