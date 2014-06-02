@@ -54,14 +54,16 @@ class YetAnotherDungeonCrawler < Game
 
         def create_actors
           dungeon_level.characters.each do |character|
-            unless character.actor
-              character.actor = DungeonLevelCharacterActor.new(character)
-              add_actor(character.actor)
-              character_actors.push(character.actor)
-              character.actor.set_x(character.actor.screen_x_position)
-              character.actor.set_y(character.actor.screen_y_position)
-            end
+            create_actor(character) unless character.actor
           end
+        end
+
+        def create_actor(character)
+          character.actor = DungeonLevelCharacterActor.new(character)
+          add_actor(character.actor)
+          character_actors.push(character.actor)
+          character.actor.set_x(character.actor.screen_x_position)
+          character.actor.set_y(character.actor.screen_y_position)
         end
 
         # Internal: Renders the Characters of the Level.
