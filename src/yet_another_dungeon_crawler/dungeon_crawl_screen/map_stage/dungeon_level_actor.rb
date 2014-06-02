@@ -37,7 +37,7 @@ class YetAnotherDungeonCrawler < Game
           sprite_batch.end
 
           tiled_map_renderer.set_view(get_stage.camera)
-          tiled_map_renderer.render(map_layers_below_characters)
+          tiled_map_renderer.render(map_layers_relative_to_characters(:below))
 
           sprite_batch.begin
 
@@ -45,7 +45,7 @@ class YetAnotherDungeonCrawler < Game
 
           sprite_batch.end
 
-          tiled_map_renderer.render(map_layers_above_characters)
+          tiled_map_renderer.render(map_layers_relative_to_characters(:above))
 
           sprite_batch.begin
         end
@@ -80,23 +80,13 @@ class YetAnotherDungeonCrawler < Game
           character_actors.sort_by {|character_actor| character_actor.y_position}.reverse
         end
 
-        def map_layers_below_characters
+        def map_layers_relative_to_characters(position)
           layers = []
 
           tiled_map_renderer.map.get_layers.each_with_index do |layer, index|
-            unless layer.get_properties.get('render') == 'hover'
+            if position == :below and !(layer.get_properties.get('render') == 'hover')
               layers.push index
-            end
-          end
-
-          layers.to_java(:int)
-        end
-
-        def map_layers_above_characters
-          layers = []
-
-          tiled_map_renderer.map.get_layers.each_with_index do |layer, index|
-            if layer.get_properties.get('render') == 'hover'
+            elsif position == :above and (layer.get_properties.get('render') == 'hover')
               layers.push index
             end
           end
