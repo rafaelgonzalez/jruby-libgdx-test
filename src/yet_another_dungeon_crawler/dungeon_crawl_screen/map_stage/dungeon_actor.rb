@@ -18,9 +18,7 @@ class YetAnotherDungeonCrawler < Game
           super
 
           if dungeon.current_playing_team.artificial_intelligence
-            end_turn_button.disable!
-            get_stage.set_keyboard_focus(nil)
-            dungeon.current_playing_team.artificial_intelligence.execute(delta_time)
+            set_ai_turn(delta_time)
           elsif get_stage.get_keyboard_focus.nil?
             end_turn_button.enable!
             switch_control_to_next_player_playable_character!
@@ -52,6 +50,12 @@ class YetAnotherDungeonCrawler < Game
         end
 
         private
+
+        def set_ai_turn(delta_time)
+          end_turn_button.disable!
+          get_stage.set_keyboard_focus(nil)
+          dungeon.current_playing_team.artificial_intelligence.execute(delta_time)
+        end
 
         def focus_on_current_playing_character
           controlled_character = dungeon.current_playing_team.current_controlled_character
