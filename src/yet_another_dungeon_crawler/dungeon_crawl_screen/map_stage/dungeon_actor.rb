@@ -51,16 +51,16 @@ class YetAnotherDungeonCrawler < Game
           focus_on_current_playing_character
         end
 
-        def focus_on_current_playing_character
-          get_stage.screen.hud_stage.focus_character = dungeon.current_playing_team.current_controlled_character
-
-          get_stage.get_camera.move_to!(
-            dungeon.current_playing_team.current_controlled_character.actor.screen_center_x_position,
-            dungeon.current_playing_team.current_controlled_character.actor.screen_center_y_position
-          )
-        end
-
         private
+
+        def focus_on_current_playing_character
+          controlled_character = dungeon.current_playing_team.current_controlled_character
+
+          get_stage.screen.hud_stage.focus_character = controlled_character
+
+          get_stage.get_camera.move_to!(controlled_character.actor.screen_center_x_position,
+                                        controlled_character.actor.screen_center_y_position)
+        end
 
         def end_turn_button
           get_stage.screen.hud_stage.hud_interface.end_turn_button
