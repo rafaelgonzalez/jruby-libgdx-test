@@ -10,11 +10,11 @@ module Pathfinder
       end
 
       def ==(other_node)
-        (self.tile.x_position == other_node.tile.x_position) &&
-        (self.tile.y_position == other_node.tile.y_position)
+        self.tile == other_node.tile
       end
 
       def calculate_scores!(end_node)
+        return unless parent
         @g = tile.cost + parent.tile.cost
         @h = AStar::Heuristic::Manhattan.calculate(tile, end_node.tile)
         @f = @g + @h

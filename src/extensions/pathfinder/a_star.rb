@@ -45,7 +45,7 @@ module Pathfinder
       node = end_node if node == end_node
 
       if open_list.include?(node)
-        if (current_node.tile.cost + node.tile.cost) < node.g
+        if node.g.nil? or ((current_node.tile.cost + node.tile.cost) < node.g)
           node.parent = current_node
           node.calculate_scores!(end_node)
         end
