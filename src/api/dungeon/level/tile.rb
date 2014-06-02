@@ -19,6 +19,21 @@ class Dungeon::Level
       !difficulty_impossible? and empty?
     end
 
+    def neighbours
+      [
+        adjacent_tile(Direction::RIGHT),
+        adjacent_tile(Direction::LEFT),
+        adjacent_tile(Direction::UP),
+        adjacent_tile(Direction::DOWN)
+      ].compact
+    end
+
+    def walkable_neighbours
+      neighbours.select do |tile|
+        tile.walkable?
+      end
+    end
+
     def difficulty_impossible?
       cost == false
     end
