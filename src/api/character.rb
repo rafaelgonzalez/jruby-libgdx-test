@@ -68,6 +68,10 @@ class Character
     health > 0
   end
 
+  def dead?
+    !alive?
+  end
+
   def playable?
     alive?
   end

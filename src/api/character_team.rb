@@ -6,6 +6,7 @@ class CharacterTeam
     @name = name
     @characters = []
     @artificial_intelligence = artificial_intelligence
+    artificial_intelligence.character_team = self
   end
 
   def add_character(character)

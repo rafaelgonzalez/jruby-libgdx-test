@@ -1,7 +1,7 @@
 module ArtificialIntelligence
   class EndTurn
 
-    attr_accessor :dungeon_level, :elapsed_time
+    attr_accessor :dungeon_level, :elapsed_time, :character_team
 
     def initialize(dungeon_level)
       @dungeon_level = dungeon_level
