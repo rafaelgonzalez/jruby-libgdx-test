@@ -28,13 +28,13 @@ GEM
     minitest (5.4.0)
     multi_json (1.10.1)
     parallel (1.1.1)
-    pry (0.9.12.6)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
+    pry (0.10.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry (0.9.12.6-java)
-      coderay (~> 1.0)
-      method_source (~> 0.8)
+    pry (0.10.0-java)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
       slop (~> 3.4)
       spoon (~> 0.0)
     rake (10.3.2)
@@ -56,7 +56,7 @@ GEM
     rubyzip (1.1.6)
     s4t-utils (1.0.4)
       hoe (>= 1.3.0)
-    simplecov (0.8.2)
+    simplecov (0.9.0)
       docile (~> 1.1.0)
       multi_json
       simplecov-html (~> 0.8.0)
@@ -79,12 +79,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (~> 4.1.1)
-  cane (~> 2.6.2)
-  codeclimate-test-reporter (~> 0.3.0)
-  factory_girl (~> 4.0)
-  pry (~> 0.9.12.6)
-  rake (~> 10.3)
+  activesupport
+  cane
+  codeclimate-test-reporter
+  factory_girl
+  pry
+  rake
   rawr (~> 1.7.0)
-  rspec (~> 3.0.0)
-  simplecov (~> 0.8.2)
+  rspec
+  simplecov
