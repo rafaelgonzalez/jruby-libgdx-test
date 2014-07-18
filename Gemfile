@@ -1,21 +1,21 @@
 source 'https://rubygems.org'
 source 'http://gems.neurogami.com'
 
-gem 'activesupport', '~> 4.1.1'
+gem 'activesupport'
 
 group :development do
   gem 'rawr', '~> 1.7.0'
-  gem 'pry', '~> 0.9.12.6'
+  gem 'pry'
 end
 
 group :test do
-  gem 'rake', '~> 10.3' # Needed for travis
-  gem 'rspec', '~> 3.0.0'
-  gem 'simplecov', '~> 0.8.2', require: false
-  gem 'cane', '~> 2.6.2'
-  gem 'codeclimate-test-reporter', '~> 0.3.0', require: false
+  gem 'rake' # Needed for travis
+  gem 'rspec'
+  gem 'simplecov', require: false
+  gem 'cane'
+  gem 'codeclimate-test-reporter', require: false
 end
 
 group :development, :test do
-  gem 'factory_girl', '~> 4.0'
+  gem 'factory_girl'
 end
