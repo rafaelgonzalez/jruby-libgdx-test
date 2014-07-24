@@ -1,68 +1,48 @@
 module ArtificialIntelligence
   class SearchAndDestroy
 
-    attr_accessor :dungeon_level, :elapsed_time, :character_team
-    attr_reader :paths, :targets
+    attr_accessor :character
+    attr_reader :path, :target
 
-    def initialize(dungeon_level)
+    def initialize(character)
       @dungeon_level = dungeon_level
-      @elapsed_time = 0
-      @paths = {}
-      @targets = {}
+      @path = []
+      @target = nil
     end
 
     def execute(delta_time = nil)
-      initialize_characters_paths
-      find_current_controlled_character_target
-      find_current_controlled_character_path
+      choose_target
+      create_path_to_target
+
       # move character to location unless can_not_move
       # attack! unless can_not_attack
-      # switch character control
+      # end character turn
     end
 
     private
 
-    def initialize_characters_paths
-      character_team.characters.each do |character|
-        paths[character.id] = {} if paths[character.id].nil?
-      end
-    end
-
-    def find_current_controlled_character_target
+    def choose_target
       if current_target.nil? or current_target.dead?
-        current_target = current_character.dungeon_level.characters.sample
+        path = find_shortest_path
+        target =
       end
     end
 
-    def find_current_controlled_character_path
-      if current_path.empty?
-        path = Pathfinder::Astar.new(
+    def find_shortest_path
+      targets.map do |target|
+        Pathfinder::Astar.new(
           current_character.current_tile,
           current_target.current_tile
         ).find_path!
-
-        current_path = path
-      end
+      end.sort_by(&:length)
     end
 
     def current_character
-      character_team.current_controlled_character
+      @character = @character_team.current_controlled_character
     end
 
-    def current_path
-      paths[current_character.id]
-    end
-
-    def current_path=(path)
-      paths[current_character.id] = path
-    end
-
-    def current_target
-      targets[current_character.id]
-    end
-
-    def current_target=(target)
-      targets[current_character.id] = target
+    def dungeon_level
+      current_character.dungeon_level
     end
   end
 end
