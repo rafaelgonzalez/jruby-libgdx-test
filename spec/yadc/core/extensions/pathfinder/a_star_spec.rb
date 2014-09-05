@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-describe Pathfinder::AStar do
+describe Yadc::Core::Pathfinder::AStar do
   let(:level) { FactoryGirl.build(:level) }
   let(:start_tile) { level.tile(0, 0) }
   let(:end_tile) { level.tile(0, 3) }
 
-  subject { Pathfinder::AStar.new(start_tile, end_tile) }
+  subject { Yadc::Core::Pathfinder::AStar.new(start_tile, end_tile) }
 
   describe '#initialize' do
     it { expect(subject.open_list).to be_empty }

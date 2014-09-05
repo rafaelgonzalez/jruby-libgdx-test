@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Pathfinder::AStar::Heuristic::Manhattan do
+describe Yadc::Core::Pathfinder::AStar::Heuristic::Manhattan do
   describe '.calculate' do
     it 'calculates the heuristic score' do
       expect(described_class.calculate(2, 5, 6, 1)).to eql 80
