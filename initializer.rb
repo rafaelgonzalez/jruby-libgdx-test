@@ -13,7 +13,9 @@ $LOAD_PATH << path
 
 # Require game API and extensions
 
-%w{ yadc/core/models extensions }.each do |dir|
+require 'yadc'
+
+%w{ extensions }.each do |dir|
   path = File.expand_path(File.join(ROOT_PATH, 'src', dir))
 
   $LOAD_PATH << path

@@ -1,5 +1,5 @@
 require 'forwardable'
-require 'direction'
+require 'yadc/core/models/direction'
 
 module Yadc
   module Core

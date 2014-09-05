@@ -1,4 +1,4 @@
-require 'direction'
+require 'yadc/core/models/direction'
 
 require_relative 'actions/finish_move_to_tile'
 require_relative 'actions/move_to_tile'
