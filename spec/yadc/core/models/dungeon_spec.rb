@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Dungeon do
+describe Yadc::Core::Dungeon do
 
   describe 'initialization' do
     it { expect(subject.teams).to be_empty }

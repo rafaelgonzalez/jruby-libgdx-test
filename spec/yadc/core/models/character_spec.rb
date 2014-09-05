@@ -1,20 +1,20 @@
 require 'spec_helper'
 
-describe Character do
+describe Yadc::Core::Character do
   subject { FactoryGirl.build(:character, name: 'Master of combat') }
 
   describe 'initialization' do
     it { expect(subject.name).to eql 'Master of combat' }
     it { expect(subject.actor).to be_nil }
-    it { expect(subject.maximum_stamina).to eql Character::BASE_STAMINA }
-    it { expect(subject.stamina).to eql Character::BASE_STAMINA }
-    it { expect(subject.maximum_mana).to eql  Character::BASE_MANA }
-    it { expect(subject.mana).to eql  Character::BASE_MANA }
-    it { expect(subject.maximum_health).to eql Character::BASE_HEALTH }
-    it { expect(subject.health).to eql Character::BASE_HEALTH }
-    it { expect(subject.maximum_action_points).to eql Character::BASE_ACTION_POINTS }
-    it { expect(subject.action_points).to eql Character::BASE_ACTION_POINTS }
-    it { expect(subject.current_direction).to eql Character::DEFAULT_DIRECTION }
+    it { expect(subject.maximum_stamina).to eql Yadc::Core::Character::BASE_STAMINA }
+    it { expect(subject.stamina).to eql Yadc::Core::Character::BASE_STAMINA }
+    it { expect(subject.maximum_mana).to eql Yadc::Core::Character::BASE_MANA }
+    it { expect(subject.mana).to eql Yadc::Core::Character::BASE_MANA }
+    it { expect(subject.maximum_health).to eql Yadc::Core::Character::BASE_HEALTH }
+    it { expect(subject.health).to eql Yadc::Core::Character::BASE_HEALTH }
+    it { expect(subject.maximum_action_points).to eql Yadc::Core::Character::BASE_ACTION_POINTS }
+    it { expect(subject.action_points).to eql Yadc::Core::Character::BASE_ACTION_POINTS }
+    it { expect(subject.current_direction).to eql Yadc::Core::Character::DEFAULT_DIRECTION }
     it { expect(subject.current_tile).to be_nil }
     it { expect(subject.destination_tile).to be_nil }
   end
@@ -64,7 +64,7 @@ describe Character do
   end
 
   describe '#armor' do
-    it { expect(subject.armor).to eql Character::BASE_ARMOR }
+    it { expect(subject.armor).to eql Yadc::Core::Character::BASE_ARMOR }
   end
 
   describe '#alive?' do

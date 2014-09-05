@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Dungeon::Level do
+describe Yadc::Core::Dungeon::Level do
   subject { FactoryGirl.build(:level) }
 
   describe 'initialization' do
@@ -73,7 +73,7 @@ describe Dungeon::Level do
       it 'returns the tile' do
         tile = subject.tile(2, 3)
 
-        expect(tile).to be_a(Dungeon::Level::Tile)
+        expect(tile).to be_a(Yadc::Core::Dungeon::Level::Tile)
         expect(tile.x_position).to eql 2
         expect(tile.y_position).to eql 3
       end
@@ -93,7 +93,7 @@ describe Dungeon::Level do
       it 'returns the tile' do
         tile = subject.tile(1, 3)
 
-        expect(tile).to be_a(Dungeon::Level::Tile)
+        expect(tile).to be_a(Yadc::Core::Dungeon::Level::Tile)
         expect(tile.x_position).to eql 1
         expect(tile.y_position).to eql 3
       end

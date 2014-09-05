@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CharacterTeam do
+describe Yadc::Core::CharacterTeam do
   subject { FactoryGirl.build(:character_team, name: 'Team Awesome') }
 
   describe 'initialization' do

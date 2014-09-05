@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Dungeon::Level::Tile do
+describe Yadc::Core::Dungeon::Level::Tile do
   subject { FactoryGirl.build(:tile) }
 
 
@@ -65,28 +65,28 @@ describe Dungeon::Level::Tile do
     let(:adjacent_tile) { subject.adjacent_tile(direction) }
 
     context 'to the right' do
-      let(:direction) { Direction::RIGHT }
+      let(:direction) { Yadc::Core::Direction::RIGHT }
 
       it { expect(adjacent_tile.x_position).to eql 3 }
       it { expect(adjacent_tile.y_position).to eql 0 }
     end
 
     context 'to the left' do
-      let(:direction) { Direction::LEFT }
+      let(:direction) { Yadc::Core::Direction::LEFT }
 
       it { expect(adjacent_tile.x_position).to eql 1 }
       it { expect(adjacent_tile.y_position).to eql 0 }
     end
 
     context 'above' do
-      let(:direction) { Direction::UP }
+      let(:direction) { Yadc::Core::Direction::UP }
 
       it { expect(adjacent_tile.x_position).to eql 2 }
       it { expect(adjacent_tile.y_position).to eql 1 }
     end
 
     context 'below' do
-      let(:direction) { Direction::DOWN }
+      let(:direction) { Yadc::Core::Direction::DOWN }
 
       it { expect(adjacent_tile).to be_nil }
     end

@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :character_team, class: CharacterTeam do
+  factory :character_team, class: Yadc::Core::CharacterTeam do
     ignore do
       name 'Test Team'
     end

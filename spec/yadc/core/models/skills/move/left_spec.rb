@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe Skills::Move::Left do
+describe Yadc::Core::Skills::Move::Left do
   let(:character) { FactoryGirl.build(:character) }
 
-  subject { Skills::Move::Left.new(character) }
+  subject { Yadc::Core::Skills::Move::Left.new(character) }
 
-  it { expect(subject.direction).to eql Direction::LEFT }
+  it { expect(subject.direction).to eql Yadc::Core::Direction::LEFT }
 end

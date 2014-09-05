@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :tile, class: Dungeon::Level::Tile do
+  factory :tile, class: Yadc::Core::Dungeon::Level::Tile do
     ignore do
       x_position 3
       y_position 7

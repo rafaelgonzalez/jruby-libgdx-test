@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :level, class: Dungeon::Level do
+  factory :level, class: Yadc::Core::Dungeon::Level do
     ignore do
       sequence(:tiles_array) do
         [
