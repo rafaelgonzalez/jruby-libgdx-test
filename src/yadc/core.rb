@@ -3,13 +3,14 @@ module Yadc
   end
 end
 
+require_relative 'core/extensions'
+
 require_relative 'core/models/artificial_intelligence/end_turn'
 
 require_relative 'core/models/character'
 require_relative 'core/models/character/action'
 
 require_relative 'core/models/character_team'
-require_relative 'core/models/direction'
 
 require_relative 'core/models/dungeon'
 require_relative 'core/models/dungeon/level'
