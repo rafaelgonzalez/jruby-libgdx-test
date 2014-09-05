@@ -11,8 +11,6 @@ require_relative File.join(ROOT_PATH, 'src', 'config', 'dependencies')
 path = File.expand_path(File.join(ROOT_PATH, 'src'))
 $LOAD_PATH << path
 
-# Require game API and extensions
-
 require 'yadc'
 
 %w{ extensions }.each do |dir|
@@ -22,7 +20,3 @@ require 'yadc'
 
   Dir[File.join(path, '**', '*.rb')].each { |f| require(f) }
 end
-
-# Require game engine
-
-require 'yet_another_dungeon_crawler'

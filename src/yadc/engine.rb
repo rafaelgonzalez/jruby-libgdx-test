@@ -1,4 +1,4 @@
-require_relative 'yet_another_dungeon_crawler/dungeon_crawl_screen'
+require_relative 'engine/screens/dungeon_crawl_screen'
 
 class YetAnotherDungeonCrawler < Game
   include Input
