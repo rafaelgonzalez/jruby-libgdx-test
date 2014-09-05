@@ -19,11 +19,11 @@ class YetAnotherDungeonCrawler < Game
         map_loader = MapLoader.new(:groto)
         map_loader.execute!
 
-        @dungeon = Dungeon.new
+        @dungeon = Yadc::Core::Dungeon.new
 
         @dungeon_actor = DungeonActor.new(dungeon)
 
-        @dungeon_level = Dungeon::Level.new(map_loader.tiles_array, dungeon)
+        @dungeon_level = Yadc::Core::Dungeon::Level.new(map_loader.tiles_array, dungeon)
 
         dungeon_level_actor = DungeonLevelActor.new(dungeon_level, map_loader.tiled_map)
 
@@ -38,16 +38,16 @@ class YetAnotherDungeonCrawler < Game
       private
 
       def setup_teams
-        player_character_1 = Character.new('Geralt')
-        player_character_2 = Character.new('Syrio')
-        player_character_3 = Character.new('Snake')
+        player_character_1 = Yadc::Core::Character.new('Geralt')
+        player_character_2 = Yadc::Core::Character.new('Syrio')
+        player_character_3 = Yadc::Core::Character.new('Snake')
 
-        vilain_character_1 = Character.new('Diablo')
-        vilain_character_2 = Character.new('Baal')
-        vilain_character_3 = Character.new('Mephisto')
+        vilain_character_1 = Yadc::Core::Character.new('Diablo')
+        vilain_character_2 = Yadc::Core::Character.new('Baal')
+        vilain_character_3 = Yadc::Core::Character.new('Mephisto')
 
-        player_team = CharacterTeam.new("Player's characters")
-        vilains_team = CharacterTeam.new('Vilains', ArtificialIntelligence::EndTurn.new(dungeon_level))
+        player_team = Yadc::Core::CharacterTeam.new("Player's characters")
+        vilains_team = Yadc::Core::CharacterTeam.new('Vilains', Yadc::Core::ArtificialIntelligence::EndTurn.new(dungeon_level))
 
         player_team.add_character(player_character_1)
         player_team.add_character(player_character_2)

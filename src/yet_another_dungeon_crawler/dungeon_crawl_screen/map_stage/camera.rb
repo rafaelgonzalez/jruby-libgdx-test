@@ -66,10 +66,10 @@ class YetAnotherDungeonCrawler < Game
           new_screen_x = position.x
           new_screen_y = position.y
 
-          new_screen_x += 64 if direction == Direction::LEFT
-          new_screen_x += -64 if direction == Direction::RIGHT
-          new_screen_y += 64 if direction == Direction::DOWN
-          new_screen_y += -64 if direction == Direction::UP
+          new_screen_x += 64 if direction == Yadc::Core::Direction::LEFT
+          new_screen_x += -64 if direction == Yadc::Core::Direction::RIGHT
+          new_screen_y += 64 if direction == Yadc::Core::Direction::DOWN
+          new_screen_y += -64 if direction == Yadc::Core::Direction::UP
 
           move_to!(new_screen_x, new_screen_y)
         end
