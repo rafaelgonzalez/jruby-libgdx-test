@@ -1,10 +1,10 @@
 module ArtificialIntelligence
   class SearchAndDestroy
 
-    attr_accessor :character
+    attr_accessor :dungeon_level, :character_team
     attr_reader :path, :target
 
-    def initialize(character)
+    def initialize(dungeon_level)
       @dungeon_level = dungeon_level
       @path = []
       @target = nil
@@ -12,37 +12,44 @@ module ArtificialIntelligence
 
     def execute(delta_time = nil)
       choose_target
-      create_path_to_target
 
       # move character to location unless can_not_move
       # attack! unless can_not_attack
       # end character turn
+
+      dungeon.end_current_playing_team_turn!
     end
 
     private
 
     def choose_target
-      if current_target.nil? or current_target.dead?
-        path = find_shortest_path
-        target =
-      end
+      path = find_shortest_path
+      MoveCharacter.new(path).execute
     end
 
     def find_shortest_path
       targets.map do |target|
-        Pathfinder::Astar.new(
+        Pathfinder::AStar.new(
           current_character.current_tile,
-          current_target.current_tile
+          target.current_tile
         ).find_path!
       end.sort_by(&:length)
+    end
+
+    def targets
+      binding.pry
+      # dungeon.teams.flat_map do |team|
+      #   next if team == character_team
+      #   team.characters
+      # end
     end
 
     def current_character
       @character = @character_team.current_controlled_character
     end
 
-    def dungeon_level
-      current_character.dungeon_level
+    def dungeon
+      dungeon_level.dungeon
     end
   end
 end

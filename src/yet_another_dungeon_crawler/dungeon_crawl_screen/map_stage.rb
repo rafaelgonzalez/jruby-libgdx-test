@@ -47,7 +47,7 @@ class YetAnotherDungeonCrawler < Game
         vilain_character_3 = Character.new('Mephisto')
 
         player_team = CharacterTeam.new("Player's characters")
-        vilains_team = CharacterTeam.new('Vilains', ArtificialIntelligence::EndTurn.new(dungeon_level))
+        vilains_team = CharacterTeam.new('Vilains', ArtificialIntelligence::SearchAndDestroy.new(dungeon_level))
 
         player_team.add_character(player_character_1)
         player_team.add_character(player_character_2)

@@ -30,6 +30,10 @@ class YetAnotherDungeonCrawler < Game
         end
 
         def end_current_playing_team_turn!
+          # DungeonActor must detect end turn when
+          # > dungeon.end_current_playing_team_turn!
+          # is called from AI
+
           dungeon.end_current_playing_team_turn!
 
           if dungeon.current_playing_team.artificial_intelligence
