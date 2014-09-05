@@ -1,4 +1,8 @@
-module KeyBinding
+module Yadc
+  class Engine < Game
+    module KeyBinding
+    end
+  end
 end
 
 require_relative 'key_bindings/base'
