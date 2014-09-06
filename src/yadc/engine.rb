@@ -1,3 +1,4 @@
+require_relative 'engine/config'
 require_relative 'engine/extensions'
 require_relative 'engine/models'
 require_relative 'engine/screens/dungeon_crawl_screen'

@@ -3,6 +3,8 @@ module Yadc
   end
 end
 
+require_relative 'core/config'
+
 require_relative 'core/extensions'
 
 require_relative 'core/models/artificial_intelligence/end_turn'
