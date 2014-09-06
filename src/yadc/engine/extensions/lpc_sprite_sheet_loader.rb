@@ -1,3 +1,5 @@
+require 'yadc/engine/models/character/action'
+
 module Yadc
   class Engine < Game
     class LpcSpriteSheetLoader
